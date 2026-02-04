@@ -13,8 +13,8 @@ ___
 ## run Function(there are 4 of them)
 runs the function that you put in
 ### Arguments
-* function: function type for the functio you run
-* args(only 2 have the argument): the arguments for the function as an Object, simular to `run hat with args`
+* function: function type for the function you run
+* args(only 2 have the argument): the arguments for the function as an Object, similar to `run hat with args`
 ___
 ## get Arg
 **returns**: the value of the argument in the function

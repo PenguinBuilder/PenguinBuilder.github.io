@@ -5,7 +5,7 @@ creates a block in you extension
 * ID: the ID that the block goes by(make sure the id is __unique__ to other blocks)
 * Text: the display name of the block, put any inputs in brackets
 ![image of block](./create-block.png)
-* Show monitor: a boolean value representing weather to show the scrath monitor(wont work unless block is a reporter)
+* Show monitor: a boolean value representing weather to show the scratch monitor(wont work unless block is a reporter)
 * type: the type of block you want to make
     * block: a block that doesn't
     * reporter: a block that returns a value
@@ -50,7 +50,7 @@ like "Create Input Menu", this block will create a menu, but it can be used more
 ![image of block](./Create%20Menu.png)
 ___
 ## Create Dynamic Menu
-create a menu simular to "Create Menu" but its dynamic
+create a menu similar to "Create Menu" but its dynamic
 ### Arguments
 * ID: the ID of the menu(make sure the id is __unique__ to other menus)
 * Accept Reporters: a boolean on weather the input allows Reporters

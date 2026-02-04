@@ -1,8 +1,8 @@
 [//]: # (this was generated with chatgpt and was reviewed before committing)
 # Creating Extensions
 ## Interface: PenguinExtension
-**typscript is recomended for creating extensions**
-this is recomended for simple extensions, but default Blockly allows for more complex extensions, you can find the docs for that [here](https://developers.google.com/blockly/reference/js/blockly)
+**typscript is recommended for creating extensions**
+this is recommended for simple extensions, but default Blockly allows for more complex extensions, you can find the docs for that [here](https://developers.google.com/blockly/reference/js/blockly)
 ### `Info(): Category`
 Returns information about the extension.
 

@@ -1,5 +1,5 @@
 # Posting Extensions
-you can post extensions to this [github](https://github.com/chickencuber/PenguinBuilder_ExtensionGallery)
+you can post extensions to this [github](https://penguinbuilder.github.io/ExtensionGallery)
 
 create a folder for your extension and add these files
 
@@ -21,12 +21,12 @@ ___
 
 ## options.json
 
-options for the [file](https://chickencuber.github.io/PenguinBuilder/Docs/#secret)
+options for the [file](https://penguinbuilder.github.io/Docs/#secret)
 
 ### Arguments
 
 * creator: your github name(I will set this for you when reviewing your pull request)
-* potential-danger: a boolean on weather the extension is potentially dangorous, if your extension is a loader then it will have this automatically set to true (I will set this for you when reviewing your pull request)
+* potential-danger: a boolean on weather the extension is potentially dangerous, if your extension is a loader then it will have this automatically set to true (I will set this for you when reviewing your pull request)
 * display-name: the name that the extension shows
 * description: the description of the extension
 * loader: an optional boolean showing weather the extension is a loader

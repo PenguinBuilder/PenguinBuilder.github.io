@@ -23,7 +23,7 @@ ___
 sets the value of a key in a value(doesn't change the original Object, only returns a new one)
 __returns: Object__
 ### Arguments
-* Object: the Object you are seting a value of
+* Object: the Object you are setting a value of
 * key: the key that your setting
 * value: the value your setting it to
 ___
