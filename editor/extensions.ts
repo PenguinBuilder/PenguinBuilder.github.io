@@ -1,3 +1,9 @@
+import * as Blockly from "blockly/core"
+import * as javascript from "blockly/javascript"
+
+import {FieldAngle} from "@blockly/field-angle"
+import {FieldColour} from "@blockly/field-colour"
+
 interface PenguinExtension {
   Info(): Category;
   generator: {
@@ -83,18 +89,6 @@ type fieldType = {
   default: string;
 };
 
-declare function category(name: string, color: string, contents: any[]): any;
-
-declare const toolbox: {
-  contents: any[];
-};
-
-declare const Blockly: any;
-declare const javascript: any;
-
-declare const workspace: any;
-declare function block(name: string): any;
-
 const Penguin = {
   _getType(type: string | string[]) {
     if (Array.isArray(type)) {
@@ -120,7 +114,7 @@ const Penguin = {
             input.appendField(new Blockly.FieldNumber(field.default), field.ID);
             break;
           case "angle_input":
-            input.appendField(new Blockly.FieldAngle(field.default), field.ID);
+            input.appendField(new FieldAngle(field.default), field.ID);
             break;
           case "menu_input":
             input.appendField(
@@ -135,13 +129,13 @@ const Penguin = {
             );
             break;
           case "color_input":
-            input.appendField(new Blockly.FieldColour(field.default), field.ID);
+            input.appendField(new FieldColour(field.default), field.ID);
             break;
         }
       }
     }
   },
-  _getMenuItems(value: string[] | Record<string, any>): any[][] {
+  _getMenuItems(value: string[] | Record<string, any>): Blockly.MenuGenerator {
     if (Array.isArray(value)) {
       return value.map((v) => [v, v]);
     } else {
@@ -154,12 +148,12 @@ const Penguin = {
     const id = inf.ID;
     const blocks: any[] = [];
     const self = this;
-    toolbox.contents.push(
-      category(inf.name, inf.color, blocks),
-    );
+    // toolbox.contents.push(
+    //   category(inf.name, inf.color, blocks),
+    // );
     for (const _block of inf.blocks) {
       const name = `${id}_${_block.blockType.kind}_${_block.opcode}`;
-      blocks.push(block(name));
+      // blocks.push(block(name));
       Blockly.Blocks[name] = {
         init: function () {
           if (_block.blockType.kind === "Statement") {
@@ -203,14 +197,14 @@ const Penguin = {
       javascript.javascriptGenerator.forBlock[name] = function(block: any, generator: any) {
         const code = ext.generator[_block.opcode](new self.Block(block, generator));
         if(_block.blockType.kind === "Value") {
-          return [code, Blockly.JavaScript.ORDER_ATOMIC];
+            return [code, javascript.Order.ATOMIC];
         } else {
           return code;
         }
       }
     }
-    workspace.updateToolbox(toolbox);
-    workspace.refreshToolboxSelection();
+    // workspace.updateToolbox(toolbox);
+    // workspace.refreshToolboxSelection();
   },
   Block: class Block implements Block {
     constructor(public BlocklyBlock: any, public BlocklyGenerator: any) {

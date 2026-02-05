@@ -1,15 +1,20 @@
 {
-  "dependencies": {
-    "@blockly/block-dynamic-connection": "^0.8.8",
-    "@blockly/continuous-toolbox": "^7.0.8",
-    "@blockly/disable-top-blocks": "^0.6.8",
-    "@blockly/field-angle": "^6.0.8",
-    "@blockly/field-colour": "^6.0.11",
-    "@blockly/field-colour-hsv-sliders": "^6.0.11",
-    "@blockly/field-multilineinput": "^6.0.8",
-    "@blockly/plugin-workspace-search": "^10.1.7",
-    "@blockly/theme-dark": "^8.0.3",
-    "@blockly/toolbox-search": "^3.1.8",
-    "blockly": "^12.3.1"
-  }
+    "dependencies": {
+        "@blockly/block-dynamic-connection": "^0.8.8",
+        "@blockly/continuous-toolbox": "^7.0.8",
+        "@blockly/disable-top-blocks": "^0.6.8",
+        "@blockly/field-angle": "^6.0.8",
+        "@blockly/field-colour": "^6.0.11",
+        "@blockly/field-colour-hsv-sliders": "^6.0.11",
+        "@blockly/field-multilineinput": "^6.0.8",
+        "@blockly/plugin-workspace-search": "^10.1.7",
+        "@blockly/theme-dark": "^8.0.3",
+        "@blockly/toolbox-search": "^3.1.8",
+        "blockly": "^12.3.1",
+        "jsquery_node": "^1.0.1"
+    },
+    "devDependencies": {
+        "parcel": "^2.16.4",
+        "typescript": "^5.9.3"
+    }
 }
