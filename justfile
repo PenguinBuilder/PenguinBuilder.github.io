@@ -1,13 +1,8 @@
-files := "index.html editor/index.html"
-out := "dist"
-port := "1234"
-repo:= "/dev"
-
-dev:
-  npx parcel {{files}} --port {{port}} --dist-dir {{out}}
-
+# Build the project
 build:
-  npx parcel build {{files}} --dist-dir {{out}} --public-url {{repo}}
-
+    npx vite build
+# Dev server with hot reload
+dev:
+    npx vite
 clean:
-  rm -rf {{out}}
+    rm -rf docs 
