@@ -1,5 +1,5 @@
 files := "index.html editor/index.html"
-out := "dist"
+out := "docs"
 port := "1234"
 
 dev:
