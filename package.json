@@ -11,11 +11,11 @@
         "@blockly/theme-dark": "^8.0.3",
         "@blockly/toolbox-search": "^3.1.8",
         "blockly": "^12.3.1",
-        "jsquery_node": "^1.0.1",
-        "sass-embedded": "^1.97.3",
-        "vite": "^7.3.1"
+        "jsquery_node": "^1.0.3"
     },
     "devDependencies": {
+        "sass-embedded": "^1.97.3",
+        "vite": "^7.3.1",
         "typescript": "^5.9.3"
     }
 }

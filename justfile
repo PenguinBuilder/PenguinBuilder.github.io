@@ -3,6 +3,6 @@ build:
     npx vite build
 # Dev server with hot reload
 dev:
-    npx vite
+    npx vite --open
 clean:
     rm -rf docs 
