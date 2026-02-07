@@ -1,6 +1,41 @@
+@use "../style.scss";
 #block-editor {
-    position: absolute;
-    width: 100vw;
-    height: calc(100vh - 25px);
-    top: 25px;
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 30px);
+  top: 30px;
 }
+
+#top-bar {
+  display: flex;
+  position: absolute;
+  align-items: center; 
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 100vw;
+  > a,
+  > sl-dropdown{
+    margin-top: 5px;
+  }
+}
+
+#version {
+  color: white;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+#toolbox-search-input {
+  width: 100px;
+  padding-right: 10px;
+}
+
+:root:not([data-theme="dark"]) .blocklyTreeSeparator {
+  border-bottom: solid #888 1px;
+}
+
+label {
+  color: white;
+}
+

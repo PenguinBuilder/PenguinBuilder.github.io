@@ -8,6 +8,8 @@
     "strict": true,                                      /* Enable all strict type-checking options. */
     "skipLibCheck": true,                               /* Skip type checking all .d.ts files. */
     "types": ["vite/client"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true
   }
 }

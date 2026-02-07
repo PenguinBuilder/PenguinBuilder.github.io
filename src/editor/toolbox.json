@@ -1,0 +1,475 @@
+{
+    "kind": "categoryToolbox",
+    "contents": [
+        {
+            "kind": "search",
+            "name": "Search",
+            "contents": []
+        },
+        {
+            "kind": "category",
+            "name": "Functions",
+            "colour": "#FF00E8",
+            "custom": "PROCEDURE"
+        },
+        {
+            "kind": "category",
+            "name": "Variables",
+            "colour": "#2F00FF",
+            "custom": "VARIABLE"
+        },
+        {
+            "kind": "category",
+            "name": "string",
+            "colour": "#00ff00",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "text_multiline",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_join",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_append",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_length",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_isEmpty",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_indexOf",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_charAt",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_getSubstring",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_changeCase",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_trim",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_print",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_prompt_ext",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_prompt",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_count",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_replace",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "text_reverse",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "newline",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "math",
+            "colour": "#0000ff",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "math_angle",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_number",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_arithmetic",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_single",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_trig",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_constant",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_number_property",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_change",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_round",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_on_list",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_modulo",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_constrain",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_random_int",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_random_float",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_atan2",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "math_convert_degrees",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "arrays",
+            "colour": "#ff0000",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "lists_create_empty",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_repeat",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_reverse",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_isEmpty",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_length",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_create_with",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_indexOf",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_getIndex",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_setIndex",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_getSublist",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_sort",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_split",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "controls",
+            "colour": "#FFCC00",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "controls_repeat_ext",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_repeat",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_whileUntil",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_for",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_forEach",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_flow_statements",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_wait",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_try",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "logic",
+            "colour": "#002CB9",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "logic_boolean",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_compare",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_operation",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_negate",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_null",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_ternary",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_if",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "color",
+            "colour": "#FF00E8",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "colour_hsv_sliders",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "colour_picker",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "colour_rgb",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "colour_random",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "colour_blend",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "Extensions",
+            "colour": "#555",
+            "contents": [
+                {
+                    "kind": "button",
+                    "text": "Load Extension",
+                    "callbackKey": "Load_Extension"
+                }
+            ]
+        },
+        {
+            "kind": "sep"
+        }
+    ]
+}

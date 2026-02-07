@@ -7,7 +7,6 @@ export default defineConfig({
     assetsInclude: [
         "**/*.xml",
     ],
-
     build: {
         outDir: '../docs',
         emptyOutDir: true,

@@ -1,0 +1,55 @@
+$base: #00C3FF;
+$light: #62D8FC;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: $base;
+}
+
+sl-badge::part(base) {
+  background: $light;
+  border: none;
+}
+
+sl-button {
+  background: $base;
+  color: white;
+  border: none;
+}
+
+sl-button::part(base) {
+  background: $base;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+sl-button::part(base):hover {
+  background: $light;
+}
+
+sl-menu {
+  background: $base;
+  border: none;
+}
+
+sl-icon {
+  font-size: 18px;
+  color: white;
+}
+
+[data-theme="dark"] .only-light { display: none; }
+[data-theme="light"] .only-dark { display: none; }
+
+sl-menu-item::part(base) {
+  color: white;
+}
+
+sl-menu-item::part(base):hover {
+  background: $light;
+}
+
+* {
+  font-family: "Lexend", sans-serif;
+}
