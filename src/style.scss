@@ -1,5 +1,26 @@
 $base: #00C3FF;
 $light: #62D8FC;
+$top-bar-height: 30px;
+
+#top-bar {
+  display: flex;
+  position: absolute;
+  align-items: center; 
+  top: 0;
+  left: 0;
+  height: $top-bar-height;
+  width: 100vw;
+  > a,
+  > sl-dropdown{
+    margin-top: 5px;
+  }
+}
+
+#version {
+  color: white;
+  margin-left: auto;
+  margin-right: 10px;
+}
 
 html, body {
   margin: 0;

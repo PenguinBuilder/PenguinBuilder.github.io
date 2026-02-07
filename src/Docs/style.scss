@@ -1,0 +1,22 @@
+@use "../style.scss" as *;
+
+$bg: #363636;
+
+
+#box {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - $top-bar-height);
+  top: $top-bar-height;
+}
+
+#box {
+  background: white;
+}
+
+[data-theme="dark"]
+#box {
+  background: $bg;
+}
+
+

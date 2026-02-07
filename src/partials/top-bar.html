@@ -1,0 +1,29 @@
+<div id="top-bar">
+    <sl-dropdown id="theme-selector">
+        <sl-button slot="trigger" variant="text">
+            <sl-icon class="only-light" name="sun-fill"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill"></sl-icon>
+        </sl-button>
+        <sl-menu role="menu">
+            <sl-menu-item type="checkbox" value="light">Light</sl-menu-item>
+            <sl-menu-item type="checkbox" value="dark">Dark</sl-menu-item>
+            <sl-divider></sl-divider>
+            <sl-menu-item type="checkbox" value="auto" checked>System</sl-menu-item>
+        </sl-menu>
+    </sl-dropdown>
+    <a href="https://discord.gg/ytGGpJ8RPB" target="_blank">
+        <sl-button>
+            <sl-icon name="discord"></sl-icon>
+        </sl-button>
+    </a>
+    <a href="https://github.com/PenguinBuilder/PenguinBuilder.github.io" target="_blank">
+        <sl-button>
+            <sl-icon name="github"></sl-icon>
+        </sl-button>
+    </a>
+    {{#if @partial-block}}
+    <sl-divider vertical></sl-divider>
+    {{> @partial-block}}
+    {{/if}}
+    <sl-badge id="version" pill>{{version}}</sl-badge>
+</div>
