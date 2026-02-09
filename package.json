@@ -10,10 +10,13 @@
         "@blockly/theme-dark": "^8.0.3",
         "@blockly/toolbox-search": "^3.1.8",
         "blockly": "^12.3.1",
-        "jsquery_node": "^1.0.8"
+        "js-beautify": "^1.15.4",
+        "jsquery_node": "^1.0.12",
+        "lz-string": "^1.5.0"
     },
     "type": "module",
     "devDependencies": {
+        "@types/wicg-file-system-access": "^2023.10.7",
         "sass-embedded": "^1.97.3",
         "typescript": "^5.9.3",
         "vite": "^7.3.1",

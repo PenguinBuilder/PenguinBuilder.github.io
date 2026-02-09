@@ -1,8 +1,5 @@
 @use "../style.scss" as *;
 
-$bg: #363636;
-
-
 #box {
   position: absolute;
   width: 100vw;
@@ -11,12 +8,12 @@ $bg: #363636;
 }
 
 #box {
-  background: white;
+  background: $bg-light;
 }
 
 [data-theme="dark"]
 #box {
-  background: $bg;
+  background: $bg-dark;
 }
 
 

@@ -1,6 +1,8 @@
 $base: #00C3FF;
 $light: #62D8FC;
 $top-bar-height: 30px;
+$bg-dark: #232323;
+$bg-light: white;
 
 #top-bar {
   display: flex;
@@ -17,9 +19,14 @@ $top-bar-height: 30px;
 }
 
 #version {
-  color: white;
+  color: black;
   margin-left: auto;
   margin-right: 10px;
+}
+
+#version::part(base) {
+  color:black;
+  border: 1px solid white;
 }
 
 html, body {
@@ -52,7 +59,10 @@ sl-button::part(base):hover {
 
 sl-menu {
   background: $base;
-  border: none;
+}
+
+sl-menu-item::part(base):active {
+  background: $base;
 }
 
 sl-icon {
@@ -64,13 +74,33 @@ sl-icon {
 [data-theme="light"] .only-dark { display: none; }
 
 sl-menu-item::part(base) {
+  background: $base;
   color: white;
 }
 
-sl-menu-item::part(base):hover {
+sl-menu-item::part(base):hover,
+sl-menu-item::part(base):focus-visible,
+sl-menu-item::part(base):focus-within,
+sl-menu-item::part(base):active,
+sl-menu-item::part(base):target{
   background: $light;
+}
+
+#top-bar>input {
+  font-size: 18px;
+  outline: none;
+  border: none;
 }
 
 * {
   font-family: "Lexend", sans-serif;
+}
+
+input:not(#top-bar>input) {
+  background: white;
+  color: black;
+}
+
+#top-bar a sl-button {
+  margin-top: 5px;
 }

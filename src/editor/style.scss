@@ -11,7 +11,17 @@
   padding-right: 10px;
 }
 
-:root:not([data-theme="dark"]) .blocklyTreeSeparator {
+[data-theme="light"] .blocklyTreeSeparator {
   border-bottom: solid #888 1px;
+}
+
+.sl-toast-stack {
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+}
+
+#unsandboxed {
+  color: white;
 }
 

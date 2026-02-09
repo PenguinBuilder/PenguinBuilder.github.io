@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        {{> include-head }}
         <link rel="icon" type="image/png" href="../favicon.ico" />
         <title>PenguinBuilder-editor</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
-        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
         <link rel="stylesheet" type="text/css" href="style.scss" />
     </head>
     <body>
         <main>
             {{#> top-bar }}
+            <sl-tooltip content="docs">
                 <a href="../Docs/" target="_blank">
                     <sl-button>
                         <sl-icon name="journal-code"></sl-icon>
                     </sl-button>
                 </a> 
-                    <!-- <sl-button> -->
-                    <!--     <sl-icon name="file-earmark"></sl-icon> -->
-                    <!-- </sl-button> -->
+            </sl-tooltip>
+            <sl-dropdown>
+                <sl-tooltip content="files" slot="trigger" style="display:inline-block;">
+                    <sl-button variant="text">
+                        <sl-icon name="file-earmark"></sl-icon>
+                    </sl-button>
+                </sl-tooltip>
+                <sl-menu role="menu">
+                    <sl-menu-item>
+                        Save
+                        <sl-menu slot="submenu">
+                            <sl-menu-item id="save">Save</sl-menu-item>
+                            <sl-menu-item id="save-as">Save As</sl-menu-item>
+                        </sl-menu>
+                    </sl-menu-item>
+                    <sl-menu-item id="open">Open</sl-menu-item>
+                    <sl-menu-item id="export">Export</sl-menu-item>
+                </sl-menu>
+            </sl-dropdown>
+            <input id="ExtensionName" placeholder="ExtensionName" maxlength="20"/>
+            &nbsp;
+            <input id="ExtensionID" placeholder="ExtensionID" maxlength="20" pattern="[a-z0-9]*"/>
+            &nbsp;
+            <sl-color-picker id="color" size="small" label="Select a color"></sl-color-picker>
+            &nbsp;
+            <sl-checkbox id="unsandboxed">Force Unsandboxed</sl-checkbox>
             {{/top-bar}}
             <div id="block-editor"></div>
         </main>
