@@ -10,16 +10,13 @@ Blockly.Blocks["newline"] = {
     init: function () {
         this.appendDummyInput().appendField("new line");
         this.setOutput(true, "String");
-        this.setColour(180);
+        this.setStyle("text_blocks");
         this.setTooltip("");
         this.setHelpUrl("");
     },
 };
 
-javascript.javascriptGenerator.forBlock["newline"] = function (
-    block,
-    generator
-) {
+javascript.javascriptGenerator.forBlock["newline"] = function () {
     const code = '"\\n"';
     return [code, javascript.Order.ATOMIC];
 };

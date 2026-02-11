@@ -6,20 +6,17 @@ import {registerFieldAngle, FieldAngle} from "@blockly/field-angle";
 registerFieldAngle();
 
 Blockly.Blocks['math_angle'] = {
-    init: function () {
+    init: function (this: Blockly.Block) {
         this.appendDummyInput()
             .appendField(new FieldAngle(90), 'Angle');
         this.setOutput(true, 'Number');
-        this.setColour(225);
+        this.setStyle("math_blocks")
         this.setTooltip("");
         this.setHelpUrl("");
     },
 }
 
-javascript.javascriptGenerator.forBlock['math_angle'] = function (
-    block,
-    generator,
-) {
+javascript.javascriptGenerator.forBlock['math_angle'] = function (block) {
     const code = block.getFieldValue('Angle', );
     return [code, javascript.Order.ATOMIC];
 };
@@ -30,7 +27,7 @@ Blockly.Blocks['math_convert_degrees'] = {
             .setCheck("Number")
             .appendField(new Blockly.FieldDropdown([["to degrees","degrees"], ["to radians","radians"]]), "to");
         this.setOutput(true, "Number");
-        this.setColour(225);
+        this.setStyle("math_blocks")
         this.setTooltip("");
         this.setHelpUrl("");
     }

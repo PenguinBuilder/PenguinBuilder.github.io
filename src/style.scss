@@ -101,6 +101,16 @@ input:not(#top-bar>input) {
   color: black;
 }
 
+textarea {
+  background: white;
+  color: black;
+}
+
 #top-bar a sl-button {
   margin-top: 5px;
 }
+
+#top-bar sl-divider {
+  --color: white;
+}
+

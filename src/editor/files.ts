@@ -3,6 +3,8 @@ import {compressToUTF16, decompressFromUTF16} from "lz-string";
 
 export interface Save {
     workspace: Record<string, any>
+    extension_color: string,
+    force_unsandboxed: boolean,
     extension_name?: string,
     extension_id?: string,
 }

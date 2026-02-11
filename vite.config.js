@@ -22,7 +22,7 @@ export default defineConfig({
         emptyOutDir: true,
         sourcemap: false,
         cssCodeSplit: false,
-
+        chunkSizeWarningLimit: Infinity,
         rollupOptions: {
             input: {
                 root: resolve(__dirname, 'src/index.html'),

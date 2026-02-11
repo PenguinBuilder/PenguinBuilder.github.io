@@ -8,20 +8,188 @@
         },
         {
             "kind": "category",
+            "name": "Blocks",
+            "categorystyle": "scratch_category",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "create_block",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "create_input",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "input_menu",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "create_menu",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "create_dynamic_menu",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "create_input_menu",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "menu_item",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "get_input",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "return_block",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "create_hat",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "call_hat",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "call_hat_with_args",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "Category",
+            "categorystyle": "category_category",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "order_category",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "create_label",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "create_button",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "use_block",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "use_hat",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
+            "name": "JSON",
+            "categorystyle": "json_category",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "json_new",
+                    "gap": 8,
+                    "enabled": true,
+                    "extraState": {
+                        "itemCount": 0
+                    }
+                },
+                {
+                    "kind": "block",
+                    "type": "json_new",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "json_get",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "json_set",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "json_encode",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "json_entries",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "json_has_key",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
             "name": "Functions",
-            "colour": "#FF00E8",
+            "categorystyle": "procedure_category",
             "custom": "PROCEDURE"
         },
         {
             "kind": "category",
             "name": "Variables",
-            "colour": "#2F00FF",
+            "categorystyle": "variable_category",
             "custom": "VARIABLE"
         },
         {
             "kind": "category",
-            "name": "string",
-            "colour": "#00ff00",
+            "name": "Text",
+            "categorystyle": "text_category",
             "contents": [
                 {
                     "kind": "block",
@@ -91,12 +259,6 @@
                 },
                 {
                     "kind": "block",
-                    "type": "text_print",
-                    "gap": 8,
-                    "enabled": true
-                },
-                {
-                    "kind": "block",
                     "type": "text_prompt_ext",
                     "gap": 8,
                     "enabled": true
@@ -135,8 +297,8 @@
         },
         {
             "kind": "category",
-            "name": "math",
-            "colour": "#0000ff",
+            "name": "Math",
+            "categorystyle": "math_category",
             "contents": [
                 {
                     "kind": "block",
@@ -177,12 +339,6 @@
                 {
                     "kind": "block",
                     "type": "math_number_property",
-                    "gap": 8,
-                    "enabled": true
-                },
-                {
-                    "kind": "block",
-                    "type": "math_change",
                     "gap": 8,
                     "enabled": true
                 },
@@ -238,12 +394,21 @@
         },
         {
             "kind": "category",
-            "name": "arrays",
-            "colour": "#ff0000",
+            "name": "Lists",
+            "categorystyle": "list_category",
             "contents": [
                 {
                     "kind": "block",
-                    "type": "lists_create_empty",
+                    "type": "lists_create_with",
+                    "gap": 8,
+                    "enabled": true,
+                    "extraState": {
+                        "itemCount": 0
+                    }
+                },
+                {
+                    "kind": "block",
+                    "type": "lists_create_with",
                     "gap": 8,
                     "enabled": true
                 },
@@ -268,12 +433,6 @@
                 {
                     "kind": "block",
                     "type": "lists_length",
-                    "gap": 8,
-                    "enabled": true
-                },
-                {
-                    "kind": "block",
-                    "type": "lists_create_with",
                     "gap": 8,
                     "enabled": true
                 },
@@ -317,8 +476,8 @@
         },
         {
             "kind": "category",
-            "name": "controls",
-            "colour": "#FFCC00",
+            "name": "Controls",
+            "categorystyle": "loop_category",
             "contents": [
                 {
                     "kind": "block",
@@ -364,6 +523,12 @@
                 },
                 {
                     "kind": "block",
+                    "type": "controls_wait_until",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
                     "type": "controls_try",
                     "gap": 8,
                     "enabled": true
@@ -372,8 +537,8 @@
         },
         {
             "kind": "category",
-            "name": "logic",
-            "colour": "#002CB9",
+            "name": "Logic",
+            "categorystyle": "logic_category",
             "contents": [
                 {
                     "kind": "block",
@@ -416,13 +581,54 @@
                     "type": "controls_if",
                     "gap": 8,
                     "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_if",
+                    "extraState": {
+                        "hasElse": true
+                    }
+                },
+                {
+                    "kind": "block",
+                    "type": "controls_if",
+                    "extraState": {
+                        "hasElse": true,
+                        "elseIfCount": 1
+                    }
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_switch"
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_switch",
+                    "extraState": {
+                        "hasDefault": true
+                    }
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_switch_break"
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_switch_expr"
+                },
+                {
+                    "kind": "block",
+                    "type": "logic_switch_expr",
+                    "extraState": {
+                        "hasDefault": true
+                    }
                 }
             ]
         },
         {
             "kind": "category",
-            "name": "color",
-            "colour": "#FF00E8",
+            "name": "Color",
+            "categorystyle": "colour_category",
             "contents": [
                 {
                     "kind": "block",
@@ -458,8 +664,71 @@
         },
         {
             "kind": "category",
+            "name": "Browser",
+            "categorystyle": "browser_category",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "browser_console",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "browser_alert",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "browser_prompt",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "browser_confirm",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+
+            "kind": "category",
+            "name": "Advanced",
+            "categorystyle": "advanced_category",
+            "contents": [
+                {
+                    "kind": "block",
+                    "type": "eval",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "eval_ret",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "raw",
+                    "gap": 8,
+                    "enabled": true
+                },
+                {
+                    "kind": "block",
+                    "type": "raw_ret",
+                    "gap": 8,
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "kind": "category",
             "name": "Extensions",
-            "colour": "#555",
+            "categorystyle": "extension_category",
             "contents": [
                 {
                     "kind": "button",

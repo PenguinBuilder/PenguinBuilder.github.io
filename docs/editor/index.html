@@ -75,7 +75,9 @@
                 &nbsp;
                 <input id="ExtensionID" placeholder="ExtensionID" maxlength="20" pattern="[a-z0-9]*"/>
                 &nbsp;
-                <sl-color-picker id="color" size="small" label="Select a color"></sl-color-picker>
+                <sl-tooltip content="extension color">
+                    <sl-color-picker id="extcolor" size="small" label="Select a color" value="#0088ff"></sl-color-picker>
+                </sl-tooltip>
                 &nbsp;
                 <sl-checkbox id="unsandboxed">Force Unsandboxed</sl-checkbox>
     <sl-badge id="version" pill>v4.0.0-dev</sl-badge>

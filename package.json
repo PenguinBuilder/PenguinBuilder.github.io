@@ -1,13 +1,11 @@
 {
     "dependencies": {
-        "@blockly/block-dynamic-connection": "^0.8.8",
         "@blockly/continuous-toolbox": "^7.0.8",
         "@blockly/field-angle": "^6.0.8",
         "@blockly/field-colour": "^6.0.11",
         "@blockly/field-colour-hsv-sliders": "^6.0.11",
         "@blockly/field-multilineinput": "^6.0.8",
         "@blockly/plugin-workspace-search": "^10.1.7",
-        "@blockly/theme-dark": "^8.0.3",
         "@blockly/toolbox-search": "^3.1.8",
         "blockly": "^12.3.1",
         "js-beautify": "^1.15.4",
@@ -16,6 +14,7 @@
     },
     "type": "module",
     "devDependencies": {
+        "@types/js-beautify": "^1.14.3",
         "@types/wicg-file-system-access": "^2023.10.7",
         "sass-embedded": "^1.97.3",
         "typescript": "^5.9.3",

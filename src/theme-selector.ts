@@ -1,5 +1,5 @@
 import {$} from "jsquery_node";
-export default (onlight: ()=>any = ()=>{}, ondark: ()=>any = ()=>{}) => {
+export default async (onlight: ()=>any = ()=>{}, ondark: ()=>any = ()=>{}) => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     mediaQuery.addEventListener('change', () => {
         const v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value() as "dark"|"light"|"auto";
@@ -17,7 +17,7 @@ export default (onlight: ()=>any = ()=>{}, ondark: ()=>any = ()=>{}) => {
 
     function setTheme(
         v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value() as "dark"|"light"|"auto"
-                     ) {
+    ) {
         const auto = mediaQuery.matches;
         const dark = {dark: true, light: false, auto}
         localStorage.setItem("theme", v);
@@ -32,18 +32,19 @@ export default (onlight: ()=>any = ()=>{}, ondark: ()=>any = ()=>{}) => {
         }
     }
 
+    await customElements.whenDefined("sl-menu-item")
     {
         const key = localStorage.getItem("theme")
         if(key === null) {
             let v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value();
             localStorage.setItem("theme", v);
+            setTheme(v as "auto"|"dark"|"light");
         } else {
             $("#theme-selector")!.all(`sl-menu-item[type="checkbox"][value=${key}]`).checked(true);
             $("#theme-selector")!.all(`sl-menu-item[type="checkbox"]:not([value=${key}])`).checked(false);
+            setTheme(key as "auto"|"dark"|"light");
         }
     }
-
-    setTheme();
 
     $("#theme-selector")!.all("sl-menu-item[type=\"checkbox\"]").click(function () {
         let elt = $.from(this)!;

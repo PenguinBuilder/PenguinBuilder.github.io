@@ -13,10 +13,7 @@ Blockly.Blocks['colour_hsv_sliders'] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock['colour_hsv_sliders'] = function (
-    block,
-    generator,
-) {
+javascript.javascriptGenerator.forBlock['colour_hsv_sliders'] = function (block, generator) {
     const code = generator.quote_(block.getFieldValue('COLOUR'));
     return [code, javascript.Order.ATOMIC]
 };
