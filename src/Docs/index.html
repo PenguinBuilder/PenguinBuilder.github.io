@@ -3,6 +3,7 @@
     <head>
         {{> include-head }}
         <link rel="icon" type="image/png" href="../favicon.ico" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
         <title>PenguinBuilder-Docs</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="style.scss" />
@@ -19,7 +20,8 @@
             </sl-tooltip>
             {{/top-bar}}
             <div id="box">
-
+                <div id="toc"></div>
+                <div id="content"></div>
             </div>
         </main>
         <script src="main.ts" type="module"></script>

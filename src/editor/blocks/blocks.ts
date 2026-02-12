@@ -5,7 +5,7 @@ import * as javascript from "blockly/javascript";
 Blockly.Blocks['create_block'] = {
     init: function() {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.CENTRE)
+        .setAlign(Blockly.inputs.Align.LEFT)
         .appendField("Create Block");
         this.appendDummyInput()
         .appendField("ID")
@@ -27,11 +27,11 @@ Blockly.Blocks['create_block'] = {
             "type"
         );
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.CENTRE)
+        .setAlign(Blockly.inputs.Align.RIGHT)
         .appendField("Inputs");
         this.appendStatementInput("Inputs").setCheck(null);
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.CENTRE)
+        .setAlign(Blockly.inputs.Align.RIGHT)
         .appendField("function");
         this.appendStatementInput("Function").setCheck(null);
         this.setStyle("scratch_blocks");
@@ -186,7 +186,7 @@ javascript.javascriptGenerator.forBlock['call_hat_with_args'] = function (block,
 Blockly.Blocks['create_input'] = {
     init: function() {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.CENTRE)
+        .setAlign(Blockly.inputs.Align.LEFT)
         .appendField("Create Input");
         this.appendDummyInput()
         .appendField("ID")
@@ -297,7 +297,7 @@ javascript.javascriptGenerator.forBlock["input_menu"] = function (
 Blockly.Blocks['create_menu'] = {
     init: function () {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.CENTRE)
+        .setAlign(Blockly.inputs.Align.LEFT)
         .appendField("Create Menu");
         this.appendDummyInput()
         .appendField("ID")
@@ -359,7 +359,7 @@ javascript.javascriptGenerator.forBlock['create_input_menu'] = function (block) 
 Blockly.Blocks['create_dynamic_menu'] = {
     init: function () {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.CENTRE)
+        .setAlign(Blockly.inputs.Align.LEFT)
         .appendField("Create Dynamic Menu");
         this.appendDummyInput()
         .appendField("ID")

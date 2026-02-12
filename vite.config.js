@@ -2,12 +2,30 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
 
+import {plugin as Md} from "vite-plugin-markdown";
+import wrapper from "markdown-it-header-sections";
+import MarkdownIt from 'markdown-it';
+import hljs from "highlight.js";
+
+const md = (new MarkdownIt({
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return '<pre class="hljs"><code>' +
+                    hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                    `<sl-copy-button value="${str.replaceAll('"', "&quot;")}" class="code-copy-button"></sl-copy-button></code>`
+                    +
+                    '</pre>';
+            } catch (__) {}
+        }
+
+        return '';
+    }
+})).use(wrapper)
+
 export default defineConfig({
     root: 'src',
     base: './', 
-    assetsInclude: [
-        "**/*.xml",
-    ],
     plugins: [
         handlebars({
             partialDirectory: resolve(__dirname, 'src/partials'),
@@ -16,6 +34,10 @@ export default defineConfig({
                 version: "v4.0.0-dev"
             } 
         }),
+        Md({
+            mode: ["html"] ,
+            markdownIt: md,
+        })
     ],
     build: {
         outDir: '../docs',

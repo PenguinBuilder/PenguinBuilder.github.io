@@ -27,6 +27,8 @@ import ExtensionGallery from "./extension_gallery.ts";
 
 import DATA from "./DATA.ts";
 
+import getSVG from "./save_svg.ts";
+
 $("#ExtensionID")!.on("input", function(this: HTMLInputElement) {
     this.value = this.value.toLowerCase().replaceAll(/[^a-z0-9]/g, "");
 } as any);
@@ -227,13 +229,13 @@ $("#export")!.click(async () => {
         types: [{
             description: 'PenguinBuilder Save',
             accept: { 'application/javascript': ['.js'] }
-        }]
+        }],
     });
 
     const writable = await fileHandle.createWritable();
     await writable.write(getCode());
     await writable.close();
-})
+});
 
 workspace.setScale(0.7);
 workspace.addChangeListener(Blockly.Events.disableOrphans);
