@@ -7,6 +7,7 @@ export interface Save {
     force_unsandboxed: boolean,
     extension_name?: string,
     extension_id?: string,
+    extensions?: Record<string, string>
 }
 
 export default function(serialize: ()=>[Save, string], deserialize: (v:Save)=>any) {

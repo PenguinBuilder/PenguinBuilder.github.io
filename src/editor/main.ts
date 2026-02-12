@@ -1,5 +1,7 @@
 import FileHandle, { Save } from "./files.ts";
 
+import * as Terser from "terser";
+
 import {$} from "jsquery_node";
 import {Hats, HatsDark} from "./themes.ts"
 import * as Blockly from 'blockly/core';
@@ -19,6 +21,9 @@ import themeSelector from "../theme-selector.ts";
 import * as javascript from "blockly/javascript";
 import "./blocks/import.ts";
 import {js_beautify} from "js-beautify";
+
+import run from "./extension.ts";
+import ExtensionGallery from "./extension_gallery.ts";
 
 import DATA from "./DATA.ts";
 
@@ -41,7 +46,6 @@ const workspace = Blockly.inject("block-editor", {
     toolbox,
     theme: Hats,
 } as Blockly.BlocklyOptions);
-
 
 workspace.registerToolboxCategoryCallback(
     'PROCEDURE',
@@ -105,6 +109,7 @@ FileHandle(() => {
         workspace: Blockly.serialization.workspaces.save(workspace),
         extension_color: DATA.Extension_Color,
         force_unsandboxed: DATA.Force_Unsandboxed,
+        extensions: DATA.extensions,
     } as Save;
     if(DATA.Extension_ID !== "") {
         save.extension_id = DATA.Extension_ID;
@@ -118,58 +123,83 @@ FileHandle(() => {
     DATA.Extension_Color = s.extension_color;
     DATA.Extension_ID = s.extension_id || "";
     DATA.Extension_Name = s.extension_name || "";
+    for(const k of Object.keys(DATA.extensions)) {
+        const i = toolbox.contents.findIndex(v=>(v as any).id == k);
+        toolbox.contents.splice(i);
+    }
+    workspace.updateToolbox(toolbox);
+    workspace.refreshToolboxSelection();
+    DATA.extensions = {};
     Blockly.serialization.workspaces.load(s.workspace, workspace); 
+    const ext = s.extensions ?? {};
+    for(const [k, v] of Object.entries(ext)) {
+        DATA.extensions[k] = v;
+        run(toolbox, workspace, v, k);
+    }
 });
 
 themeSelector(() => workspace.setTheme(Hats), () => workspace.setTheme(HatsDark));
+{
+    const o = Blockly.Names.prototype.getName;
+    Blockly.Names.prototype.getName = function(nameOrdId: string, type) {
+        return DATA.Extension_ID_DEFAULT + "_" + o.call(this, nameOrdId, type);
+    }
+}
 
-function getCode(): string {
+function getCode(minify = false): string {
     DATA.end = "";
     DATA.very_end = "";
     DATA.menus = 0;
-    workspace.getVariableMap().getAllVariables().forEach(v=>v.setName(DATA.Extension_ID + "_" + v.getName()))
     //TASK(20260210-081937-269-n6-603): handle code generation
-
     const code = `
-            // Made with PenguinBuilder ${$("#version")!.text()}
-            // use PenguinBuilder at "https://chickencuber.github.io/PenguinBuilder/"
-            (async function(Scratch) {
-                const blocks = [];
-                const menus = {};
+    // Made with PenguinBuilder ${$("#version")!.text()}
+    // use PenguinBuilder at "https://penguinbuilder.github.io"
+    (async function(Scratch) {
+        const blocks = [];
+        const menus = {};
 
-                ${DATA.Force_Unsandboxed ? `if (!Scratch.extensions.unsandboxed) {
-                    throw new Error('${DATA.Extension_Name_DEFAULT} must run unsandboxed');
-                }`: ""}
+        ${DATA.Force_Unsandboxed ? `if (!Scratch.extensions.unsandboxed) {
+            throw new Error('${DATA.Extension_Name_DEFAULT} must run unsandboxed');
+        }`: ""}
 
-                class Extension {
-                    getInfo() {
-                        return {
-                            "id": "${DATA.Extension_ID_DEFAULT}",
-                            "name": "${DATA.Extension_Name_DEFAULT}",
-                            "color1": "${DATA.Extension_Color}",
-                            "blocks": blocks,
-                            "menus": menus,
-                        }
-                    }
+        class Extension {
+            getInfo() {
+                return {
+                    "id": "${DATA.Extension_ID_DEFAULT}",
+                    "name": "${DATA.Extension_Name_DEFAULT}",
+                    "color1": "${DATA.Extension_Color}",
+                    "blocks": blocks,
+                    "menus": menus,
                 }
-                \n` +
-                    javascript.javascriptGenerator.workspaceToCode(workspace) +
-                    `\n
-                ${DATA.end}
-                ${DATA.very_end}
-                Scratch.extensions.register(new Extension());
-            })(Scratch);
-            `;
-
-    workspace.getVariableMap().getAllVariables().forEach(v => v.setName(v.getName().replace(new RegExp("^" + DATA.Extension_ID + "_", "g"), "")));
-    return js_beautify(code, {
-        indent_size: 4,
-        max_preserve_newlines: 1,
-    }); 
+            }
+        }
+        \n` +
+            javascript.javascriptGenerator.workspaceToCode(workspace) +
+            `\n
+        ${DATA.end}
+        ${DATA.very_end}
+        Scratch.extensions.register(new Extension());
+    })(Scratch);
+    `;
+    if(minify) {
+        return Terser.minify_sync(code).code!
+    } else {
+        return js_beautify(code, {
+            indent_size: 4,
+            max_preserve_newlines: 2,
+        }); 
+    }
 }
 
-$("#export")!.click(async () => {
-    //this works because orphaned blocks gets disabled automatically
+$("#test")!.click(() => {
+    const code = getCode(true);
+    if(exists()) {
+        const url = encodeURI("data:application/javascript;base64," + btoa(code));
+        window.open("https://studio.penguinmod.com/editor.html?extension=" + url)
+    }
+});
+
+function exists() {
     const top_blocks = workspace.getTopBlocks(false).filter(b=>b.isEnabled())
     if (top_blocks.length === 0) {
         notify("You can't export when the workspace is empty", {
@@ -177,7 +207,7 @@ $("#export")!.click(async () => {
             variant: "danger",
             icon: "exclamation-octagon",
         });
-        return;
+        return false;
     }
     if($("#ExtensionID")!.is(":invalid")) {
         notify("The ExtensionID is invalid", {
@@ -185,9 +215,13 @@ $("#export")!.click(async () => {
             variant: "danger",
             icon: "exclamation-octagon",
         });
-        return;
+        return false;
     }
+    return true;
+}
 
+$("#export")!.click(async () => {
+    if(!exists()) return;
     const fileHandle = await window.showSaveFilePicker({
         suggestedName: (DATA.Extension_ID_DEFAULT)+'.js',
         types: [{
@@ -205,4 +239,10 @@ workspace.setScale(0.7);
 workspace.addChangeListener(Blockly.Events.disableOrphans);
 const workspaceSearch = new WorkspaceSearch(workspace);
 workspaceSearch.init();
+
+const showDialog = await ExtensionGallery(run.bind(null, toolbox, workspace));
+
+workspace.registerButtonCallback("Load_Extension", () => {
+    showDialog();
+});
 

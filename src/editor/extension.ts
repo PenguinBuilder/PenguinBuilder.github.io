@@ -3,8 +3,9 @@ import * as javascript from "blockly/javascript";
 import { FieldColour } from "@blockly/field-colour";
 import { FieldAngle } from "@blockly/field-angle";
 import { ToolboxInfo } from "blockly/core/utils/toolbox";
+import DATA from "./DATA";
 
-export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, code: string) {
+export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, code: string, catid: string) {
     interface PenguinExtension {
         Info(): Category;
         generator: {
@@ -23,7 +24,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
 
     interface BlockType {
         opcode: string;
-        color: number|string;
+        color?: number|string;
         blockType: blockType;
         args: ArgumentType[];
     }
@@ -150,14 +151,30 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
             const ext = new Extension();
             const inf = ext.Info();
             const id = inf.ID;
-            const blocks: any[] = [];
+            const callback = "Remove_Extension_"+catid;
+            const blocks: any[] = [
+                {
+                    "kind": "button",
+                    "text": `Remove ${inf.name}`,
+                    "callbackKey": callback,
+                }
+            ];
+
+            workspace.registerButtonCallback(callback, () => {
+                const i = toolbox.contents.findIndex(v=>(v as any).id == catid);
+                delete DATA.extensions[catid];
+                toolbox.contents.splice(i);
+                workspace.updateToolbox(toolbox);
+                workspace.refreshToolboxSelection();
+            });
             const self = this;
             toolbox.contents.push(
                 {
                     kind: "category",
                     name: inf.name,
                     colour: inf.color,
-                    contents: blocks
+                    contents: blocks,
+                    id: catid,
                 }
             );
             for (const _block of inf.blocks) {
@@ -202,7 +219,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
                                 break;
                             }
                         }
-                        this.setColour(_block.color);
+                        this.setColour(_block.color??inf.color);
                         this.setTooltip("");
                         this.setHelpUrl("");
                     },

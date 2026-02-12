@@ -136,7 +136,7 @@ function procedures_defreturn(
     }
     let code =
         'async function ' +
-        DATA.Extension_ID_DEFAULT + "_" + funcName +
+        funcName +
         '(' +
           args.join(', ') +
           ') {\n' +
@@ -164,7 +164,7 @@ export function procedures_callreturn(
     for (let i = 0; i < variables.length; i++) {
         args[i] = generator.valueToCode(block, 'ARG' + i, javascript.Order.NONE) || 'null';
     }
-    const code = DATA.Extension_ID_DEFAULT + "_" + funcName + '(' + args.join(', ') + ')';
+    const code = funcName + '(' + args.join(', ') + ')';
     return [`(await ${code})`, javascript.Order.FUNCTION_CALL];
 }
 
