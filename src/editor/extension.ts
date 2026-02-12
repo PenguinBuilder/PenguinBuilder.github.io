@@ -312,5 +312,5 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
             },
         },
     };
-    eval(code);
+    (new Function("Penguin", code))(Penguin);
 }
