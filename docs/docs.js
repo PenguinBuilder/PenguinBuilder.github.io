@@ -1,6 +1,37 @@
-import{t as $,$ as d}from"./theme-selector.js";const x="modulepreload",P=function(e,t){return new URL(e,t).href},y={},C=function(t,n,r){let s=Promise.resolve();if(n&&n.length>0){let S=function(o){return Promise.all(o.map(a=>Promise.resolve(a).then(h=>({status:"fulfilled",value:h}),h=>({status:"rejected",reason:h}))))};const c=document.getElementsByTagName("link"),l=document.querySelector("meta[property=csp-nonce]"),w=l?.nonce||l?.getAttribute("nonce");s=S(n.map(o=>{if(o=P(o,r),o in y)return;y[o]=!0;const a=o.endsWith(".css"),h=a?'[rel="stylesheet"]':"";if(r)for(let p=c.length-1;p>=0;p--){const g=c[p];if(g.href===o&&(!a||g.rel==="stylesheet"))return}else if(document.querySelector(`link[href="${o}"]${h}`))return;const i=document.createElement("link");if(i.rel=a?"stylesheet":x,a||(i.as="script"),i.crossOrigin="",i.href=o,w&&i.setAttribute("nonce",w),document.head.appendChild(i),a)return new Promise((p,g)=>{i.addEventListener("load",p),i.addEventListener("error",()=>g(new Error(`Unable to preload CSS for ${o}`)))})}))}function m(c){const l=new Event("vite:preloadError",{cancelable:!0});if(l.payload=c,window.dispatchEvent(l),!l.defaultPrevented)throw c}return s.then(c=>{for(const l of c||[])l.status==="rejected"&&m(l.reason);return t().catch(m)})},A=`<section>
+import{t as u,$ as o}from"./theme-selector.js";const g=`<section>
 <h1>[#6C9ACE] Block</h1>
 <hr>
-<p><img src="./images/CreateBlock.svg" alt=""></p>
 </section>
-`;$();const k={};await Promise.all(Object.entries(Object.assign({"./images/CreateBlock.svg":()=>C(()=>import("./CreateBlock.js"),[],import.meta.url)})).map(async([e,t])=>k[e]=(await t()).default));const f=d("#content");f.html(A);f.all("img").forEach(e=>{const t=e.getProp("src");t.startsWith("./images/")&&e.props({src:k[t]})});const u=d("#toc"),_=d.all("#content>section");function L(e,t,n){return d.create("div").child([d.create("div").css({"border-radius":"100%",background:e,border:"1px solid var(--bordercolor)",width:"20px",height:"20px"}),d.create("div").css({fontSize:"16px",background:"#00000000"}).text(t)]).css({display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"5px",padding:"5px"}).click(()=>{b(n)}).props({for:n})}_.forEach(e=>{const t=e.$("h1").text().match(/^\[(#[0-9a-fA-F]{6})\]\s*(.+)/);if(!t)return;const n=t[1],r=t[2];e.id(r.toLowerCase().trim().replaceAll(/[^a-z0-9]/g,"-")),e.$("h1").text(r);const s=L(n,r,e.id());u.child(s)});let v=!1;function b(e){history.pushState(null,"","#"+e);const t=d("#"+e);t&&(u.all("[selected]").props({selected:null}),u.$(`[for=${e}]`).props({selected:""}),v=!0,t.elt.scrollIntoView({behavior:"smooth"}))}requestAnimationFrame(()=>{const e=location.hash.slice(1);e?b(e):u.children.length>0&&b(u.children[0].getProp("for"))});f.on("scrollend",()=>{v=!1});let E=0;f.on("scroll",()=>{if(v)return;const e=f.elt.scrollTop,t=f.children,n=e>E;for(const r of t){const s=r.rect(),m=s.top>=0&&s.top<window.innerHeight,c=s.bottom>0&&s.bottom<=window.innerHeight;if(n?m:c){u.all("[selected]").props({selected:null}),u.$(`[for=${r.id()}]`).props({selected:""}),history.pushState(null,"","#"+r.id());break}E=e}});
+<section>
+<h1>[#8D46AC] Category</h1>
+<hr>
+</section>
+<section>
+<h1>[#D85450] JSON</h1>
+<hr>
+</section>
+<section>
+<h1>[#FF667F] Functions</h1>
+<hr>
+</section>
+<section>
+<h1>[#16BC8B] Controls</h1>
+<hr>
+</section>
+<section>
+<h1>[#4D96FF] Logic</h1>
+<hr>
+</section>
+<section>
+<h1>[#FF5827] Browser</h1>
+<hr>
+</section>
+<section>
+<h1>[#FF00FF] Advanced</h1>
+<hr>
+</section>
+<section>
+<h1>[#6C747C] Extensions</h1>
+<hr>
+</section>
+`;u();const d={};await Promise.all(Object.entries(Object.assign({})).map(async([t,n])=>d[t]=(await n()).default));const i=o("#content");i.html(g);i.all("img").forEach(t=>{const n=t.getProp("src");n.startsWith("./images/")&&t.props({src:d[n]})});const s=o("#toc"),m=o.all("#content>section");function F(t,n,c){return o.create("div").child([o.create("div").css({"border-radius":"100%",background:t,width:"20px",height:"20px"}).class("circ"),o.create("div").css({fontSize:"16px",background:"#00000000"}).text(n)]).css({display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"5px",padding:"5px"}).click(()=>{l(c)}).props({for:c})}m.forEach(t=>{const n=t.$("h1").text().match(/^\[(#[0-9a-fA-F]{6})\]\s*(.+)/);if(!n)return;const c=n[1],e=n[2];t.id(e.toLowerCase().trim().replaceAll(/[^a-z0-9]/g,"-")),t.$("h1").text(e);const r=F(c,e,t.id());s.child(r)});let h=!1;function l(t){history.pushState(null,"","#"+t);const n=o("#"+t);n&&(s.all("[selected]").props({selected:null}),s.$(`[for=${t}]`).props({selected:""}),h=!0,n.elt.scrollIntoView({behavior:"smooth"}))}requestAnimationFrame(()=>{const t=location.hash.slice(1);t?l(t):s.children.length>0&&l(s.children[0].getProp("for"))});i.on("scrollend",()=>{h=!1});let a=0;i.on("scroll",()=>{if(h)return;const t=i.elt.scrollTop,n=i.children,c=t>a;for(const e of n){const r=e.rect(),p=r.top>=0&&r.top<window.innerHeight,f=r.bottom>0&&r.bottom<=window.innerHeight;if(c?p:f){s.all("[selected]").props({selected:null}),s.$(`[for=${e.id()}]`).props({selected:""}),history.pushState(null,"","#"+e.id());break}a=t}});
