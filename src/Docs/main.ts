@@ -1,12 +1,30 @@
 import themeSelector from "../theme-selector.ts";
-import "./images.ts";
 themeSelector();
 
 import {$} from "jsquery_node";
 
 import {html} from "./docs.md"
 
-$('#content')!.html(html);
+const url: Record<string, string> ={} 
+await Promise.all(Object.entries(import.meta.glob("./images/*.svg", {
+    query: "url"
+})).map(async ([k, v]) => url[k] = ((await v() as any).default)));
+
+
+
+const docs = $("#content")!;
+
+docs.html(html);
+
+
+docs.all("img").forEach(v => {
+    const str = v.getProp("src")!;
+    if (str.startsWith("./images/")) {
+        v.props({
+            src: url[str],
+        })
+    }
+})
 
 const toc = $("#toc")!;
 const headers = $.all('#content>section');
@@ -16,10 +34,9 @@ function createCategory(color: string, text: string, id: string) {
         $.create("div").css({
             "border-radius": "100%",
             background: color,
-            border: "1px solid var(--bordercolor)",
             width: "20px",
             height: "20px",
-        }),
+        }).class("circ"),
         $.create("div").css({
             fontSize: "16px",
             background: "#00000000",
@@ -79,9 +96,6 @@ requestAnimationFrame(() => {
         scrollId(toc.children[0].getProp("for")!)
     }
 });
-
-
-const docs = $("#content")!;
 
 docs.on("scrollend", () => {
     isScrolling = false;

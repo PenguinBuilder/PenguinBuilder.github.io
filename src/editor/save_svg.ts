@@ -1,5 +1,7 @@
 import * as Blockly from "blockly/core";
 
+//TASK(20260212-185722-050-n6-525): fix disabled block rendering
+
 function inlineImportantStyles(source: Element, target: Element) {
     const computed = getComputedStyle(source);
 

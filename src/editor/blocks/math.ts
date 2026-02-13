@@ -8,7 +8,7 @@ registerFieldAngle();
 Blockly.Blocks['math_angle'] = {
     init: function (this: Blockly.Block) {
         this.appendDummyInput()
-            .appendField(new FieldAngle(90), 'Angle');
+        .appendField(new FieldAngle(90), 'Angle');
         this.setOutput(true, 'Number');
         this.setStyle("math_blocks")
         this.setTooltip("");
@@ -22,10 +22,15 @@ javascript.javascriptGenerator.forBlock['math_angle'] = function (block) {
 };
 
 Blockly.Blocks['math_convert_degrees'] = {
-    init: function() {
+    init: function(this: Blockly.Block) {
         this.appendValueInput("Degrees")
-            .setCheck("Number")
-            .appendField(new Blockly.FieldDropdown([["to degrees","degrees"], ["to radians","radians"]]), "to");
+        .setCheck("Number");
+        this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([
+            ["to radians","radians"],
+            ["to degrees","degrees"], 
+        ]), "to");
+        this.setInputsInline(true);
         this.setOutput(true, "Number");
         this.setStyle("math_blocks")
         this.setTooltip("");

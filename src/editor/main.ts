@@ -28,6 +28,7 @@ import ExtensionGallery from "./extension_gallery.ts";
 import DATA from "./DATA.ts";
 
 import getSVG from "./save_svg.ts";
+import { ContextMenuOption } from "blockly/core/contextmenu_registry";
 
 $("#ExtensionID")!.on("input", function(this: HTMLInputElement) {
     this.value = this.value.toLowerCase().replaceAll(/[^a-z0-9]/g, "");
@@ -247,4 +248,27 @@ const showDialog = await ExtensionGallery(run.bind(null, toolbox, workspace));
 workspace.registerButtonCallback("Load_Extension", () => {
     showDialog();
 });
+
+workspace.configureContextMenu = function (menuOptions, e) {
+    const item: ContextMenuOption = {
+        text: 'Export Workspace to SVG',
+        enabled: true,
+        callback: async function () {
+            if(!exists()) return;
+            const fileHandle = await window.showSaveFilePicker({
+                suggestedName: "workspace.svg",
+                types: [{
+                    accept: { 'image/svg+xml': ['.svg'] }
+                }],
+            });
+
+            const writable = await fileHandle.createWritable();
+            await writable.write(getSVG(workspace));
+            await writable.close();
+        },
+        scope: {},
+        weight: 0,
+    };
+    menuOptions.push(item);
+}
 

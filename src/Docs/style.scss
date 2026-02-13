@@ -52,13 +52,14 @@
 }
 
 
-:root {
-  --bordercolor: #000000
+[data-theme="light"]
+.circ {
+  border: 1px solid #000000
 }
 
 [data-theme="dark"]
-:root {
-  --bordercolor: #ffffff
+.circ {
+  border: 1px solid #ffffff
 }
 
 pre.hljs {
