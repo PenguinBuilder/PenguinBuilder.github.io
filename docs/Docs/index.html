@@ -11,6 +11,7 @@
         <title>PenguinBuilder-Docs</title>
         <meta charset="utf-8" />
       <script type="module" crossorigin src="../docs.js"></script>
+      <link rel="modulepreload" crossorigin href="../jsquery.js">
       <link rel="modulepreload" crossorigin href="../theme-selector.js">
       <link rel="stylesheet" crossorigin href="../style.css">
     </head>
@@ -29,6 +30,18 @@
             <sl-menu-item type="checkbox" value="dark">Dark</sl-menu-item>
             <sl-divider></sl-divider>
             <sl-menu-item type="checkbox" value="auto" checked>System</sl-menu-item>
+        </sl-menu>
+    </sl-dropdown>
+    <sl-dropdown id="style-selector">
+        <sl-tooltip slot="trigger" content="styles" style="display: inline-block;">
+            <sl-button variant="text">
+                <sl-icon name="gear-fill"></sl-icon>
+            </sl-button>
+        </sl-tooltip>
+        <sl-menu role="menu">
+            <sl-menu-item type="checkbox" value="thrasos">Thrasos</sl-menu-item>
+            <sl-menu-item type="checkbox" value="zelos">Zelos</sl-menu-item>
+            <sl-menu-item type="checkbox" value="zues" checked>Zues (Default)</sl-menu-item>
         </sl-menu>
     </sl-dropdown>
     <sl-tooltip content="discord">
@@ -75,6 +88,7 @@
                 <div id="toc"></div>
                 <div id="content"></div>
             </div>
+            <div id="block-editor"></div>
         </main>
     </body>
 </html>
