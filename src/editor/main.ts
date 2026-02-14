@@ -3,7 +3,7 @@ import FileHandle, { Save } from "./files.ts";
 import * as Terser from "terser";
 
 import {$} from "jsquery_node";
-import {Hats, HatsDark} from "./themes.ts"
+import {Hats, HatsDark} from "@/themes.ts"
 import * as Blockly from 'blockly/core';
 import 'blockly/blocks';
 import * as En from 'blockly/msg/en';
@@ -17,20 +17,21 @@ import toolbox from './toolbox.json';
 import '@blockly/toolbox-search';
 import {WorkspaceSearch} from '@blockly/plugin-workspace-search';
 
-import themeSelector from "../theme-selector.ts";
+import themeSelector from "@/theme-selector.ts";
+import styleSelector from "@/style-selector.ts";
 import * as javascript from "blockly/javascript";
-import "./blocks/import.ts";
+import "@/blocks/import.ts";
 import {js_beautify} from "js-beautify";
 
 import run from "./extension.ts";
 import ExtensionGallery from "./extension_gallery.ts";
 
-import DATA from "./DATA.ts";
+import DATA from "@/DATA.ts";
 
-import getSVG from "./save_svg.ts";
+import getSVG from "@/save_svg.ts";
 import { ContextMenuOption } from "blockly/core/contextmenu_registry";
 
-import "./renderer/zues.ts"
+import "@/renderer/zues.ts"
 
 $("#ExtensionID")!.on("input", function(this: HTMLInputElement) {
     this.value = this.value.toLowerCase().replaceAll(/[^a-z0-9]/g, "");
@@ -144,6 +145,18 @@ FileHandle(() => {
 });
 
 themeSelector(() => workspace.setTheme(Hats), () => workspace.setTheme(HatsDark));
+styleSelector((style) => {
+    const ws = Blockly.serialization.workspaces.save(workspace);
+    (workspace as any).options.renderer = style;
+    (workspace as any).renderer = Blockly.blockRendering.init(
+        workspace.options.renderer || '',
+        workspace.getTheme(),
+        workspace.options.rendererOverrides ?? undefined,
+    );
+    Blockly.serialization.workspaces.load(ws, workspace);
+    (workspace as any).toolbox.dispose();
+    (workspace as any).toolbox.init();
+})
 {
     const o = Blockly.Names.prototype.getName;
     Blockly.Names.prototype.getName = function(nameOrdId: string, type) {
@@ -251,7 +264,7 @@ workspace.registerButtonCallback("Load_Extension", () => {
     showDialog();
 });
 
-workspace.configureContextMenu = function (menuOptions, e) {
+workspace.configureContextMenu = function (menuOptions) {
     const item: ContextMenuOption = {
         text: 'Export Workspace to SVG',
         enabled: true,
@@ -272,5 +285,28 @@ workspace.configureContextMenu = function (menuOptions, e) {
         weight: 0,
     };
     menuOptions.push(item);
+    //propbably the stupidest way to make the docs reflect the renderer the user sets
+    {
+        const item: ContextMenuOption = {
+            text: 'Export Workspace to JSON',
+            enabled: true,
+            callback: async function () {
+                if(!exists()) return;
+                const fileHandle = await window.showSaveFilePicker({
+                    suggestedName: "workspace.json",
+                    types: [{
+                        accept: { 'application/json': ['.json'] }
+                    }],
+                });
+
+                const writable = await fileHandle.createWritable();
+                await writable.write(JSON.stringify(Blockly.serialization.workspaces.save(workspace), null, 4));
+                await writable.close();
+            },
+            scope: {},
+            weight: 0,
+        };
+        menuOptions.push(item);
+    }
 }
 

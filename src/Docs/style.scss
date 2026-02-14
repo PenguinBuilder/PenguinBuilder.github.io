@@ -71,16 +71,20 @@ pre.hljs {
 }
 
 .code-copy-button {
-    position: absolute;
-    top: 15px;
-    right: 0;
-    white-space: normal;
-    color: white;
-    transition: 150ms opacity, 150ms scale;
-    height: 40px;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  white-space: normal;
+  color: white;
+  transition: 150ms opacity, 150ms scale;
+  height: 40px;
 }
 
 pre .code-copy-button {
-  // opacity: 0;
+  opacity: 0;
+}
+
+pre:hover .code-copy-button {
+  opacity: 1;
 }
 

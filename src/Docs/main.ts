@@ -1,12 +1,14 @@
-import themeSelector from "../theme-selector.ts";
+import themeSelector from "@/theme-selector.ts";
 themeSelector();
 
 import {$} from "jsquery_node";
 
 import {html} from "./docs.md"
 
+const Render = await import("./render.ts");
+
 const url: Record<string, string> ={} 
-await Promise.all(Object.entries(import.meta.glob("./images/*.svg", {
+await Promise.all(Object.entries(import.meta.glob("./images/*", {
     query: "url"
 })).map(async ([k, v]) => url[k] = ((await v() as any).default)));
 
@@ -17,9 +19,13 @@ const docs = $("#content")!;
 docs.html(html);
 
 
-docs.all("img").forEach(v => {
+docs.all("img").forEach(async v => {
     const str = v.getProp("src")!;
     if (str.startsWith("./images/")) {
+        if(str.endsWith(".json")) {
+            Render.registerElt(v, await (await fetch(url[str])).json());
+            return;
+        }
         v.props({
             src: url[str],
         })

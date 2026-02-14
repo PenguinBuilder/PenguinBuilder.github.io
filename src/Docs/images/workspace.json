@@ -1,0 +1,38 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_block",
+                "id": "%2}b[rpsIRQ,who9-zMg",
+                "x": 457,
+                "y": 166,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "Text",
+                    "Show": true,
+                    "type": "Block"
+                },
+                "inputs": {
+                    "Function": {
+                        "block": {
+                            "type": "return_block",
+                            "id": "CJx71/INt-F$dR93~Z{o",
+                            "inputs": {
+                                "value": {
+                                    "block": {
+                                        "type": "json_new",
+                                        "id": "YCIx[`R9bbFza0zt6%{z",
+                                        "extraState": {
+                                            "itemCount": 3
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

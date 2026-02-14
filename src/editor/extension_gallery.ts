@@ -1,6 +1,6 @@
 import {$} from "jsquery_node";
 import defaultimg from "./default.png?url"
-import DATA from "./DATA.ts";
+import DATA from "@/DATA.ts";
 import * as Terser from "terser";
 
 export default async function(run: (code: string, id: string)=>void): Promise<()=>void> {

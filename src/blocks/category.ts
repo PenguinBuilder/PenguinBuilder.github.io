@@ -1,6 +1,6 @@
 import * as Blockly from "blockly/core";
 import * as javascript from "blockly/javascript";
-import DATA from "../DATA.ts";
+import DATA from "@/DATA.ts";
 
 Blockly.Blocks['create_label'] = {
     init: function () {

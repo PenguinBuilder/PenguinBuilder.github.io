@@ -1,6 +1,5 @@
 import * as Blockly from "blockly/core";
 import * as javascript from "blockly/javascript";
-import DATA from "../DATA.ts"
 
 Blockly.Blocks["inline_function_a"] = {
     init: function () {

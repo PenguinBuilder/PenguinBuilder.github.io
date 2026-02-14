@@ -3,7 +3,7 @@ import * as javascript from "blockly/javascript";
 import { FieldColour } from "@blockly/field-colour";
 import { FieldAngle } from "@blockly/field-angle";
 import { ToolboxInfo } from "blockly/core/utils/toolbox";
-import DATA from "./DATA";
+import DATA from "@/DATA";
 
 export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, code: string, catid: string) {
     interface PenguinExtension {
