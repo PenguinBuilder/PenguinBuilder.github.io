@@ -10,6 +10,10 @@
     "types": ["vite/client"],
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "baseUrl": "./"
   }
 }

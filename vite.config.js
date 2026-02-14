@@ -6,6 +6,7 @@ import {plugin as Md} from "vite-plugin-markdown";
 import wrapper from "markdown-it-header-sections";
 import MarkdownIt from 'markdown-it';
 import hljs from "highlight.js";
+import vars from "./vars.ts";
 
 const md = (new MarkdownIt({
     highlight: function (str, lang) {
@@ -30,9 +31,7 @@ export default defineConfig({
         handlebars({
             partialDirectory: resolve(__dirname, 'src/partials'),
             reloadOnPartialChange: true,
-            context: {
-                version: "v4.0.0"
-            } 
+            context: vars
         }),
         Md({
             mode: ["html"] ,

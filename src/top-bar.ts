@@ -32,5 +32,15 @@ function toggleBranchUrl(): string {
   return newUrl;
 }
 
-$("#change-branch-tooltip")!.props({content: getBranchFromUrl()})
+const branch = getBranchFromUrl();
+$("#change-branch-tooltip")!.props({content: branch})
 $("#change-branch")!.props({href: toggleBranchUrl()});
+
+$("#version")!.click(() => {
+    ($("#whats-new")!.elt as any).show();
+})
+
+if($("#version")!.text() !== localStorage.getItem("shown-" + branch)) {
+    ($("#whats-new")!.elt as any).show();
+    localStorage.setItem("shown-" + branch, $("#version")!.text());
+}
