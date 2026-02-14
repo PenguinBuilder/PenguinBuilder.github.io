@@ -31,7 +31,7 @@ export default defineConfig({
             partialDirectory: resolve(__dirname, 'src/partials'),
             reloadOnPartialChange: true,
             context: {
-                version: "v4.0.0-dev"
+                version: "v4.0.0"
             } 
         }),
         Md({
@@ -39,6 +39,11 @@ export default defineConfig({
             markdownIt: md,
         })
     ],
+    resolve: {
+        alias: {
+            '@': resolve(__dirname, "src/")
+        }
+    },
     build: {
         outDir: '../docs',
         emptyOutDir: true,

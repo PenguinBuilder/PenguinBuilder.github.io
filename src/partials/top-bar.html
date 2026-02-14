@@ -33,4 +33,14 @@
     {{> @partial-block}}
     {{/if}}
     <sl-badge id="version" pill>{{version}}</sl-badge>
+    <sl-tooltip id="change-branch-tooltip">
+        <a id="change-branch">
+            <sl-button>
+                <sl-icon name="git"></sl-icon>
+            </sl-button>
+        </a>
+    </sl-tooltip>
+    <script type="module">
+        import "@/changebranch.ts"
+    </script>
 </div>
