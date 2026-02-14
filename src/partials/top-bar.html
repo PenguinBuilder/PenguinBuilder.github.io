@@ -32,7 +32,9 @@
     <sl-divider vertical></sl-divider>
     {{> @partial-block}}
     {{/if}}
-    <sl-button id="version">{{version}}</sl-button>
+    <sl-tooltip content="whats new">
+        <sl-button id="version">{{version}}</sl-button>
+    </sl-tooltip>
     <sl-tooltip id="change-branch-tooltip">
         <a id="change-branch">
             <sl-button>
