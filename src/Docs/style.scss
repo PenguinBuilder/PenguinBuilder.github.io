@@ -63,6 +63,7 @@
 }
 
 pre.hljs {
+  position: relative;
   background: #232331;
   padding-left: 15px;
   padding-top: 10px;
@@ -71,7 +72,7 @@ pre.hljs {
 }
 
 .code-copy-button {
-  position: absolute;
+  position:absolute;
   top: 15px;
   right: 0;
   white-space: normal;

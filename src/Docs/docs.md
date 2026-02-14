@@ -1,6 +1,11 @@
 # [#6C9ACE] Block
 ___
 ![](./images/workspace.json)
+```ts
+function main(): string {
+hello
+}
+```
 ___
 # [#8D46AC] Category 
 ___

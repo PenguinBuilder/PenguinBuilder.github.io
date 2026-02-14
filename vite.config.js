@@ -14,7 +14,7 @@ const md = (new MarkdownIt({
             try {
                 return '<pre class="hljs"><code>' +
                     hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-                    `<sl-copy-button value="${str.replaceAll('"', "&quot;")}" class="code-copy-button"></sl-copy-button></code>`
+                    `</code><sl-copy-button value="${str.replaceAll('"', "&quot;")}" class="code-copy-button"></sl-copy-button>`
                     +
                     '</pre>';
             } catch (__) {}
