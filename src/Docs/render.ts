@@ -23,14 +23,12 @@ const listener:{
 }[] = [];
 
 styleSelector((style) => {
-    const ws = Blockly.serialization.workspaces.save(workspace);
     (workspace as any).options.renderer = style;
     (workspace as any).renderer = Blockly.blockRendering.init(
         workspace.options.renderer || '',
         workspace.getTheme(),
         workspace.options.rendererOverrides ?? undefined,
     );
-    Blockly.serialization.workspaces.load(ws, workspace);
     for(const v of listener) {
         URL.revokeObjectURL(v.url)
         const url = getURL(v.json);
