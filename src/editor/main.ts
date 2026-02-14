@@ -30,6 +30,8 @@ import DATA from "./DATA.ts";
 import getSVG from "./save_svg.ts";
 import { ContextMenuOption } from "blockly/core/contextmenu_registry";
 
+import "./renderer/zues.ts"
+
 $("#ExtensionID")!.on("input", function(this: HTMLInputElement) {
     this.value = this.value.toLowerCase().replaceAll(/[^a-z0-9]/g, "");
 } as any);
@@ -45,7 +47,7 @@ const workspace = Blockly.inject("block-editor", {
         flyoutsVerticalToolbox: ContinuousFlyout,
         metricsManager: ContinuousMetrics,
     },
-    renderer: "zelos",
+    renderer: "zues",
     toolbox,
     theme: Hats,
 } as Blockly.BlocklyOptions);
