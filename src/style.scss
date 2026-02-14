@@ -19,14 +19,7 @@ $bg-light: white;
 }
 
 #version {
-  color: black;
   margin-left: auto;
-  margin-right: 10px;
-}
-
-#version::part(base) {
-  color:black;
-  border: 1px solid white;
 }
 
 html, body {
