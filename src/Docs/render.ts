@@ -1,7 +1,6 @@
 import * as Blockly from 'blockly/core';
 import 'blockly/blocks';
 import * as En from 'blockly/msg/en';
-import '@blockly/toolbox-search';
 import "@/blocks/import.ts";
 import getSVG from "@/save_svg.ts";
 import "@/renderer/zues.ts"
