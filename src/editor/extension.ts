@@ -6,6 +6,7 @@ import { ToolboxInfo } from "blockly/core/utils/toolbox";
 import DATA from "@/DATA";
 
 export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, code: string, catid: string) {
+    //TASK(20260214-222118-208-n6-305): add mutator support to extension API
     interface PenguinExtension {
         Info(): Category;
         generator: {
