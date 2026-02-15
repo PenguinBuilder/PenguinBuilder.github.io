@@ -5,8 +5,8 @@
             {
                 "type": "create_menu",
                 "id": "-uQfkBFHHu?9Yu*jJ8?8",
-                "x": 680,
-                "y": 342,
+                "x": 718,
+                "y": 666,
                 "fields": {
                     "ID": "ID",
                     "REPORTERS": true
@@ -55,6 +55,30 @@
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "type": "create_block",
+                "id": "g^c-y}#)[fr7m.iyg(}h",
+                "x": 709,
+                "y": 146,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "Text[ID]",
+                    "Show": true,
+                    "type": "Block"
+                },
+                "inputs": {
+                    "Inputs": {
+                        "block": {
+                            "type": "create_input_menu",
+                            "id": "31#%t{JQV)eU)8MzhHAK",
+                            "fields": {
+                                "ID": "ID",
+                                "MenuID": "ID"
                             }
                         }
                     }

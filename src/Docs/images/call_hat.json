@@ -1,0 +1,84 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_hat",
+                "id": "dh::v}%(tZ$G0#9UCx$1",
+                "x": 275,
+                "y": 191,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "hat[text]"
+                },
+                "inputs": {
+                    "Inputs": {
+                        "block": {
+                            "type": "create_input",
+                            "id": "U`j[sKcR%^w*cBOPp9Ud",
+                            "fields": {
+                                "ID": "text",
+                                "Type": "String",
+                                "_default": ""
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "type": "create_block",
+                "id": "g^c-y}#)[fr7m.iyg(}h",
+                "x": 667,
+                "y": 172,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "call",
+                    "Show": true,
+                    "type": "Block"
+                },
+                "inputs": {
+                    "Function": {
+                        "block": {
+                            "type": "call_hat_with_args",
+                            "id": "=1=oB~v|5ZIUQ?xT{xMI",
+                            "fields": {
+                                "ID": "ID"
+                            },
+                            "inputs": {
+                                "Args": {
+                                    "block": {
+                                        "type": "json_new",
+                                        "id": "SF8#hU{tU22-oWB9Uf+[",
+                                        "extraState": {
+                                            "itemCount": 1
+                                        },
+                                        "inputs": {
+                                            "K0": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "R=2hmGl?TS9pGja!n2!N",
+                                                    "fields": {
+                                                        "TEXT": "text"
+                                                    }
+                                                }
+                                            },
+                                            "V0": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "/rQdJIxg|[ppvgUP2u+j",
+                                                    "fields": {
+                                                        "TEXT": "test"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

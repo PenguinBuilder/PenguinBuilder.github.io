@@ -1,0 +1,170 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "procedures_defnoreturn",
+                "id": "yEnxCmM;vg*.Hmn?o/Ll",
+                "x": 532,
+                "y": 458,
+                "extraState": {
+                    "params": [
+                        {
+                            "name": "x",
+                            "id": "Hx:)VOEUvePO1zOWvj$}"
+                        }
+                    ]
+                },
+                "icons": {
+                    "comment": {
+                        "text": "Describe this function...",
+                        "pinned": false,
+                        "height": 80,
+                        "width": 160
+                    }
+                },
+                "fields": {
+                    "NAME": "do something"
+                },
+                "inputs": {
+                    "STACK": {
+                        "block": {
+                            "type": "logic_switch",
+                            "id": "N)w%Z@QZ1JxhL!]-XN]N",
+                            "extraState": {
+                                "itemCount": 3,
+                                "hasDefault": true
+                            },
+                            "inputs": {
+                                "VALUE": {
+                                    "block": {
+                                        "type": "variables_get",
+                                        "id": "bEd[W_:otia,/1?2Mu^9",
+                                        "fields": {
+                                            "VAR": {
+                                                "id": "Hx:)VOEUvePO1zOWvj$}"
+                                            }
+                                        }
+                                    }
+                                },
+                                "C0": {
+                                    "block": {
+                                        "type": "text",
+                                        "id": "ulyXKSk!v/j]x7eB|A+W",
+                                        "fields": {
+                                            "TEXT": "1"
+                                        }
+                                    }
+                                },
+                                "S0": {
+                                    "block": {
+                                        "type": "browser_alert",
+                                        "id": "CSuZcZsFO1]mUQ[KE^R.",
+                                        "inputs": {
+                                            "alert": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "57$T[dC,,o0}BbcT(2nB",
+                                                    "fields": {
+                                                        "TEXT": "the value is 1"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "C1": {
+                                    "block": {
+                                        "type": "text",
+                                        "id": "`(.51kD/Tlz1-F95c6Ln",
+                                        "fields": {
+                                            "TEXT": "2"
+                                        }
+                                    }
+                                },
+                                "S1": {
+                                    "block": {
+                                        "type": "browser_alert",
+                                        "id": "y.PEeK#3AV]{NB|_$KOC",
+                                        "inputs": {
+                                            "alert": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "rvpv!$9vTM?tB}cO8_L~",
+                                                    "fields": {
+                                                        "TEXT": "the value is 1 or 2"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "next": {
+                                            "block": {
+                                                "type": "logic_switch_break",
+                                                "id": "XRpx?9(Vr5a%3bW$ty[n"
+                                            }
+                                        }
+                                    }
+                                },
+                                "C2": {
+                                    "block": {
+                                        "type": "text",
+                                        "id": "YJ|/F!~T~$i.L`52Mnqq",
+                                        "fields": {
+                                            "TEXT": "3"
+                                        }
+                                    }
+                                },
+                                "S2": {
+                                    "block": {
+                                        "type": "browser_alert",
+                                        "id": "98k930;U@|cyL=80%`vq",
+                                        "inputs": {
+                                            "alert": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "anWCABX^x,4=~A+yV:$Z",
+                                                    "fields": {
+                                                        "TEXT": "the value is 3"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "next": {
+                                            "block": {
+                                                "type": "logic_switch_break",
+                                                "id": "cST56_f:qY~!Ad[0_QB*"
+                                            }
+                                        }
+                                    }
+                                },
+                                "D": {
+                                    "block": {
+                                        "type": "browser_alert",
+                                        "id": "+Rit*/2:j@wy$tW.j5^P",
+                                        "inputs": {
+                                            "alert": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "B@6D0`EvD(1=(WZa7oP{",
+                                                    "fields": {
+                                                        "TEXT": "the value is something else"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "variables": [
+        {
+            "name": "x",
+            "id": "Hx:)VOEUvePO1zOWvj$}"
+        }
+    ]
+}

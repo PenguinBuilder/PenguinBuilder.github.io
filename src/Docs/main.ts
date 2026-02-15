@@ -7,6 +7,18 @@ import {html} from "./docs.md"
 
 const Render = await import("./render.ts");
 
+Render.onDone(() => {
+    setTimeout(() => {
+        const hash = location.hash.slice(1);
+        if (hash) {
+            scrollId(hash);
+        } else if (toc.children.length > 0) {
+            scrollId(toc.children[0].getProp("for")!)
+        }
+    }, 500);
+});
+
+
 const url: Record<string, string> ={} 
 await Promise.all(Object.entries(import.meta.glob("./images/*", {
     query: "url"
@@ -91,17 +103,6 @@ function scrollId(id: string) {
         target.elt.scrollIntoView({ behavior: "smooth" });
     };
 }
-
-
-
-requestAnimationFrame(() => {
-    const hash = location.hash.slice(1);
-    if (hash) {
-        scrollId(hash);
-    } else if (toc.children.length > 0) {
-        scrollId(toc.children[0].getProp("for")!)
-    }
-});
 
 docs.on("scrollend", () => {
     isScrolling = false;

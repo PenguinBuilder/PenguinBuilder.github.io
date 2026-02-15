@@ -196,12 +196,14 @@ Blockly.Blocks["json_encode"] = {
         ], (n)=> {
             if(n === "parse") {
                 this.setOutput(true, "Object")
+                this.getInput("JSON")?.setCheck("String")
             } else {
-                this.setOutput(true, "string")
+                this.setOutput(true, "String")
+                this.getInput("JSON")?.setCheck("Object")
             }
             return n;
         }), "FUN");
-        this.appendValueInput("JSON").setCheck("Object");
+        this.appendValueInput("JSON").setCheck("String");
         this.setInputsInline(true)
         this.setOutput(true, "Object")
         this.setTooltip('');

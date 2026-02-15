@@ -1,0 +1,92 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_block",
+                "id": "g^c-y}#)[fr7m.iyg(}h",
+                "x": 247,
+                "y": -41,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "Text",
+                    "Show": true,
+                    "type": "Block"
+                }
+            },
+            {
+                "type": "order_category",
+                "id": "MwH}XJ5!aSjMz_*S_Bc$",
+                "x": 257,
+                "y": 385,
+                "inputs": {
+                    "types": {
+                        "block": {
+                            "type": "create_button",
+                            "id": "Axuo9Fn7xL}AqN}(q,a^",
+                            "fields": {
+                                "text": "click me"
+                            },
+                            "inputs": {
+                                "on_click": {
+                                    "block": {
+                                        "type": "browser_alert",
+                                        "id": "s59DXYX?(=HD3QXN,lUe",
+                                        "inputs": {
+                                            "alert": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "R=2hmGl?TS9pGja!n2!N",
+                                                    "fields": {
+                                                        "TEXT": "clicked"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "next": {
+                                "block": {
+                                    "type": "use_hat",
+                                    "id": "Fl7!IK/h%gladZF|Bu%%",
+                                    "fields": {
+                                        "id": "ID"
+                                    },
+                                    "next": {
+                                        "block": {
+                                            "type": "create_label",
+                                            "id": "olhK@|ubMj[J.p7nkB|S",
+                                            "fields": {
+                                                "text": "example extension blocks"
+                                            },
+                                            "next": {
+                                                "block": {
+                                                    "type": "use_block",
+                                                    "id": "rE%l6OKFT$wAfa~_xCg)",
+                                                    "fields": {
+                                                        "id": "ID"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "type": "create_hat",
+                "id": "dh::v}%(tZ$G0#9UCx$1",
+                "x": 516,
+                "y": 17,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "Text"
+                }
+            }
+        ]
+    }
+}

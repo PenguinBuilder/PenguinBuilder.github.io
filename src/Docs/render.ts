@@ -20,25 +20,31 @@ const listener:{
     json: Record<string, any>,
     url: string,
 }[] = [];
+let done = () => {}
+export function onDone(fn: ()=>any) {
+    done = fn;
+    styleSelector((style) => {
+        const scroll = $("#content")!.elt.scrollTop / $("#content")!.elt.scrollHeight;
+        (workspace as any).options.renderer = style;
+        (workspace as any).renderer = Blockly.blockRendering.init(
+            workspace.options.renderer || '',
+            workspace.getTheme(),
+            workspace.options.rendererOverrides ?? undefined,
+        );
+        for(const v of listener) {
+            URL.revokeObjectURL(v.url)
+            const url = getURL(v.json);
+            v.elt.props({
+                src: url,
+            });
+            v.url = url;
+        }
+        $("#content")!.elt.scrollTop = scroll * $("#content")!.elt.scrollHeight;
+        done();
+        done = () => {};
+    });
+}
 
-styleSelector((style) => {
-    const scroll = $("#content")!.elt.scrollTop / $("#content")!.elt.scrollHeight;
-    (workspace as any).options.renderer = style;
-    (workspace as any).renderer = Blockly.blockRendering.init(
-        workspace.options.renderer || '',
-        workspace.getTheme(),
-        workspace.options.rendererOverrides ?? undefined,
-    );
-    for(const v of listener) {
-        URL.revokeObjectURL(v.url)
-        const url = getURL(v.json);
-        v.elt.props({
-            src: url,
-        });
-        v.url = url;
-    }
-    $("#content")!.elt.scrollTop * $("#content")!.elt.scrollHeight;
-});
 
 export function registerElt(elt: JSQuery.Element, json: Record<string, any>) {
     const url = getURL(json);

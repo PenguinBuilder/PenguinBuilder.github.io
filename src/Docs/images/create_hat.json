@@ -1,0 +1,30 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_hat",
+                "id": "dh::v}%(tZ$G0#9UCx$1",
+                "x": 424,
+                "y": 231,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "hat[text]"
+                },
+                "inputs": {
+                    "Inputs": {
+                        "block": {
+                            "type": "create_input",
+                            "id": "U`j[sKcR%^w*cBOPp9Ud",
+                            "fields": {
+                                "ID": "text",
+                                "Type": "String",
+                                "_default": ""
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

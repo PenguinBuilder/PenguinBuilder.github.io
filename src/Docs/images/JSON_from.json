@@ -1,0 +1,55 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "procedures_defreturn",
+                "id": "2.l*qP-FKp}}G2J;BlBz",
+                "x": 180,
+                "y": 316,
+                "icons": {
+                    "comment": {
+                        "text": "Describe this function...",
+                        "pinned": false,
+                        "height": 80,
+                        "width": 160
+                    }
+                },
+                "fields": {
+                    "NAME": "do something"
+                },
+                "inputs": {
+                    "RETURN": {
+                        "block": {
+                            "type": "json_new",
+                            "id": "gZj*D?,+QHzlB`q/U|ld",
+                            "extraState": {
+                                "itemCount": 1
+                            },
+                            "inputs": {
+                                "K0": {
+                                    "block": {
+                                        "type": "text",
+                                        "id": "R=2hmGl?TS9pGja!n2!N",
+                                        "fields": {
+                                            "TEXT": "key"
+                                        }
+                                    }
+                                },
+                                "V0": {
+                                    "block": {
+                                        "type": "text",
+                                        "id": "|l6a+!kMDX;Xrj^LSRa^",
+                                        "fields": {
+                                            "TEXT": "value"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
