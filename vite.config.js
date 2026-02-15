@@ -47,7 +47,7 @@ export default defineConfig({
         outDir: '../docs',
         emptyOutDir: true,
         sourcemap: false,
-        cssCodeSplit: false,
+        cssCodeSplit: true,
         chunkSizeWarningLimit: Infinity,
         rollupOptions: {
             input: {
