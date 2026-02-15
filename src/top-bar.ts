@@ -41,8 +41,9 @@ $("#version")!.click(() => {
 })
 
 if($("#version")!.text() !== localStorage.getItem("shown-" + branch)) {
-    setTimeout(() => {
+    (async () => {
+        await customElements.whenDefined('sl-button'); 
         ($("#whats-new")!.elt as any).show();
-    })
+    })()
     localStorage.setItem("shown-" + branch, $("#version")!.text());
 }
