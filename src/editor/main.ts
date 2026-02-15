@@ -146,6 +146,8 @@ FileHandle(() => {
 
 themeSelector(() => workspace.setTheme(Hats), () => workspace.setTheme(HatsDark));
 styleSelector((style) => {
+    const toolboxScroll = (workspace as any).getToolbox().HtmlDiv.scrollTop;
+    const flyoutScroll = workspace.getFlyout()!.getWorkspace().scrollY / workspace.getFlyout()!.getWorkspace().getMetrics().contentHeight;
     const ws = Blockly.serialization.workspaces.save(workspace);
     (workspace as any).options.renderer = style;
     (workspace as any).renderer = Blockly.blockRendering.init(
@@ -156,6 +158,9 @@ styleSelector((style) => {
     Blockly.serialization.workspaces.load(ws, workspace);
     (workspace as any).toolbox.dispose();
     (workspace as any).toolbox.init();
+    (workspace as any).getToolbox().HtmlDiv.scrollTop = toolboxScroll;
+    workspace.getFlyout()!.getWorkspace().scrollY = flyoutScroll * workspace.getFlyout()!.getWorkspace().getMetrics().contentHeight;
+    workspace.getFlyout()!.getWorkspace().resize();
 })
 {
     const o = Blockly.Names.prototype.getName;
