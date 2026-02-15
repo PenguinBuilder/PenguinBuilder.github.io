@@ -40,9 +40,9 @@ $("#version")!.click(() => {
     ($("#whats-new")!.elt as any).show();
 })
 
-setTimeout(() => {
-    if($("#version")!.text() !== localStorage.getItem("shown-" + branch)) {
+if($("#version")!.text() !== localStorage.getItem("shown-" + branch)) {
+    setTimeout(() => {
         ($("#whats-new")!.elt as any).show();
-        localStorage.setItem("shown-" + branch, $("#version")!.text());
-    }
-})
+    })
+    localStorage.setItem("shown-" + branch, $("#version")!.text());
+}
