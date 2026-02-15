@@ -1,0 +1,49 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_block",
+                "id": "m*tB_#;UWYUj3WeP!sII",
+                "x": 251,
+                "y": 145,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "Example Block[input]",
+                    "Show": true,
+                    "type": "Reporter"
+                },
+                "inputs": {
+                    "Inputs": {
+                        "block": {
+                            "type": "create_input",
+                            "id": "5@JF#6)gXAuLZ^vkP%p|",
+                            "fields": {
+                                "ID": "input",
+                                "Type": "String",
+                                "_default": ""
+                            }
+                        }
+                    },
+                    "Function": {
+                        "block": {
+                            "type": "return_block",
+                            "id": "Nw}3f0TRQEEYp,j~_Y3d",
+                            "inputs": {
+                                "value": {
+                                    "block": {
+                                        "type": "get_input",
+                                        "id": "Ak_i[%$*Aiv3R+WW1r#R",
+                                        "fields": {
+                                            "ID": "input"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

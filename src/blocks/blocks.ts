@@ -393,12 +393,14 @@ javascript.javascriptGenerator.forBlock['create_dynamic_menu'] = function (block
 };
 
 Blockly.Blocks["menu_item"] = {
-    init: function () {
-        this.appendDummyInput()
-        .appendField("menu item text:")
-        .appendField(new Blockly.FieldTextInput("text"), "TEXT")
-        .appendField(" value:")
-        .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+    init: function (this: Blockly.Block) {
+        this.appendValueInput("TEXT")
+        .setCheck("String")
+        .appendField("menu item text:");
+        this.appendValueInput("VALUE")
+        .setCheck("String")
+        .appendField(" value:");
+        this.setInputsInline(true);
         this.setOutput(true, "Object");
         this.setStyle("scratch_blocks");
         this.setTooltip("");
@@ -408,10 +410,11 @@ Blockly.Blocks["menu_item"] = {
 
 javascript.javascriptGenerator.forBlock["menu_item"] = function (
     block,
+    generator
 ) {
-    const _text = block.getFieldValue("TEXT");
-    const value = block.getFieldValue("VALUE");
-    const code = `{text:"${_text}", value: "${value}"}`;
+    const _text = generator.valueToCode(block, "TEXT", javascript.Order.ATOMIC);
+    const value = generator.valueToCode(block, "VALUE", javascript.Order.ATOMIC);
+    const code = `{text:${_text}, value: ${value}}`;
     return [code, javascript.Order.ATOMIC];
 };
 

@@ -1,0 +1,49 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_menu",
+                "id": "!4@Xd^Li2C[@3J*uMUAx",
+                "x": 279,
+                "y": 408,
+                "fields": {
+                    "ID": "ID",
+                    "REPORTERS": true
+                },
+                "inputs": {
+                    "MENU": {
+                        "block": {
+                            "type": "lists_create_with",
+                            "id": "Q2$!rzC%i(0C]hPhU)%4",
+                            "extraState": {
+                                "itemCount": 2
+                            },
+                            "inputs": {
+                                "ADD0": {
+                                    "block": {
+                                        "type": "text",
+                                        "id": "hP@MHkZm:_m3KbwY9_Vt",
+                                        "fields": {
+                                            "TEXT": "text1"
+                                        }
+                                    }
+                                },
+                                "ADD1": {
+                                    "block": {
+                                        "type": "menu_item",
+                                        "id": "eRr):e8#(UB%dpkt=6*!",
+                                        "fields": {
+                                            "TEXT": "text2",
+                                            "VALUE": "value2"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_block",
+                "id": "9uI{!_1%t#AV=|wg{qrr",
+                "x": 435,
+                "y": 213,
+                "fields": {
+                    "ID": "ID",
+                    "Text": "Text[ID]",
+                    "Show": true,
+                    "type": "Block"
+                },
+                "inputs": {
+                    "Inputs": {
+                        "block": {
+                            "type": "input_menu",
+                            "id": "X@|g;m!J1MtupdL)2$B4",
+                            "fields": {
+                                "ID": "ID",
+                                "REPORTERS": true
+                            },
+                            "inputs": {
+                                "MENU": {
+                                    "block": {
+                                        "type": "lists_create_with",
+                                        "id": "TaCJinEg5s:U9sc6?]/1",
+                                        "extraState": {
+                                            "itemCount": 2
+                                        },
+                                        "inputs": {
+                                            "ADD0": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "Dm_(#P@fAFNa4X6i)gY*",
+                                                    "fields": {
+                                                        "TEXT": "text1"
+                                                    }
+                                                }
+                                            },
+                                            "ADD1": {
+                                                "block": {
+                                                    "type": "menu_item",
+                                                    "id": "iEP(oFvI(h7^yUun_hj]",
+                                                    "fields": {
+                                                        "TEXT": "text2",
+                                                        "VALUE": "value2"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

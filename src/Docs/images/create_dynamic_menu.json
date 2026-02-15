@@ -1,0 +1,57 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_dynamic_menu",
+                "id": "23J:U|(6FrBcjcAW}i2@",
+                "x": 297,
+                "y": 454,
+                "fields": {
+                    "ID": "ID",
+                    "Accept": true
+                },
+                "inputs": {
+                    "Function": {
+                        "block": {
+                            "type": "return_block",
+                            "id": "_8U=s2:51Adl_KCT#nVi",
+                            "inputs": {
+                                "value": {
+                                    "block": {
+                                        "type": "lists_create_with",
+                                        "id": "i.+P~sT[y4BL%C=]7ubC",
+                                        "extraState": {
+                                            "itemCount": 2
+                                        },
+                                        "inputs": {
+                                            "ADD0": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "9?wvwUvu8Y42%ZyaRN9u",
+                                                    "fields": {
+                                                        "TEXT": "text1"
+                                                    }
+                                                }
+                                            },
+                                            "ADD1": {
+                                                "block": {
+                                                    "type": "menu_item",
+                                                    "id": "1(`+JsZ5x1PYmpEJiHpz",
+                                                    "fields": {
+                                                        "TEXT": "text2",
+                                                        "VALUE": "value2"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

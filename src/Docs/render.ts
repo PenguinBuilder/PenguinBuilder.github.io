@@ -6,7 +6,7 @@ import getSVG from "@/save_svg.ts";
 import "@/renderer/zues.ts"
 import {Hats} from "@/themes.ts"
 import styleSelector from '@/style-selector';
-import { JSQuery } from 'jsquery_node';
+import { $, JSQuery } from 'jsquery_node';
 
 Blockly.setLocale(En as any);
 
@@ -22,6 +22,7 @@ const listener:{
 }[] = [];
 
 styleSelector((style) => {
+    const scroll = $("#content")!.elt.scrollTop / $("#content")!.elt.scrollHeight;
     (workspace as any).options.renderer = style;
     (workspace as any).renderer = Blockly.blockRendering.init(
         workspace.options.renderer || '',
@@ -36,6 +37,7 @@ styleSelector((style) => {
         });
         v.url = url;
     }
+    $("#content")!.elt.scrollTop * $("#content")!.elt.scrollHeight;
 });
 
 export function registerElt(elt: JSQuery.Element, json: Record<string, any>) {
