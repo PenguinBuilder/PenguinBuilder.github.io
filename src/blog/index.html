@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{> include-head }}
+        <link rel="icon" type="image/png" href="../favicon.ico" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+        <title>PenguinBuilder-Blog</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="style.scss" />
+    </head>
+    <body>
+        <main>
+            {{#> top-bar}}
+            <sl-tooltip content="home">
+                <a href="../">
+                    <sl-button>
+                        <sl-icon name="house"></sl-icon>
+                    </sl-button>
+                </a>
+            </sl-tooltip>
+            {{/top-bar}}
+            <div id="box">
+                <div id="content"></div>
+            </div>
+        </main>
+        <script src="main.ts" type="module"></script>
+    </body>
+</html>

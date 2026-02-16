@@ -7,6 +7,8 @@ import wrapper from "markdown-it-header-sections";
 import MarkdownIt from 'markdown-it';
 import hljs from "highlight.js";
 import vars from "./vars.ts";
+import { full as emoji } from 'markdown-it-emoji'
+import icon from "./icon.js";
 
 const md = (new MarkdownIt({
     highlight: function (str, lang) {
@@ -22,7 +24,14 @@ const md = (new MarkdownIt({
 
         return '';
     }
-})).use(wrapper)
+})).use(wrapper).use(emoji);
+
+md.inline.ruler.after("emphasis", "shoelace-icon", icon.tokenize);
+
+md.renderer.rules.sl_icon = (tokens, idx) => {
+  const iconName = tokens[idx].meta.name;
+  return `<sl-icon name="${iconName}"></sl-icon>`;
+};
 
 export default defineConfig({
     root: 'src',
@@ -53,7 +62,8 @@ export default defineConfig({
             input: {
                 root: resolve(__dirname, 'src/index.html'),
                 editor: resolve(__dirname, 'src/editor/index.html'),
-                docs: resolve(__dirname, 'src/Docs/index.html')
+                docs: resolve(__dirname, 'src/Docs/index.html'),
+                blog: resolve(__dirname, 'src/blog/index.html'),
             },
             output: {
                 entryFileNames: '[name].js',

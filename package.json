@@ -20,6 +20,7 @@
         "@types/wicg-file-system-access": "^2023.10.7",
         "highlight.js": "^11.11.1",
         "markdown-it": "^14.1.1",
+        "markdown-it-emoji": "^3.0.0",
         "markdown-it-header-sections": "^1.0.0",
         "sass-embedded": "^1.97.3",
         "typescript": "^5.9.3",

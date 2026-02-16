@@ -1,0 +1,19 @@
+# Version 4.0.0
+- added blog page
+- redid the entire UI
+- added the ability to use the system theme instead of just light and dark
+- added the ability to change the block renderer at runtime and made the docs reflect the renderer you chose
+    - Thrasos(what PenguinBuilder used to use in the first versions)  
+    ![Thrasos example](./images/thrasos_example.svg)  
+    - Zelos(what PenguinBuilder eventually switched to using)  
+    ![Zelos example](./images/zelos_example.svg)  
+    - Zeus(an extended version of Zelos that PenguinBuilder now uses, just adds new output shapes)  
+    ![Zeus example](./images/zeus_example.svg)
+- added the ability to export the workspace to svg and json, the json is primarily used for the docs, so that it can match the renderer that the user has set, and is not the same as the save file
+- change the save file format, which makes it not compatible with 3.x.x
+- made the extension api allow more stuff with colors
+- changed how the JSON blocks are handled
+- removed the inline function blocks
+- removed the comment blocks
+## :warning: Breaking Changes 
+- the save format is not compatible with the older 3.x.x format

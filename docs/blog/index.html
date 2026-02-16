@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css" />
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+        <link rel="icon" type="image/png" href="../favicon.ico" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+        <title>PenguinBuilder-Blog</title>
+        <meta charset="utf-8" />
+      <script type="module" crossorigin src="../blog.js"></script>
+      <link rel="modulepreload" crossorigin href="../jsquery.js">
+      <link rel="modulepreload" crossorigin href="../theme-selector.js">
+      <link rel="modulepreload" crossorigin href="../preload-helper.js">
+      <link rel="modulepreload" crossorigin href="../style-selector.js">
+      <link rel="stylesheet" crossorigin href="../blog.css">
+    </head>
+    <body>
+        <main>
 <div id="top-bar">
     <sl-dropdown id="theme-selector">
         <sl-tooltip slot="trigger" content="themes" style="display: inline-block;">
@@ -40,12 +61,16 @@
             </sl-button>
         </a>
     </sl-tooltip>
-    {{#if @partial-block}}
     <sl-divider vertical></sl-divider>
-    {{> @partial-block}}
-    {{/if}}
+                <sl-tooltip content="home">
+                    <a href="../">
+                        <sl-button>
+                            <sl-icon name="house"></sl-icon>
+                        </sl-button>
+                    </a>
+                </sl-tooltip>
     <sl-tooltip content="whats new">
-        <sl-button id="version">{{version}}</sl-button>
+        <sl-button id="version">v4.0.0</sl-button>
     </sl-tooltip>
     <sl-tooltip id="change-branch-tooltip">
         <a id="change-branch">
@@ -56,11 +81,16 @@
     </sl-tooltip>
 
 <sl-dialog label="Whats new" id="whats-new">
-    {{whats-new}}
+    
+    Completely new UI, Some Blocks have been removed, and Some Blocks have been added
+    
     <br/>
     for more info, go to the <a href="../blog/">blog</a>
 </sl-dialog>
-    <script type="module">
-        import "@/top-bar.ts"
-    </script>
 </div>
+            <div id="box">
+                <div id="content"></div>
+            </div>
+        </main>
+    </body>
+</html>

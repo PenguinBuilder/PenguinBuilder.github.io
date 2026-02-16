@@ -1,7 +1,7 @@
 import {$} from "jsquery_node";
 export type Style = "zelos"|"thrasos"|"zues";
 
-export default async (onchange: (name: Style)=>void) => {
+export default async (onchange: (name: Style)=>void = () =>{}) => {
     window.addEventListener("storage", (e) => {
         if (e.key === "style") {
             $("#style-selector")!.all(`sl-menu-item[type="checkbox"][value=${e.newValue}]`).checked(true);
