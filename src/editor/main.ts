@@ -1,3 +1,4 @@
+//TASK(20260215-190014-189-n6-284): add file preview
 import FileHandle, { Save } from "./files.ts";
 
 import * as Terser from "terser";
