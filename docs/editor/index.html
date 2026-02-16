@@ -9,10 +9,11 @@
         <link rel="icon" type="image/png" href="../favicon.ico" />
         <title>PenguinBuilder-editor</title>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
       <script type="module" crossorigin src="../editor.js"></script>
       <link rel="modulepreload" crossorigin href="../jsquery.js">
       <link rel="modulepreload" crossorigin href="../theme-selector.js">
-      <link rel="modulepreload" crossorigin href="../zues.js">
+      <link rel="modulepreload" crossorigin href="../save_svg.js">
       <link rel="modulepreload" crossorigin href="../style-selector.js">
       <link rel="stylesheet" crossorigin href="../editor.css">
     </head>
@@ -20,6 +21,11 @@
         <main>
             <sl-dialog label="Extension Gallery" id="extensionGallery">
 
+            </sl-dialog>
+            <sl-dialog label="Extension Code" id="code">
+                <pre class="hljs"><code id="code-elt"></code>
+                <sl-copy-button id="copy" class="code-copy-button"></sl-copy-button>
+                </pre>
             </sl-dialog>
 <div id="top-bar">
     <sl-dropdown id="theme-selector">
@@ -88,6 +94,7 @@
                         <sl-menu-item id="open">Open</sl-menu-item>
                         <sl-menu-item id="export">Export</sl-menu-item>
                         <sl-menu-item id="test">Test</sl-menu-item>
+                        <sl-menu-item id="view">View Code</sl-menu-item>
                     </sl-menu>
                 </sl-dropdown>
                 <input id="ExtensionName" placeholder="ExtensionName" maxlength="20"/>
@@ -100,7 +107,7 @@
                 &nbsp;
                 <sl-checkbox id="unsandboxed">Force Unsandboxed</sl-checkbox>
     <sl-tooltip content="whats new">
-        <sl-button id="version">v4.0.0</sl-button>
+        <sl-button id="version">v4.1.0</sl-button>
     </sl-tooltip>
     <sl-tooltip id="change-branch-tooltip">
         <a id="change-branch">
@@ -112,7 +119,7 @@
 
 <sl-dialog label="Whats new" id="whats-new">
     
-    Completely new UI, Some Blocks have been removed, and Some Blocks have been added
+    gave extensions more capabilities, added a button to copy code, and fixed some bugs
     
     <br/>
     for more info, go to the <a href="../blog/" target="_blank">blog</a>

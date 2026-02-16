@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./render.js","./zues.js","./jsquery.js","./style-selector.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./render.js","./save_svg.js","./jsquery.js","./style-selector.js"])))=>i.map(i=>d[i]);
 import{t as f}from"./theme-selector.js";import{_ as e}from"./preload-helper.js";import{$ as o}from"./jsquery.js";const b=`<section>
 <h1>[#6C9ACE] Block</h1>
 <hr>

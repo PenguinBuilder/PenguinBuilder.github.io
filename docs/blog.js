@@ -1,4 +1,19 @@
-import{t as l}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";import{$ as o}from"./jsquery.js";import{s as n}from"./style-selector.js";const r=`<section>
+import{t as o}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";import{$ as l}from"./jsquery.js";import{s as a}from"./style-selector.js";const r=`<section>
+<h1>Version 4.1.0</h1>
+<ul>
+<li>added a button that lets you view and copy the code instead of just downloading it</li>
+<li>fixed bug with updating extensions</li>
+<li>added the ability for extensions to register types to output shapes</li>
+<li>fixed an issue with how extensions are loaded</li>
+</ul>
+<section>
+<h2>⚠️ Braking Changes</h2>
+<ul>
+<li>None 👍</li>
+</ul>
+</section>
+</section>
+<section>
 <h1>Version 4.0.0</h1>
 <ul>
 <li>added blog page</li>
@@ -28,4 +43,4 @@ import{t as l}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";
 </ul>
 </section>
 </section>
-`;l();n();const s={};await Promise.all(Object.entries(Object.assign({"./images/thrasos_example.svg":()=>i(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>i(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>i(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,t])=>s[e]=(await t()).default));const a=o("#content");a.html(r);a.all("img").forEach(async e=>{const t=e.getProp("src");t.startsWith("./images/")&&e.props({src:s[t]})});
+`;o();a();const s={};await Promise.all(Object.entries(Object.assign({"./images/thrasos_example.svg":()=>i(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>i(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>i(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,t])=>s[e]=(await t()).default));const n=l("#content");n.html(r);n.all("img").forEach(async e=>{const t=e.getProp("src");t.startsWith("./images/")&&e.props({src:s[t]})});
