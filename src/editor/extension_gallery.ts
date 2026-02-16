@@ -2,8 +2,10 @@ import {$} from "jsquery_node";
 import defaultimg from "./default.png?url"
 import DATA from "@/DATA.ts";
 import * as Terser from "terser";
+import { ToolboxInfo } from "blockly/core/utils/toolbox";
+import { WorkspaceSvg } from "blockly";
 
-export default async function(run: (code: string, id: string)=>void): Promise<()=>void> {
+export default async function(run: (rerenderToolbox: ()=>void, code: string, id: string)=>void, toolbox: ToolboxInfo, workspace: WorkspaceSvg, rerenderToolbox: ()=>void): Promise<()=>void> {
     const dialog = $('#extensionGallery')!;
 
     const div = $.create("div").css({
@@ -13,8 +15,9 @@ export default async function(run: (code: string, id: string)=>void): Promise<()
         "gap": "10px",
     });
     dialog.child(div);
+    const head = "https://raw.githubusercontent.com/PenguinBuilder/ExtensionGallery/refs/heads/main/"
     async function getfile(ext:{name: string}, file: string): Promise<[true, string]|[false, null]> {
-        const url = `https://raw.githubusercontent.com/PenguinBuilder/ExtensionGallery/refs/heads/main/${ext.name}/${file}`;
+        const url = `${head}${ext.name}/${file}`;
             const res = await fetch(url)
         if(res.ok) {
             return [true, await res.text()];
@@ -24,7 +27,7 @@ export default async function(run: (code: string, id: string)=>void): Promise<()
     }
 
     async function geturl(ext:{name: string}, file: string): Promise<[true, string]|[false, null]> {
-        const url = `https://raw.githubusercontent.com/PenguinBuilder/ExtensionGallery/refs/heads/main/${ext.name}/${file}`;
+        const url = `${head}${ext.name}/${file}`;
             const res = await fetch(url)
         if(res.ok) {
             return [true, url];
@@ -62,10 +65,15 @@ export default async function(run: (code: string, id: string)=>void): Promise<()
         "tsconfig.json",
         "README.md",
         "example",
+        "extensionlist.json",
     ]
     const val: {name:string}[] = (await (await fetch(url)).json())?.filter?.((v: {name: string}) => {
         return !exclude.includes(v.name);
-    }) || [{name: "from_file"}, {name: "from_url"}];
+    }) ||
+        (await (await fetch(head + "extensionlist.json")).json())?.map?.((v: string) => { //in case the api fails, this likely wont be the most up to date
+        return {name: v};
+    })
+        || [{name: "from_file"}, {name: "from_url"}]; //this is in case even that fails
     interface Options {
         creator: string;
         potential_danger: boolean;
@@ -97,9 +105,19 @@ export default async function(run: (code: string, id: string)=>void): Promise<()
                 }
                 id = "e_" + id; //this is just so you cant break things by naming it constructor or something
                 code = Terser.minify_sync(code).code!
+                if(id in DATA.extensions) {
+                    const i = toolbox.contents.findIndex(v=>(v as any).id == id);
+                    delete DATA.extensions[id];
+                    delete DATA.outputs[id];
+                    toolbox.contents.splice(i);
+                    workspace.updateToolbox(toolbox);
+                    workspace.refreshToolboxSelection();
+                }
                 DATA.extensions[id] = code; //save file purposes
-                run(code, id);
+                DATA.outputs[id] = {};
+                run(rerenderToolbox, code, id);
                 (dialog.elt as any).hide();
+                rerenderToolbox();
             }
         )
         div.child(card);

@@ -1,3 +1,10 @@
+# Version 4.1.0
+- added a button that lets you view and copy the code instead of just downloading it
+- fixed bug with updating extensions
+- added the ability for extensions to register types to output shapes
+- fixed an issue with how extensions are loaded
+## :warning: Braking Changes
+- None :thumbsup:
 # Version 4.0.0
 - added blog page
 - redid the entire UI

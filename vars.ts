@@ -1,6 +1,6 @@
 export default {
-    version: "v4.0.0",
+    version: "v4.1.0",
     "whats-new": `
-    Completely new UI, Some Blocks have been removed, and Some Blocks have been added
+    gave extensions more capabilities, added a button to copy code, and fixed some bugs
     `,
 }

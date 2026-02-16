@@ -7,6 +7,7 @@
         "@blockly/field-multilineinput": "^6.0.8",
         "@blockly/plugin-workspace-search": "^10.1.7",
         "@blockly/toolbox-search": "^3.1.8",
+        "highlight.js": "^11.11.1",
         "blockly": "^12.3.1",
         "js-beautify": "^1.15.4",
         "jsquery_node": "^1.0.15",

@@ -2,6 +2,7 @@
 import * as Blockly from 'blockly/core';
 import { Shape } from 'blockly/core/renderers/common/constants';
 const svgPaths = Blockly.utils.svgPaths;
+import DATA from '@/DATA';
 
 export class ConstantProvider extends Blockly.zelos.ConstantProvider {
     TAB: Shape | null = null;
@@ -16,7 +17,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
         this.SQUIRCLE = this.makeSQUIRCLE();
     }
 
-    override SHAPES = {HEXAGONAL: 1, ROUND: 2, SQUARE: 3, PUZZLE: 4, NOTCH: 5, TAB: 6, BTAB: 7, OCTOGON: 8, SQUIRCLE: 9};
+    static SHAPES = {HEXAGONAL: 1, ROUND: 2, SQUARE: 3, PUZZLE: 4, NOTCH: 5, TAB: 6, BTAB: 7, OCTOGON: 8, SQUIRCLE: 9};
 
     SHAPE_IN_SHAPE_PADDING: {[key: number]: {[key: number]: number}} = {
         1: {
@@ -91,6 +92,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             9: 2 * this.GRID_UNIT, 
         },
     };
+    override SHAPES = ConstantProvider.SHAPES;
     protected makeTAB(): Shape {
         const maxWidth = this.MAX_DYNAMIC_CONNECTION_SHAPE_WIDTH;
         function makeMainPath(blockHeight: number, up: boolean, right: boolean) {
@@ -333,6 +335,26 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             },
         };
     }
+    getShape(shape: number): Shape|null {
+        switch (shape) {
+            case this.SHAPES.HEXAGONAL:
+                return this.HEXAGONAL!;
+            case this.SHAPES.ROUND:
+                return this.ROUNDED!;
+            case this.SHAPES.SQUARE:
+                return this.SQUARED!;
+            case this.SHAPES.TAB:
+                return this.TAB!;
+            case this.SHAPES.BTAB:
+                return this.BTAB!;
+            case this.SHAPES.OCTOGON:
+                return this.OCTOGON!;
+            case this.SHAPES.SQUIRCLE:
+                return this.SQUIRCLE!;
+            default:
+                return null;
+        }
+    }
 
     override shapeFor(connection: Blockly.RenderedConnection): Shape {
         let checks = connection.getCheck();
@@ -345,22 +367,9 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
                 case Blockly.ConnectionType.OUTPUT_VALUE:
                 outputShape = connection.getSourceBlock().getOutputShape();
             if (outputShape !== null) {
-                switch (outputShape) {
-                    case this.SHAPES.HEXAGONAL:
-                        return this.HEXAGONAL!;
-                    case this.SHAPES.ROUND:
-                        return this.ROUNDED!;
-                    case this.SHAPES.SQUARE:
-                        return this.SQUARED!;
-                    case this.SHAPES.TAB:
-                        return this.TAB!;
-                    case this.SHAPES.BTAB:
-                        return this.BTAB!;
-                    case this.SHAPES.OCTOGON:
-                        return this.OCTOGON!;
-                    case this.SHAPES.SQUIRCLE:
-                        return this.SQUIRCLE!;
-                }
+                const shape = this.getShape(outputShape);
+                if(shape) 
+                    return shape;
             }
             if (checks && checks.includes('Boolean')) {
                 return this.HEXAGONAL!;
@@ -379,6 +388,15 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             }
             if(checks && checks.includes('Colour')) {
                 return this.OCTOGON!;
+            }
+            for(const v of Object.values(DATA.outputs)) {
+                for(const [k, a] of Object.entries(v)) {
+                    if(checks && checks.includes(k)) {
+                        const shape = this.getShape(a);
+                        if(shape)
+                            return shape;
+                    } 
+                }
             }
             return this.ROUNDED!;
             case Blockly.ConnectionType.PREVIOUS_STATEMENT:

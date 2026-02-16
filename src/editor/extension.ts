@@ -4,14 +4,16 @@ import { FieldColour } from "@blockly/field-colour";
 import { FieldAngle } from "@blockly/field-angle";
 import { ToolboxInfo } from "blockly/core/utils/toolbox";
 import DATA from "@/DATA";
+import { ConstantProvider } from "@/renderer/zues";
 
-export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, code: string, catid: string) {
+export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, rerenderToolbox: ()=>void, code: string, catid: string) {
     //TASK(20260214-222118-208-n6-305): add mutator support to extension API
     interface PenguinExtension {
         Info(): Category;
         generator: {
             [generator: string]: (block: Block) => string;
         };
+        Types?: Record<string, number>
     }
 
     type blockType = {
@@ -93,6 +95,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
     };
 
     const Penguin = {
+        Types: ConstantProvider.SHAPES,
         _getType(type: string | string[]): string | string[] | null {
             if (Array.isArray(type)) {
                 if(type.includes("Any")) {
@@ -150,6 +153,11 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
         },
         LoadExtension(Extension: new () => PenguinExtension) {
             const ext = new Extension();
+            if(ext.Types) {
+                for(const [k, v] of Object.entries(ext.Types)) {
+                    DATA.outputs[catid][k] = v;
+                }
+            }
             const inf = ext.Info();
             const id = inf.ID;
             const callback = "Remove_Extension_"+catid;
@@ -164,6 +172,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
             workspace.registerButtonCallback(callback, () => {
                 const i = toolbox.contents.findIndex(v=>(v as any).id == catid);
                 delete DATA.extensions[catid];
+                delete DATA.outputs[catid];
                 toolbox.contents.splice(i);
                 workspace.updateToolbox(toolbox);
                 workspace.refreshToolboxSelection();
@@ -236,6 +245,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
             }
             workspace.updateToolbox(toolbox);
             workspace.refreshToolboxSelection();
+            rerenderToolbox();
         },
         Block: class Block implements Block {
             constructor(public BlocklyBlock: any, public BlocklyGenerator: any) {
@@ -315,3 +325,4 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, c
     };
     (new Function("Penguin", code))(Penguin);
 }
+

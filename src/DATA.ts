@@ -5,6 +5,7 @@ export default new (class {
     very_end = "";
     menus = 0;
     extensions: Record<string, string> = {};
+    outputs: Record<string, Record<string, number>> = {};
     get Extension_ID_DEFAULT() {
         return this.Extension_ID||"extensionid"
     }

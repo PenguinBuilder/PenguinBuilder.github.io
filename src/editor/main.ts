@@ -33,6 +33,7 @@ import getSVG from "@/save_svg.ts";
 import { ContextMenuOption } from "blockly/core/contextmenu_registry";
 
 import "@/renderer/zues.ts"
+import hljs from "highlight.js";
 
 $("#ExtensionID")!.on("input", function(this: HTMLInputElement) {
     this.value = this.value.toLowerCase().replaceAll(/[^a-z0-9]/g, "");
@@ -137,18 +138,28 @@ FileHandle(() => {
     workspace.updateToolbox(toolbox);
     workspace.refreshToolboxSelection();
     DATA.extensions = {};
+    DATA.outputs = {};
     Blockly.serialization.workspaces.load(s.workspace, workspace); 
     const ext = s.extensions ?? {};
     for(const [k, v] of Object.entries(ext)) {
         DATA.extensions[k] = v;
-        run(toolbox, workspace, v, k);
+        run(toolbox, workspace, rerenderToolbox, v, k);
     }
+    rerenderToolbox();
 });
 
-themeSelector(() => workspace.setTheme(Hats), () => workspace.setTheme(HatsDark));
-styleSelector((style) => {
+function rerenderToolbox() {
     const toolboxScroll = (workspace as any).getToolbox().HtmlDiv.scrollTop;
     const flyoutScroll = workspace.getFlyout()!.getWorkspace().scrollY / workspace.getFlyout()!.getWorkspace().getMetrics().contentHeight;
+    (workspace as any).toolbox.dispose();
+    (workspace as any).toolbox.init();
+    (workspace as any).getToolbox().HtmlDiv.scrollTop = toolboxScroll;
+    workspace.getFlyout()!.getWorkspace().scrollY = flyoutScroll * workspace.getFlyout()!.getWorkspace().getMetrics().contentHeight;
+    workspace.getFlyout()!.getWorkspace().resize();
+    workspace.render();
+}
+themeSelector(() => workspace.setTheme(Hats), () => workspace.setTheme(HatsDark));
+styleSelector((style) => {
     const ws = Blockly.serialization.workspaces.save(workspace);
     (workspace as any).options.renderer = style;
     (workspace as any).renderer = Blockly.blockRendering.init(
@@ -157,11 +168,7 @@ styleSelector((style) => {
         workspace.options.rendererOverrides ?? undefined,
     );
     Blockly.serialization.workspaces.load(ws, workspace);
-    (workspace as any).toolbox.dispose();
-    (workspace as any).toolbox.init();
-    (workspace as any).getToolbox().HtmlDiv.scrollTop = toolboxScroll;
-    workspace.getFlyout()!.getWorkspace().scrollY = flyoutScroll * workspace.getFlyout()!.getWorkspace().getMetrics().contentHeight;
-    workspace.getFlyout()!.getWorkspace().resize();
+    rerenderToolbox();
 })
 {
     const o = Blockly.Names.prototype.getName;
@@ -264,7 +271,7 @@ workspace.addChangeListener(Blockly.Events.disableOrphans);
 const workspaceSearch = new WorkspaceSearch(workspace);
 workspaceSearch.init();
 
-const showDialog = await ExtensionGallery(run.bind(null, toolbox, workspace));
+const showDialog = await ExtensionGallery(run.bind(null, toolbox, workspace), toolbox, workspace, rerenderToolbox);
 
 workspace.registerButtonCallback("Load_Extension", () => {
     showDialog();
@@ -315,4 +322,13 @@ workspace.configureContextMenu = function (menuOptions) {
         menuOptions.push(item);
     }
 }
+
+$("#view")!.click(() => {
+    const str = getCode();
+    $("#copy")!.value(str.replaceAll('"', "&quot;"))
+    $("#code-elt")!.html(hljs.highlight(str, {
+        language: "javascript", ignoreIllegals: true,
+    }).value);
+    ($("#code")!.elt as any).show()
+})
 
