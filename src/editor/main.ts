@@ -324,6 +324,7 @@ workspace.configureContextMenu = function (menuOptions) {
 }
 
 $("#view")!.click(() => {
+    if(!exists()) return;
     const str = getCode();
     $("#copy")!.value(str.replaceAll('"', "&quot;"))
     $("#code-elt")!.html(hljs.highlight(str, {
