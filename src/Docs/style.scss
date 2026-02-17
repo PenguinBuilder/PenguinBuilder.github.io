@@ -83,10 +83,13 @@ pre.hljs {
 
 pre .code-copy-button {
   opacity: 0;
+  scale: 0.75;
+  transition: 150ms opacity, 150ms scale;
 }
 
 pre:hover .code-copy-button {
   opacity: 1;
+  scale: 1;
 }
 
 #block-editor {

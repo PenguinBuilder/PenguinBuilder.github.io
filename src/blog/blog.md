@@ -3,6 +3,8 @@
 - fixed bug with updating extensions
 - added the ability for extensions to register types to output shapes
 - fixed an issue with how extensions are loaded
+- added an animation to the copy button
+- added another output shape that extensions can use
 ## :warning: Braking Changes
 - None :thumbsup:
 # Version 4.0.0

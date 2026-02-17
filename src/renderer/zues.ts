@@ -9,15 +9,17 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
     BTAB: Shape | null = null;
     OCTOGON: Shape | null = null;
     SQUIRCLE: Shape | null = null;
+    LEAF: Shape | null = null;
     override init() {
         super.init();
         this.TAB = this.makeTAB();
         this.BTAB = this.makeBTAB();
         this.OCTOGON = this.makeOCTOGON();
         this.SQUIRCLE = this.makeSQUIRCLE();
+        this.LEAF = this.makeLEAF();
     }
 
-    static SHAPES = {HEXAGONAL: 1, ROUND: 2, SQUARE: 3, PUZZLE: 4, NOTCH: 5, TAB: 6, BTAB: 7, OCTOGON: 8, SQUIRCLE: 9};
+    static SHAPES = {HEXAGONAL: 1, ROUND: 2, SQUARE: 3, PUZZLE: 4, NOTCH: 5, TAB: 6, BTAB: 7, OCTOGON: 8, SQUIRCLE: 9, LEAF: 10};
 
     SHAPE_IN_SHAPE_PADDING: {[key: number]: {[key: number]: number}} = {
         1: {
@@ -29,6 +31,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             7: 2 * this.GRID_UNIT, 
             8: 2 * this.GRID_UNIT, 
             9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
         },
         2: {
             0: 3 * this.GRID_UNIT, 
@@ -39,6 +42,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             7: 2 * this.GRID_UNIT, 
             8: 2 * this.GRID_UNIT, 
             9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
         },
         3: {
             0: 2 * this.GRID_UNIT,
@@ -49,8 +53,8 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             7: 2 * this.GRID_UNIT, 
             8: 2 * this.GRID_UNIT, 
             9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
         },
-
         6: {
             0: 2 * this.GRID_UNIT,
             1: 2 * this.GRID_UNIT,
@@ -60,6 +64,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             7: 2 * this.GRID_UNIT, 
             8: 2 * this.GRID_UNIT, 
             9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
         },
         7: {
             0: 2 * this.GRID_UNIT,
@@ -70,6 +75,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             7: 2 * this.GRID_UNIT, 
             8: 2 * this.GRID_UNIT, 
             9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
         },
         8: {
             0: 2 * this.GRID_UNIT,
@@ -80,6 +86,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             7: 2 * this.GRID_UNIT, 
             8: 2 * this.GRID_UNIT, 
             9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
         },
         9: {
             0: 2 * this.GRID_UNIT,
@@ -90,9 +97,73 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             7: 2 * this.GRID_UNIT, 
             8: 2 * this.GRID_UNIT, 
             9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
+        },
+        10: {
+            0: 2 * this.GRID_UNIT,
+            1: 2 * this.GRID_UNIT,
+            2: 2 * this.GRID_UNIT,
+            3: 2 * this.GRID_UNIT,
+            6: 2 * this.GRID_UNIT, 
+            7: 2 * this.GRID_UNIT, 
+            8: 2 * this.GRID_UNIT, 
+            9: 2 * this.GRID_UNIT, 
+            10: 2 * this.GRID_UNIT, 
         },
     };
     override SHAPES = ConstantProvider.SHAPES;
+    protected makeLEAF(): Shape {
+        const maxWidth = this.MAX_DYNAMIC_CONNECTION_SHAPE_WIDTH;
+        const maxHeight = maxWidth * 2;
+        const cornerRadius = this.CORNER_RADIUS;
+
+        function makeMainPath(blockHeight: number, up: boolean, right: boolean) {
+            const remainingHeight =
+                blockHeight > maxHeight ? blockHeight - maxHeight : 0;
+            const height = blockHeight > maxHeight ? maxHeight : blockHeight;
+            const radius = height / 2;
+            const dy = (up? -1: 1);
+            const dx = (right? 1: -1);
+            return svgPaths.arc(
+                'a', '0 0,1', radius,
+                svgPaths.point(
+                    dy * radius, dy * radius)) +
+                        svgPaths.lineOnAxis('v', dx * (remainingHeight + radius - cornerRadius)) +
+                        svgPaths.arc(
+                            'a', '0 0,1', cornerRadius,
+                            svgPaths.point(-dy * cornerRadius, dy * cornerRadius)) +
+                                svgPaths.lineOnAxis('h', -dx * (radius - cornerRadius));
+        };
+        return {
+            type: this.SHAPES.LEAF,
+            isDynamic: true,
+            width(height: number): number {
+                const halfHeight = height / 2;
+                return halfHeight > maxWidth ? maxWidth : halfHeight;
+            },
+            height(height: number): number {
+                return height;
+            },
+            connectionOffsetY(connectionHeight: number): number {
+                return connectionHeight / 2;
+            },
+            connectionOffsetX(connectionWidth: number): number {
+                return -connectionWidth;
+            },
+            pathDown(height: number): string {
+                return makeMainPath(height, false, false);
+            },
+            pathUp(height: number): string {
+                return makeMainPath(height, true, false);
+            },
+            pathRightDown(height: number): string {
+                return makeMainPath(height, false, true);
+            },
+            pathRightUp(height: number): string {
+                return makeMainPath(height, false, true);
+            },
+        };
+    }
     protected makeTAB(): Shape {
         const maxWidth = this.MAX_DYNAMIC_CONNECTION_SHAPE_WIDTH;
         function makeMainPath(blockHeight: number, up: boolean, right: boolean) {
@@ -157,7 +228,6 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
     }
     protected makeBTAB(): Shape {
         const maxWidth = this.MAX_DYNAMIC_CONNECTION_SHAPE_WIDTH;
-
 
         function makeMainPath(blockHeight: number, up: boolean, right: boolean) {
             const dx = right ? 1 : -1;
@@ -351,6 +421,8 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
                 return this.OCTOGON!;
             case this.SHAPES.SQUIRCLE:
                 return this.SQUIRCLE!;
+            case this.SHAPES.LEAF:
+                return this.LEAF!;
             default:
                 return null;
         }
