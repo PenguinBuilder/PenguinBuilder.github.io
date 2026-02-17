@@ -174,7 +174,7 @@ checks if a key exists in the object **returns Boolean**
 - Object: the object it checks 
 ___
 # [#FF667F] Functions 
-__
+___
 ## Function inline
 an inline function **returns whatever the body returns**
 there are three types, 2 don't return, 1 does return

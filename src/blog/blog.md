@@ -22,7 +22,7 @@
 - change the save file format, which makes it not compatible with 3.x.x
 - made the extension api allow more stuff with colors
 - changed how the JSON blocks are handled
-- removed the inline function blocks
+- removed the function expression related blocks
 - removed the comment blocks
 ## :warning: Breaking Changes 
 - the save format is not compatible with the older 3.x.x format

@@ -35,7 +35,7 @@ import{t as o}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";
 <li>change the save file format, which makes it not compatible with 3.x.x</li>
 <li>made the extension api allow more stuff with colors</li>
 <li>changed how the JSON blocks are handled</li>
-<li>removed the inline function blocks</li>
+<li>removed the function expression related blocks</li>
 <li>removed the comment blocks</li>
 </ul>
 <section>

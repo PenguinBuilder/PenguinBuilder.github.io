@@ -294,7 +294,7 @@ takes a JSON Object and turns it into a string</li>
 </section>
 <section>
 <h1>[#FF667F] Functions</h1>
-<p>__</p>
+<hr>
 <section>
 <h2>Function inline</h2>
 <p>an inline function <strong>returns whatever the body returns</strong>
