@@ -1,4 +1,18 @@
-import{t as o}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";import{$ as a}from"./jsquery.js";import{s as l}from"./style-selector.js";const r=`<section>
+import{t as a}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";import{$ as o}from"./jsquery.js";import{s as l}from"./style-selector.js";const r=`<section>
+<h1>Version 4.1.1</h1>
+<ul>
+<li>made changing the renderer in the docs non blocking so you can still scroll and read the docs while it changes the images</li>
+<li>fixed the issue with rendering a disabled block to an svg
+<img src="./images/fixed_svg_example.svg" alt="Fixed svg rendering example"></li>
+</ul>
+<section>
+<h2>⚠️ Braking Changes</h2>
+<ul>
+<li>None 👍</li>
+</ul>
+</section>
+</section>
+<section>
 <h1>Version 4.1.0</h1>
 <ul>
 <li>added a button that lets you view and copy the code instead of just downloading it</li>
@@ -45,4 +59,4 @@ import{t as o}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";
 </ul>
 </section>
 </section>
-`;o();l();const n={};await Promise.all(Object.entries(Object.assign({"./images/thrasos_example.svg":()=>i(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>i(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>i(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,t])=>n[e]=(await t()).default));const s=a("#content");s.html(r);s.all("img").forEach(async e=>{const t=e.getProp("src");t.startsWith("./images/")&&e.props({src:n[t]})});
+`;a();l();const n={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>i(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>i(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>i(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>i(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,t])=>n[e]=(await t()).default));const s=o("#content");s.html(r);s.all("img").forEach(async e=>{const t=e.getProp("src");t.startsWith("./images/")&&e.props({src:n[t]})});
