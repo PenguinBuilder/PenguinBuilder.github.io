@@ -1,8 +1,9 @@
 import * as Blockly from "blockly/core";
+import {$} from "jsquery_node"
 
 //TASK(20260212-185722-050-n6-525): fix disabled block rendering
 
-function inlineImportantStyles(source: Element, target: Element) {
+function inlineImportantStyles(source: Element, target: Element, children: HTMLElement[]) {
     const computed = getComputedStyle(source);
 
     const importantProps = [
@@ -22,6 +23,12 @@ function inlineImportantStyles(source: Element, target: Element) {
         if(prop === "stroke" && b) continue;
         const value = computed.getPropertyValue(prop);
         if (value) {
+            if(prop === "fill") {
+                if(value.startsWith("url(\"#")) {
+                    const [,id] = value.match(/url\("(.*)"\)/)!;
+                    children.push($(id)!.elt)
+                }
+            }
             styleString += `${prop}:${value};`;
         }
     }
@@ -34,7 +41,7 @@ function inlineImportantStyles(source: Element, target: Element) {
     const targetChildren = target.children;
 
     for (let i = 0; i < sourceChildren.length; i++) {
-        inlineImportantStyles(sourceChildren[i], targetChildren[i]);
+        inlineImportantStyles(sourceChildren[i], targetChildren[i], children);
     }
 }
 
@@ -44,8 +51,9 @@ export default function (workspace: Blockly.WorkspaceSvg) {
     const canvas = workspace.getCanvas();
 
     const clone = canvas.cloneNode(true) as SVGGElement;
+    const children: HTMLElement[] = [];
 
-    inlineImportantStyles(canvas, clone);
+    inlineImportantStyles(canvas, clone, children);
 
     const bbox = canvas.getBBox();
 
@@ -62,7 +70,9 @@ export default function (workspace: Blockly.WorkspaceSvg) {
     );
 
     svg.appendChild(clone);
-
+    svg.prepend(...children.map(v => {
+        return v.cloneNode(true)
+    }))
     const svgString = new XMLSerializer().serializeToString(svg);
     return svgString;
 }

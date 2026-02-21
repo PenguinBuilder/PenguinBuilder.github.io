@@ -230,8 +230,8 @@ $("#test")!.click(() => {
     }
 });
 
-function exists() {
-    const top_blocks = workspace.getTopBlocks(false).filter(b=>b.isEnabled())
+function exists(filter=true) {
+    const top_blocks = filter?workspace.getTopBlocks().filter(b=>b.isEnabled()): workspace.getTopBlocks();
     if (top_blocks.length === 0) {
         notify("You can't export when the workspace is empty", {
             header: "Failed Export",
@@ -282,7 +282,7 @@ workspace.configureContextMenu = function (menuOptions) {
         text: 'Export Workspace to SVG',
         enabled: true,
         callback: async function () {
-            if(!exists()) return;
+            if(!exists(false)) return;
             const fileHandle = await window.showSaveFilePicker({
                 suggestedName: "workspace.svg",
                 types: [{
@@ -304,7 +304,7 @@ workspace.configureContextMenu = function (menuOptions) {
             text: 'Export Workspace to JSON',
             enabled: true,
             callback: async function () {
-                if(!exists()) return;
+                if(!exists(false)) return;
                 const fileHandle = await window.showSaveFilePicker({
                     suggestedName: "workspace.json",
                     types: [{
