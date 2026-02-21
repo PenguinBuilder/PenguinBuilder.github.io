@@ -1,6 +1,7 @@
 # Version 4.1.1
 - made changing the renderer in the docs non blocking so you can still scroll and read the docs while it changes the images
 - fixed the issue with rendering a disabled block to an svg
+![Fixed svg rendering example](./images/fixed_svg_example.svg)
 ## :warning: Braking Changes
 - None :thumbsup:
 # Version 4.1.0
