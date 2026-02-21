@@ -2,7 +2,7 @@ import{t as a}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";
 <h1>Version 4.1.1</h1>
 <ul>
 <li>made changing the renderer in the docs non blocking so you can still scroll and read the docs while it changes the images</li>
-<li>fixed the issue with rendering a disabled block to an svg
+<li>fixed the issue with rendering a disabled block to an svg<br>
 <img src="./images/fixed_svg_example.svg" alt="Fixed svg rendering example"></li>
 </ul>
 <section>
