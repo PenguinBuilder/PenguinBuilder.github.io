@@ -1,3 +1,7 @@
+# Version 4.1.1
+- made changing the renderer in the docs non blocking so you can still scroll and read the docs while it changes the images
+## :warning: Braking Changes
+- None :thumbsup:
 # Version 4.1.0
 - added a button that lets you view and copy the code instead of just downloading it
 - fixed bug with updating extensions

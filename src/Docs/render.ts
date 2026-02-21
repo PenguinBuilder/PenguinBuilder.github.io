@@ -31,17 +31,23 @@ export function onDone(fn: ()=>any) {
             workspace.getTheme(),
             workspace.options.rendererOverrides ?? undefined,
         );
-        for(const v of listener) {
+        function call(i:number) {
+            if(i >= listener.length) {
+                return;
+            }
+            const v = listener[i]
             URL.revokeObjectURL(v.url)
             const url = getURL(v.json);
             v.elt.props({
                 src: url,
             });
             v.url = url;
+            $("#content")!.elt.scrollTop = scroll * $("#content")!.elt.scrollHeight;
+            done();
+            done = () => {};
+            requestAnimationFrame(call.bind(null, i+1))
         }
-        $("#content")!.elt.scrollTop = scroll * $("#content")!.elt.scrollHeight;
-        done();
-        done = () => {};
+        requestAnimationFrame(call.bind(null, 0))
     });
 }
 
