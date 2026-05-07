@@ -6,7 +6,7 @@ import{t as a}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";
 <img src="./images/fixed_svg_example.svg" alt="Fixed svg rendering example"></li>
 </ul>
 <section>
-<h2>⚠️ Braking Changes</h2>
+<h2>⚠️ Breaking Changes</h2>
 <ul>
 <li>None 👍</li>
 </ul>
@@ -23,7 +23,7 @@ import{t as a}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";
 <li>added another output shape that extensions can use</li>
 </ul>
 <section>
-<h2>⚠️ Braking Changes</h2>
+<h2>⚠️ Breaking Changes</h2>
 <ul>
 <li>None 👍</li>
 </ul>
