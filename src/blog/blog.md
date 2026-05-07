@@ -2,7 +2,7 @@
 - made changing the renderer in the docs non blocking so you can still scroll and read the docs while it changes the images
 - fixed the issue with rendering a disabled block to an svg  
 ![Fixed svg rendering example](./images/fixed_svg_example.svg)  
-## :warning: Braking Changes
+## :warning: Breaking Changes
 - None :thumbsup:
 # Version 4.1.0
 - added a button that lets you view and copy the code instead of just downloading it
@@ -11,7 +11,7 @@
 - fixed an issue with how extensions are loaded
 - added an animation to the copy button
 - added another output shape that extensions can use
-## :warning: Braking Changes
+## :warning: Breaking Changes
 - None :thumbsup:
 # Version 4.0.0
 - added blog page
