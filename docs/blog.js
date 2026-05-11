@@ -1,4 +1,19 @@
-import{t as a}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";import{$ as o}from"./jsquery.js";import{s as l}from"./style-selector.js";const r=`<section>
+import{t as l}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const r=`<section>
+<h1>Version 4.2.0</h1>
+<ul>
+<li>added the ability to change the types of the block fields, and their output to the extension api</li>
+<li>added the ability to change the value of fields in the extension api</li>
+<li>changed how the <code>whats-new</code> dialog looked slightly</li>
+<li>minor bug fixes</li>
+</ul>
+<section>
+<h2>⚠️ Breaking Changes</h2>
+<ul>
+<li>None(so far) 👍</li>
+</ul>
+</section>
+</section>
+<section>
 <h1>Version 4.1.1</h1>
 <ul>
 <li>made changing the renderer in the docs non blocking so you can still scroll and read the docs while it changes the images</li>
@@ -59,4 +74,4 @@ import{t as a}from"./theme-selector.js";import{_ as i}from"./preload-helper.js";
 </ul>
 </section>
 </section>
-`;a();l();const n={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>i(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>i(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>i(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>i(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,t])=>n[e]=(await t()).default));const s=o("#content");s.html(r);s.all("img").forEach(async e=>{const t=e.getProp("src");t.startsWith("./images/")&&e.props({src:n[t]})});
+`;l();a();const n={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>t(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>t(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>t(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>t(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,i])=>n[e]=(await i()).default));const s=o("#content");s.html(r);s.all("img").forEach(async e=>{const i=e.getProp("src");i.startsWith("./images/")&&e.props({src:n[i]})});
