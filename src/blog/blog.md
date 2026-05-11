@@ -1,3 +1,10 @@
+# Version 4.2.0
+- added the ability to change the types of the block fields, and their output to the extension api
+- added the ability to change the value of fields in the extension api
+- changed how the `whats-new` dialog looked slightly
+- minor bug fixes
+## :warning: Breaking Changes
+- None(so far) :thumbsup:
 # Version 4.1.1
 - made changing the renderer in the docs non blocking so you can still scroll and read the docs while it changes the images
 - fixed the issue with rendering a disabled block to an svg  

@@ -6,7 +6,7 @@ import { ToolboxInfo } from "blockly/core/utils/toolbox";
 import DATA from "@/DATA";
 import { ConstantProvider } from "@/renderer/zues";
 
-export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, rerenderToolbox: ()=>void, code: string, catid: string) {
+export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, rerenderToolbox: () => void, code: string, catid: string) {
     //TASK(20260214-222118-208-n6-305): add mutator support to extension API
     interface PenguinExtension {
         Info(): Category;
@@ -27,25 +27,25 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
 
     interface BlockType {
         opcode: string;
-        color?: number|string;
+        color?: number | string;
         blockType: blockType;
         args: ArgumentType[];
     }
 
     type ArgumentType =
         & {
-        fields: fieldType[];
-    }
-    & ({
-        kind: "Value";
-        type: string | string[];
-        ID: string;
-    } | {
-        kind: "Statement";
-        ID: string;
-    } | {
-        kind: "Dummy";
-    });
+            fields: fieldType[];
+        }
+        & ({
+            kind: "Value";
+            type: string | string[];
+            ID: string;
+        } | {
+            kind: "Statement";
+            ID: string;
+        } | {
+            kind: "Dummy";
+        });
 
     interface Block {
         ID: string;
@@ -53,9 +53,13 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
         top: Block;
         BlocklyBlock: any;
         BlocklyGenerator: any;
-        getField: (ID: string) => string;
-        getValue: (ID: string) => string;
-        getStatement: (ID: string) => string;
+        getField(ID: string): any;
+        setField(ID: string, value: any): void;
+        getValue(ID: string): string;
+        getStatement(ID: string): string;
+
+        setValueType(ID: string, type: string | string[]): void;
+        setOutputType(has_out: boolean, type: string | string[]): void;
     }
 
     interface Category {
@@ -68,37 +72,44 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
     type fieldType = {
         kind: "text";
         value: string;
+        ID?: string;
     } | {
         kind: "text_input";
         ID: string;
         default: string;
+        on_change(this: Block, nv: string): void
     } | {
         kind: "number_input";
         ID: string;
         default: number;
+        on_change(this: Block, nv: number): void
     } | {
         kind: "angle_input";
         ID: string;
         default: number;
+        on_change(this: Block, nv: number): void
     } | {
         kind: "menu_input";
         ID: string;
         value: string[] | Record<string, any>;
+        on_change(this: Block, nv: any): void
     } | {
         kind: "checkbox_input";
         ID: string;
         default: boolean;
+        on_change(this: Block, nv: boolean): void
     } | {
         kind: "color_input";
         ID: string;
         default: string;
+        on_change(this: Block, nv: string): void
     };
 
     const Penguin = {
         Types: ConstantProvider.SHAPES,
         _getType(type: string | string[]): string | string[] | null {
             if (Array.isArray(type)) {
-                if(type.includes("Any")) {
+                if (type.includes("Any")) {
                     return null;
                 }
                 return type;
@@ -106,40 +117,59 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                 return type === "Any" ? null : type;
             }
         },
-        _setFields(input: any, fields?: fieldType[]) {
+        _setFields(block: Blockly.Block, input: Blockly.Input, fields?: fieldType[]) {
+            const b = new Penguin.Block(block, undefined);
             if (Array.isArray(fields)) {
                 for (const field of fields) {
                     switch (field.kind) {
                         case "text":
-                            input.appendField(field.value);
-                        break;
+                            input.appendField(field.value, field.ID);
+                            break;
                         case "text_input":
                             input.appendField(
-                                new Blockly.FieldTextInput(field.default),
+                                new Blockly.FieldTextInput(field.default, (val) => {
+                                    field.on_change.call(b, val)
+                                    return val;
+                                }),
                                 field.ID,
-                        );
-                        break;
+                            );
+                            break;
                         case "number_input":
-                            input.appendField(new Blockly.FieldNumber(field.default), field.ID);
-                        break;
+                            input.appendField(new Blockly.FieldNumber(field.default, null, null, null, (val: number | string) => {
+                                field.on_change.call(b, val as number)
+                                return val;
+                            }), field.ID);
+                            break;
                         case "angle_input":
-                            input.appendField(new FieldAngle(field.default), field.ID);
-                        break;
+                            input.appendField(new FieldAngle(field.default, (val: number | string) => {
+                                field.on_change.call(b, val as number)
+                                return val;
+                            }), field.ID);
+                            break;
                         case "menu_input":
                             input.appendField(
-                                new Blockly.FieldDropdown(this._getMenuItems(field.value)),
+                                new Blockly.FieldDropdown(this._getMenuItems(field.value), (val) => {
+                                    field.on_change.call(b, val)
+                                    return val;
+                                }),
                                 field.ID,
-                        );
-                        break;
+                            );
+                            break;
                         case "checkbox_input":
                             input.appendField(
-                                new Blockly.FieldCheckbox(field.default ? "TRUE" : "FALSE"),
+                                new Blockly.FieldCheckbox(field.default ? "TRUE" : "FALSE", (val) => {
+                                    field.on_change.call(b, val.valueOf() as boolean)
+                                    return val;
+                                }),
                                 field.ID,
-                        );
-                        break;
+                            );
+                            break;
                         case "color_input":
-                            input.appendField(new FieldColour(field.default), field.ID);
-                        break;
+                            input.appendField(new FieldColour(field.default, (val) => {
+                                field.on_change.call(b, val);
+                                return val;
+                            }), field.ID);
+                            break;
                     }
                 }
             }
@@ -153,14 +183,14 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
         },
         LoadExtension(Extension: new () => PenguinExtension) {
             const ext = new Extension();
-            if(ext.Types) {
-                for(const [k, v] of Object.entries(ext.Types)) {
+            if (ext.Types) {
+                for (const [k, v] of Object.entries(ext.Types)) {
                     DATA.outputs[catid][k] = v;
                 }
             }
             const inf = ext.Info();
             const id = inf.ID;
-            const callback = "Remove_Extension_"+catid;
+            const callback = "Remove_Extension_" + catid;
             const blocks: any[] = [
                 {
                     "kind": "button",
@@ -170,7 +200,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
             ];
 
             workspace.registerButtonCallback(callback, () => {
-                const i = toolbox.contents.findIndex(v=>(v as any).id == catid);
+                const i = toolbox.contents.findIndex(v => (v as any).id == catid);
                 delete DATA.extensions[catid];
                 delete DATA.outputs[catid];
                 toolbox.contents.splice(i);
@@ -195,7 +225,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                     gap: 8,
                 });
                 Blockly.Blocks[name] = {
-                    init: function (this: Blockly.Block) {
+                    init: function(this: Blockly.Block) {
                         if (_block.blockType.kind === "Statement") {
                             this.setPreviousStatement(true, null);
                             this.setNextStatement(true, null);
@@ -208,35 +238,35 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                         for (const arg of _block.args) {
                             switch (arg.kind) {
                                 case "Statement":
-                                    self._setFields(
+                                    self._setFields(this,
                                         this.appendStatementInput(arg.ID)
-                                        .setCheck(null),
+                                            .setCheck(null),
                                         arg.fields,
-                                );
-                                break;
+                                    );
+                                    break;
                                 case "Value":
-                                    self._setFields(
+                                    self._setFields(this,
                                         this.appendValueInput(arg.ID)
-                                        .setCheck(self._getType(arg.type)),
+                                            .setCheck(self._getType(arg.type)),
                                         arg.fields,
-                                );
-                                break;
+                                    );
+                                    break;
                                 case "Dummy":
-                                    self._setFields(
+                                    self._setFields(this,
                                         this.appendDummyInput(),
                                         arg.fields,
-                                );
-                                break;
+                                    );
+                                    break;
                             }
                         }
-                        this.setColour(_block.color??inf.color);
+                        this.setColour(_block.color ?? inf.color);
                         this.setTooltip("");
                         this.setHelpUrl("");
                     },
                 };
                 javascript.javascriptGenerator.forBlock[name] = function(block: any, generator: any) {
-                    const code = ext.generator[_block.opcode](new self.Block(block, generator));
-                    if(_block.blockType.kind === "Value") {
+                    const code = ext.generator[_block.opcode](new Penguin.Block(block, generator));
+                    if (_block.blockType.kind === "Value") {
                         return [code, javascript.Order.ATOMIC];
                     } else {
                         return code;
@@ -248,20 +278,31 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
             rerenderToolbox();
         },
         Block: class Block implements Block {
-            constructor(public BlocklyBlock: any, public BlocklyGenerator: any) {
+            constructor(public BlocklyBlock: Blockly.Block, public BlocklyGenerator: any) {
             }
-            getField(ID: string): string {
-                return this.BlocklyBlock.getFieldValue(ID) + "";
+            getField(ID: string): any {
+                return this.BlocklyBlock.getFieldValue(ID);
             }
             getValue(ID: string): string {
-                return this.BlocklyGenerator?.valueToCode(this.BlocklyBlock, ID, javascript.Order.ATOMIC) + "";
+                return this.BlocklyGenerator?.valueToCode(this.BlocklyBlock, ID, javascript.Order.ATOMIC);
             }
             getStatement(ID: string): string {
-                return this.BlocklyGenerator?.statementToCode(this.BlocklyBlock, ID) + "";
+                return this.BlocklyGenerator?.statementToCode(this.BlocklyBlock, ID);
             }
+            setField(ID: string, value: any) {
+                this.BlocklyBlock.setFieldValue(value, ID);
+            }
+
+            setValueType(ID: string, type: string | string[]) {
+                this.BlocklyBlock.getInput(ID)?.setCheck(type);
+            };
+            setOutputType(has_out: boolean, type: string | string[]) {
+                this.BlocklyBlock.setOutput(has_out, type)
+            };
+
             get parent(): Block | null {
-                if(this.BlocklyBlock.parentBlock_ === null) return null;
-                return new Penguin.Block(this.BlocklyBlock.parentBlock_, undefined);
+                if ((this.BlocklyBlock as any).parentBlock_ === null) return null;
+                return new Penguin.Block((this.BlocklyBlock as any).parentBlock_, undefined);
             }
             get top(): Block {
                 if (this.parent === null) {
@@ -290,36 +331,36 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                 type: string | string[],
                 fields: fieldType[] = [],
             ): ArgumentType {
-                    return { kind: "Value", ID, type, fields } as ArgumentType;
-                },
-                Statement(ID: string, fields: fieldType[] = []): ArgumentType {
-                    return { kind: "Statement", ID, fields } as ArgumentType;
-                },
-                Dummy(fields: fieldType[] = []): ArgumentType {
-                    return { kind: "Dummy", fields } as ArgumentType;
-                },
+                return { kind: "Value", ID, type, fields } as ArgumentType;
+            },
+            Statement(ID: string, fields: fieldType[] = []): ArgumentType {
+                return { kind: "Statement", ID, fields } as ArgumentType;
+            },
+            Dummy(fields: fieldType[] = []): ArgumentType {
+                return { kind: "Dummy", fields } as ArgumentType;
+            },
         },
         Field: {
-            Text(value: string): fieldType {
-                return { kind: "text", value } as fieldType;
+            Text(value: string, ID?: string): fieldType {
+                return { kind: "text", value, ID } as fieldType;
             },
-            TextInput(ID: string, _default: string = ""): fieldType {
-                return { kind: "text_input", ID, default: _default } as fieldType;
+            TextInput(ID: string, _default: string = "", on_change: (this: Block, val: string) => void = () => { }): fieldType {
+                return { kind: "text_input", ID, default: _default, on_change } as fieldType;
             },
-            NumberInput(ID: string, _default: number = 0): fieldType {
-                return { kind: "number_input", ID, default: _default } as fieldType;
+            NumberInput(ID: string, _default: number = 0, on_change: (this: Block, val: number) => void = () => { }): fieldType {
+                return { kind: "number_input", ID, default: _default, on_change } as fieldType;
             },
-            AngleInput(ID: string, _default: number = 0): fieldType {
-                return { kind: "angle_input", ID, default: _default } as fieldType;
+            AngleInput(ID: string, _default: number = 0, on_change: (this: Block, val: number) => void = () => { }): fieldType {
+                return { kind: "angle_input", ID, default: _default, on_change } as fieldType;
             },
-            MenuInput(ID: string, items: string[] | Record<string, any>): fieldType {
-                return { kind: "menu_input", ID, value: items } as fieldType;
+            MenuInput(ID: string, items: string[] | Record<string, any>, on_change: (this: Block, val: any) => void = () => { }): fieldType {
+                return { kind: "menu_input", ID, value: items, on_change } as fieldType;
             },
-            CheckboxInput(ID: string, _default: boolean = true): fieldType {
-                return { kind: "checkbox_input", ID, default: _default } as fieldType;
+            CheckboxInput(ID: string, _default: boolean = true, on_change: (this: Block, val: boolean) => void = () => { }): fieldType {
+                return { kind: "checkbox_input", ID, default: _default, on_change } as fieldType;
             },
-            ColorInput(ID: string, _default: string = "#FFFFFF"): fieldType {
-                return { kind: "color_input", ID, default: _default } as fieldType;
+            ColorInput(ID: string, _default: string = "#FFFFFF", on_change: (this: Block, val: string) => void = () => { }): fieldType {
+                return { kind: "color_input", ID, default: _default, on_change } as fieldType;
             },
         },
     };
