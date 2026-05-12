@@ -19,23 +19,25 @@
   gap: 5px;
 }
 
-[data-theme="light"]
-#toc {
+[data-theme="light"] #toc {
   background: #DCDCDC;
+
   :hover {
     background: #E3E3E3;
   }
+
   [selected] {
     background: #7F7F7F;
   }
 }
 
-[data-theme="dark"]
-#toc {
+[data-theme="dark"] #toc {
   background: #363636;
+
   :hover {
     background: #5C5C5C;
   }
+
   [selected] {
     background: #7F7F7F;
   }
@@ -46,19 +48,16 @@
   overflow: auto;
 }
 
-[data-theme="dark"]
-#box {
+[data-theme="dark"] #box {
   background: $bg-dark;
 }
 
 
-[data-theme="light"]
-.circ {
+[data-theme="light"] .circ {
   border: 1px solid #000000
 }
 
-[data-theme="dark"]
-.circ {
+[data-theme="dark"] .circ {
   border: 1px solid #ffffff
 }
 
@@ -72,7 +71,7 @@ pre.hljs {
 }
 
 .code-copy-button {
-  position:absolute;
+  position: absolute;
   top: 15px;
   right: 0;
   white-space: normal;
@@ -95,4 +94,3 @@ pre:hover .code-copy-button {
 #block-editor {
   z-index: -9999;
 }
-

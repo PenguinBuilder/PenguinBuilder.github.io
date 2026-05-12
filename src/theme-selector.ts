@@ -1,8 +1,8 @@
-import {$} from "jsquery_node";
-export default async (onlight: ()=>any = ()=>{}, ondark: ()=>any = ()=>{}) => {
+import { $ } from "jsquery_node";
+export default async (onlight: () => any = () => { }, ondark: () => any = () => { }) => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     mediaQuery.addEventListener('change', () => {
-        const v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value() as "dark"|"light"|"auto";
+        const v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value() as "dark" | "light" | "auto";
         if (v === 'auto') {
             setTheme();
         }
@@ -11,17 +11,17 @@ export default async (onlight: ()=>any = ()=>{}, ondark: ()=>any = ()=>{}) => {
         if (e.key === "theme") {
             $("#theme-selector")!.all(`sl-menu-item[type="checkbox"][value=${e.newValue}]`).checked(true);
             $("#theme-selector")!.all(`sl-menu-item[type="checkbox"]:not([value=${e.newValue}])`).checked(false);
-            setTheme(e.newValue as "light"|"dark"|"auto");
+            setTheme(e.newValue as "light" | "dark" | "auto");
         }
     });
 
     function setTheme(
-        v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value() as "dark"|"light"|"auto"
+        v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value() as "dark" | "light" | "auto"
     ) {
         const auto = mediaQuery.matches;
-        const dark = {dark: true, light: false, auto}
+        const dark = { dark: true, light: false, auto }
         localStorage.setItem("theme", v);
-        if(dark[v]) {
+        if (dark[v]) {
             document.documentElement.setAttribute('data-theme', 'dark');
             document.documentElement.setAttribute('class', 'sl-theme-dark');
             ondark();
@@ -35,21 +35,21 @@ export default async (onlight: ()=>any = ()=>{}, ondark: ()=>any = ()=>{}) => {
     await customElements.whenDefined("sl-menu-item")
     {
         const key = localStorage.getItem("theme")
-        if(key === null) {
+        if (key === null) {
             let v = $("#theme-selector")!.$("sl-menu-item[type=\"checkbox\"][checked]")!.value();
             localStorage.setItem("theme", v);
-            setTheme(v as "auto"|"dark"|"light");
+            setTheme(v as "auto" | "dark" | "light");
         } else {
             $("#theme-selector")!.all(`sl-menu-item[type="checkbox"][value=${key}]`).checked(true);
             $("#theme-selector")!.all(`sl-menu-item[type="checkbox"]:not([value=${key}])`).checked(false);
-            setTheme(key as "auto"|"dark"|"light");
+            setTheme(key as "auto" | "dark" | "light");
         }
     }
 
-    $("#theme-selector")!.all("sl-menu-item[type=\"checkbox\"]").click(function () {
+    $("#theme-selector")!.all("sl-menu-item[type=\"checkbox\"]").click(function() {
         let elt = $.from(this)!;
-        if(elt.checked()) return;
+        if (elt.checked()) return;
         $("#theme-selector")!.all(`sl-menu-item[type="checkbox"]:not([value="${elt.value()}"])`).checked(false);
-        setTheme(elt.value() as "auto"|"dark"|"light");
+        setTheme(elt.value() as "auto" | "dark" | "light");
     })
 }

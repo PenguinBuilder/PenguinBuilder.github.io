@@ -19,30 +19,30 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
         this.LEAF = this.makeLEAF();
     }
 
-    static SHAPES = {HEXAGONAL: 1, ROUND: 2, SQUARE: 3, PUZZLE: 4, NOTCH: 5, TAB: 6, BTAB: 7, OCTOGON: 8, SQUIRCLE: 9, LEAF: 10};
+    static SHAPES = { HEXAGONAL: 1, ROUND: 2, SQUARE: 3, PUZZLE: 4, NOTCH: 5, TAB: 6, BTAB: 7, OCTOGON: 8, SQUIRCLE: 9, LEAF: 10 };
 
-    SHAPE_IN_SHAPE_PADDING: {[key: number]: {[key: number]: number}} = {
+    SHAPE_IN_SHAPE_PADDING: { [key: number]: { [key: number]: number } } = {
         1: {
-            0: 5 * this.GRID_UNIT, 
-            1: 2 * this.GRID_UNIT, 
-            2: 5 * this.GRID_UNIT, 
-            3: 5 * this.GRID_UNIT, 
-            6: 2 * this.GRID_UNIT, 
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            0: 5 * this.GRID_UNIT,
+            1: 2 * this.GRID_UNIT,
+            2: 5 * this.GRID_UNIT,
+            3: 5 * this.GRID_UNIT,
+            6: 2 * this.GRID_UNIT,
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
         2: {
-            0: 3 * this.GRID_UNIT, 
+            0: 3 * this.GRID_UNIT,
             1: 3 * this.GRID_UNIT,
             2: 1 * this.GRID_UNIT,
             3: 2 * this.GRID_UNIT,
             6: 2 * this.GRID_UNIT,
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
         3: {
             0: 2 * this.GRID_UNIT,
@@ -50,65 +50,65 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             2: 2 * this.GRID_UNIT,
             3: 2 * this.GRID_UNIT,
             6: 2 * this.GRID_UNIT,
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
         6: {
             0: 2 * this.GRID_UNIT,
             1: 2 * this.GRID_UNIT,
             2: 2 * this.GRID_UNIT,
             3: 2 * this.GRID_UNIT,
-            6: 2 * this.GRID_UNIT, 
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            6: 2 * this.GRID_UNIT,
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
         7: {
             0: 2 * this.GRID_UNIT,
             1: 2 * this.GRID_UNIT,
             2: 2 * this.GRID_UNIT,
             3: 2 * this.GRID_UNIT,
-            6: 2 * this.GRID_UNIT, 
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            6: 2 * this.GRID_UNIT,
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
         8: {
             0: 2 * this.GRID_UNIT,
             1: 2 * this.GRID_UNIT,
             2: 2 * this.GRID_UNIT,
             3: 2 * this.GRID_UNIT,
-            6: 2 * this.GRID_UNIT, 
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            6: 2 * this.GRID_UNIT,
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
         9: {
             0: 2 * this.GRID_UNIT,
             1: 2 * this.GRID_UNIT,
             2: 2 * this.GRID_UNIT,
             3: 2 * this.GRID_UNIT,
-            6: 2 * this.GRID_UNIT, 
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            6: 2 * this.GRID_UNIT,
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
         10: {
             0: 2 * this.GRID_UNIT,
             1: 2 * this.GRID_UNIT,
             2: 2 * this.GRID_UNIT,
             3: 2 * this.GRID_UNIT,
-            6: 2 * this.GRID_UNIT, 
-            7: 2 * this.GRID_UNIT, 
-            8: 2 * this.GRID_UNIT, 
-            9: 2 * this.GRID_UNIT, 
-            10: 2 * this.GRID_UNIT, 
+            6: 2 * this.GRID_UNIT,
+            7: 2 * this.GRID_UNIT,
+            8: 2 * this.GRID_UNIT,
+            9: 2 * this.GRID_UNIT,
+            10: 2 * this.GRID_UNIT,
         },
     };
     override SHAPES = ConstantProvider.SHAPES;
@@ -122,17 +122,17 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
                 blockHeight > maxHeight ? blockHeight - maxHeight : 0;
             const height = blockHeight > maxHeight ? maxHeight : blockHeight;
             const radius = height / 2;
-            const dy = (up? -1: 1);
-            const dx = (right? 1: -1);
+            const dy = (up ? -1 : 1);
+            const dx = (right ? 1 : -1);
             return svgPaths.arc(
                 'a', '0 0,1', radius,
                 svgPaths.point(
                     dy * radius, dy * radius)) +
-                        svgPaths.lineOnAxis('v', dx * (remainingHeight + radius - cornerRadius)) +
-                        svgPaths.arc(
-                            'a', '0 0,1', cornerRadius,
-                            svgPaths.point(-dy * cornerRadius, dy * cornerRadius)) +
-                                svgPaths.lineOnAxis('h', -dx * (radius - cornerRadius));
+                svgPaths.lineOnAxis('v', dx * (remainingHeight + radius - cornerRadius)) +
+                svgPaths.arc(
+                    'a', '0 0,1', cornerRadius,
+                    svgPaths.point(-dy * cornerRadius, dy * cornerRadius)) +
+                svgPaths.lineOnAxis('h', -dx * (radius - cornerRadius));
         };
         return {
             type: this.SHAPES.LEAF,
@@ -175,24 +175,24 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             const padding = radius / 1.8;
 
             return (
-                svgPaths.lineOnAxis('h', dx * padding)+
-                    svgPaths.arc(
-                        'a',
-                        '0 0,' + (right ? 1 : 0),
-                        radius,
-                        svgPaths.point(dx * radius, dy * radius)
+                svgPaths.lineOnAxis('h', dx * padding) +
+                svgPaths.arc(
+                    'a',
+                    '0 0,' + (right ? 1 : 0),
+                    radius,
+                    svgPaths.point(dx * radius, dy * radius)
                 ) +
 
 
-                    svgPaths.lineOnAxis('v', dy * straight) +
+                svgPaths.lineOnAxis('v', dy * straight) +
 
-                    svgPaths.arc(
-                        'a',
-                        '0 0,' + (right ? 1 : 0),
-                        radius,
-                        svgPaths.point(dx * -radius, dy * radius)
-                )+
-                    svgPaths.lineOnAxis('h', dx * -padding)
+                svgPaths.arc(
+                    'a',
+                    '0 0,' + (right ? 1 : 0),
+                    radius,
+                    svgPaths.point(dx * -radius, dy * radius)
+                ) +
+                svgPaths.lineOnAxis('h', dx * -padding)
             );
         }
 
@@ -236,28 +236,28 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             const radius = blockHeight / 5;
             const straight = blockHeight - 2 * radius;
             const lip = radius;
-            const padding = radius/2;
+            const padding = radius / 2;
 
             return (
-                svgPaths.lineOnAxis('h', dx * padding)+
-                    svgPaths.arc(
-                        'a',
-                        '0 0,1',
-                        radius,
-                        svgPaths.point(dx * radius, dy * radius)
+                svgPaths.lineOnAxis('h', dx * padding) +
+                svgPaths.arc(
+                    'a',
+                    '0 0,1',
+                    radius,
+                    svgPaths.point(dx * radius, dy * radius)
                 ) +
 
-                    svgPaths.lineOnAxis('h', dx * lip) +
+                svgPaths.lineOnAxis('h', dx * lip) +
 
-                    svgPaths.lineOnAxis('v', dy * straight) +
+                svgPaths.lineOnAxis('v', dy * straight) +
 
-                    svgPaths.lineOnAxis('h', dx * -lip) +
+                svgPaths.lineOnAxis('h', dx * -lip) +
 
-                    svgPaths.arc(
-                        'a',
-                        '0 0,1',
-                        radius,
-                        svgPaths.point(dx * -radius, dy * radius)
+                svgPaths.arc(
+                    'a',
+                    '0 0,1',
+                    radius,
+                    svgPaths.point(dx * -radius, dy * radius)
                 )
             );
         }
@@ -301,18 +301,18 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
 
             const depth = blockHeight / 3;
             const straight = blockHeight - depth * 2;
-            const padding = depth/ 1.8;
+            const padding = depth / 1.8;
 
             return (
-                svgPaths.lineOnAxis('h', dx * padding)+
-                    svgPaths.lineTo(
-                        dx * depth, dy * depth
+                svgPaths.lineOnAxis('h', dx * padding) +
+                svgPaths.lineTo(
+                    dx * depth, dy * depth
                 ) +
-                    svgPaths.lineOnAxis('v', dy * straight) +
-                    svgPaths.lineTo(
-                        dx * -depth, dy * depth
-                )+
-                    svgPaths.lineOnAxis('h', dx * -padding)
+                svgPaths.lineOnAxis('v', dy * straight) +
+                svgPaths.lineTo(
+                    dx * -depth, dy * depth
+                ) +
+                svgPaths.lineOnAxis('h', dx * -padding)
             );
         }
 
@@ -353,25 +353,25 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
         function makeMainPath(height: number, up: boolean, right: boolean): string {
             const innerHeight = height - radius * 2;
             const sweep = right === up ? '0' : '1';
-            const padding = radius/ 1.8;
+            const padding = radius / 1.8;
             const dx = right ? 1 : -1;
             const dy = up ? -1 : 1;
             return (
-                svgPaths.lineOnAxis('h', dx * padding)+
-                    svgPaths.arc(
-                        'a',
-                        '0 0,' + sweep,
-                        radius,
-                        svgPaths.point(dx * radius, dy * radius),
+                svgPaths.lineOnAxis('h', dx * padding) +
+                svgPaths.arc(
+                    'a',
+                    '0 0,' + sweep,
+                    radius,
+                    svgPaths.point(dx * radius, dy * radius),
                 ) +
-                    svgPaths.lineOnAxis('v', dy * innerHeight) +
-                    svgPaths.arc(
-                        'a',
-                        '0 0,' + sweep,
-                        radius,
-                        svgPaths.point(-dx * radius, dy * radius),
+                svgPaths.lineOnAxis('v', dy * innerHeight) +
+                svgPaths.arc(
+                    'a',
+                    '0 0,' + sweep,
+                    radius,
+                    svgPaths.point(-dx * radius, dy * radius),
                 ) +
-                    svgPaths.lineOnAxis('h', dx * -padding)
+                svgPaths.lineOnAxis('h', dx * -padding)
             );
         }
 
@@ -405,7 +405,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
             },
         };
     }
-    getShape(shape: number): Shape|null {
+    getShape(shape: number): Shape | null {
         switch (shape) {
             case this.SHAPES.HEXAGONAL:
                 return this.HEXAGONAL!;
@@ -436,43 +436,43 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
         let outputShape;
         switch (connection.type) {
             case Blockly.ConnectionType.INPUT_VALUE:
-                case Blockly.ConnectionType.OUTPUT_VALUE:
+            case Blockly.ConnectionType.OUTPUT_VALUE:
                 outputShape = connection.getSourceBlock().getOutputShape();
-            if (outputShape !== null) {
-                const shape = this.getShape(outputShape);
-                if(shape) 
-                    return shape;
-            }
-            if (checks && checks.includes('Boolean')) {
-                return this.HEXAGONAL!;
-            }
-            if (checks && checks.includes('Number')) {
-                return this.SQUIRCLE!;
-            }
-            if (checks && checks.includes('String')) {
-                return this.SQUARED!;
-            }
-            if(checks && checks.includes('Object')) {
-                return this.TAB!;
-            }
-            if(checks && checks.includes('Array')) {
-                return this.BTAB!;
-            }
-            if(checks && checks.includes('Colour')) {
-                return this.OCTOGON!;
-            }
-            for(const v of Object.values(DATA.outputs)) {
-                for(const [k, a] of Object.entries(v)) {
-                    if(checks && checks.includes(k)) {
-                        const shape = this.getShape(a);
-                        if(shape)
-                            return shape;
-                    } 
+                if (outputShape !== null) {
+                    const shape = this.getShape(outputShape);
+                    if (shape)
+                        return shape;
                 }
-            }
-            return this.ROUNDED!;
+                if (checks && checks.includes('Boolean')) {
+                    return this.HEXAGONAL!;
+                }
+                if (checks && checks.includes('Number')) {
+                    return this.SQUIRCLE!;
+                }
+                if (checks && checks.includes('String')) {
+                    return this.SQUARED!;
+                }
+                if (checks && checks.includes('Object')) {
+                    return this.TAB!;
+                }
+                if (checks && checks.includes('Array')) {
+                    return this.BTAB!;
+                }
+                if (checks && checks.includes('Colour')) {
+                    return this.OCTOGON!;
+                }
+                for (const v of Object.values(DATA.outputs)) {
+                    for (const [k, a] of Object.entries(v)) {
+                        if (checks && checks.includes(k)) {
+                            const shape = this.getShape(a);
+                            if (shape)
+                                return shape;
+                        }
+                    }
+                }
+                return this.ROUNDED!;
             case Blockly.ConnectionType.PREVIOUS_STATEMENT:
-                case Blockly.ConnectionType.NEXT_STATEMENT:
+            case Blockly.ConnectionType.NEXT_STATEMENT:
                 return this.NOTCH!;
             default:
                 throw Error('Unknown type');
@@ -480,7 +480,7 @@ export class ConstantProvider extends Blockly.zelos.ConstantProvider {
     }
 }
 
-export class Renderer extends Blockly.zelos.Renderer{
+export class Renderer extends Blockly.zelos.Renderer {
     constructor(name: string) {
         super(name);
     }

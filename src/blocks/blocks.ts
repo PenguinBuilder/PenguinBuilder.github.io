@@ -5,34 +5,34 @@ import * as javascript from "blockly/javascript";
 Blockly.Blocks['create_block'] = {
     init: function() {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.LEFT)
-        .appendField("Create Block");
+            .setAlign(Blockly.inputs.Align.LEFT)
+            .appendField("Create Block");
         this.appendDummyInput()
-        .appendField("ID")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("ID")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendDummyInput()
-        .appendField("Text")
-        .appendField(new Blockly.FieldTextInput("Text"), "Text");
+            .appendField("Text")
+            .appendField(new Blockly.FieldTextInput("Text"), "Text");
         this.appendDummyInput()
-        .appendField("Show monitor")
-        .appendField(new Blockly.FieldCheckbox("TRUE"), "Show");
+            .appendField("Show monitor")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "Show");
         this.appendDummyInput()
-        .appendField("type")
-        .appendField(
-            new Blockly.FieldDropdown([
-                ["block", "Block"],
-                ["reporter", "Reporter"],
-                ["boolean", "boolean"],
-            ]),
-            "type"
-        );
+            .appendField("type")
+            .appendField(
+                new Blockly.FieldDropdown([
+                    ["block", "Block"],
+                    ["reporter", "Reporter"],
+                    ["boolean", "boolean"],
+                ]),
+                "type"
+            );
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.RIGHT)
-        .appendField("Inputs");
+            .setAlign(Blockly.inputs.Align.RIGHT)
+            .appendField("Inputs");
         this.appendStatementInput("Inputs").setCheck(null);
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.RIGHT)
-        .appendField("function");
+            .setAlign(Blockly.inputs.Align.RIGHT)
+            .appendField("function");
         this.appendStatementInput("Function").setCheck(null);
         this.setStyle("scratch_blocks");
         this.setTooltip("");
@@ -52,13 +52,13 @@ javascript.javascriptGenerator.forBlock['create_block'] = function(block, genera
     switch (type) {
         case 'Block':
             blockType = 'COMMAND';
-        break;
+            break;
         case 'Reporter':
             blockType = 'REPORTER';
-        break;
+            break;
         case 'boolean':
             blockType = 'BOOLEAN';
-        break;
+            break;
     }
 
     const code = `
@@ -81,8 +81,8 @@ javascript.javascriptGenerator.forBlock['create_block'] = function(block, genera
 Blockly.Blocks['get_input'] = {
     init: function() {
         this.appendDummyInput()
-        .appendField("get Input")
-        .appendField(new Blockly.FieldTextInput("inputID"), "ID");
+            .appendField("get Input")
+            .appendField(new Blockly.FieldTextInput("inputID"), "ID");
         this.setOutput(true, null);
         this.setStyle("scratch_blocks");
         this.setTooltip("");
@@ -99,26 +99,26 @@ javascript.javascriptGenerator.forBlock['get_input'] = function(block) {
 };
 
 Blockly.Blocks['create_hat'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
-        .appendField("Create Hat");
+            .appendField("Create Hat");
         this.appendDummyInput()
-        .appendField("ID")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("ID")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendDummyInput()
-        .appendField("Text")
-        .appendField(new Blockly.FieldTextInput("Text"), "Text");
+            .appendField("Text")
+            .appendField(new Blockly.FieldTextInput("Text"), "Text");
         this.appendDummyInput()
-        .appendField("Inputs");
+            .appendField("Inputs");
         this.appendStatementInput("Inputs")
-        .setCheck(null);
+            .setCheck(null);
         this.setStyle("scratch_blocks");
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 
-javascript.javascriptGenerator.forBlock['create_hat'] = function (block, generator) {
+javascript.javascriptGenerator.forBlock['create_hat'] = function(block, generator) {
     const id = `${DATA.Extension_ID_DEFAULT}_Hat_${block.getFieldValue('ID')}`;
     const text = block.getFieldValue('Text');
     const inputs = generator.statementToCode(block, 'Inputs');
@@ -134,10 +134,10 @@ javascript.javascriptGenerator.forBlock['create_hat'] = function (block, generat
 };
 
 Blockly.Blocks['call_hat'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
-        .appendField("Call Hat")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("Call Hat")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle("scratch_blocks");
@@ -146,7 +146,7 @@ Blockly.Blocks['call_hat'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['call_hat'] = function (block) {
+javascript.javascriptGenerator.forBlock['call_hat'] = function(block) {
     const id = `${DATA.Extension_ID_DEFAULT}_Hat_${block.getFieldValue('ID')}`;
     if ((block.getTopStackBlock()).type === "create_block") {
         var code = `util.startHats('${DATA.Extension_ID_DEFAULT}_${id}');\n`;
@@ -157,13 +157,13 @@ javascript.javascriptGenerator.forBlock['call_hat'] = function (block) {
 };
 
 Blockly.Blocks['call_hat_with_args'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
-        .appendField("Call Hat")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("Call Hat")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendValueInput("Args")
-        .setCheck("Object")
-        .appendField("with Args");
+            .setCheck("Object")
+            .appendField("with Args");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle("scratch_blocks");
@@ -172,7 +172,7 @@ Blockly.Blocks['call_hat_with_args'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['call_hat_with_args'] = function (block, generator) {
+javascript.javascriptGenerator.forBlock['call_hat_with_args'] = function(block, generator) {
     const id = `${DATA.Extension_ID_DEFAULT}_Hat_${block.getFieldValue('ID')}`;
     const args = generator.valueToCode(block, 'Args', javascript.Order.ATOMIC);
     if (block.getTopStackBlock().type === "create_block") {
@@ -186,31 +186,31 @@ javascript.javascriptGenerator.forBlock['call_hat_with_args'] = function (block,
 Blockly.Blocks['create_input'] = {
     init: function() {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.LEFT)
-        .appendField("Create Input");
+            .setAlign(Blockly.inputs.Align.LEFT)
+            .appendField("Create Input");
         this.appendDummyInput()
-        .appendField("ID")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("ID")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendDummyInput()
-        .appendField("type")
-        .appendField(
-            new Blockly.FieldDropdown([
-                ["string", "String"],
-                ["number", "Number"],
-                ["boolean", "Boolean"],
-                ["empty", "Empty"],
-                ["color", "Color"],
-                ["costume", "Costume"],
-                ["sound", "Sound"],
-                ["angle", "Angle"],
-                ["note", "Note"],
-                ["matrix", "Matrix"],
-            ]),
-            "Type"
-        );
+            .appendField("type")
+            .appendField(
+                new Blockly.FieldDropdown([
+                    ["string", "String"],
+                    ["number", "Number"],
+                    ["boolean", "Boolean"],
+                    ["empty", "Empty"],
+                    ["color", "Color"],
+                    ["costume", "Costume"],
+                    ["sound", "Sound"],
+                    ["angle", "Angle"],
+                    ["note", "Note"],
+                    ["matrix", "Matrix"],
+                ]),
+                "Type"
+            );
         this.appendDummyInput()
-        .appendField("default text")
-        .appendField(new Blockly.FieldTextInput(""), "_default");
+            .appendField("default text")
+            .appendField(new Blockly.FieldTextInput(""), "_default");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle("scratch_blocks");
@@ -256,14 +256,14 @@ javascript.javascriptGenerator.forBlock['create_input'] = function(block) {
 };
 
 Blockly.Blocks["input_menu"] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput().appendField("Create Input Menu");
         this.appendDummyInput()
-        .appendField("ID")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("ID")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendDummyInput()
-        .appendField("Accept Reporters")
-        .appendField(new Blockly.FieldCheckbox("TRUE"), "REPORTERS");
+            .appendField("Accept Reporters")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "REPORTERS");
         this.appendValueInput("MENU").setCheck("Array").appendField("menu");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -273,7 +273,7 @@ Blockly.Blocks["input_menu"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["input_menu"] = function (
+javascript.javascriptGenerator.forBlock["input_menu"] = function(
     block,
     generator
 ) {
@@ -295,26 +295,26 @@ javascript.javascriptGenerator.forBlock["input_menu"] = function (
 };
 
 Blockly.Blocks['create_menu'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.LEFT)
-        .appendField("Create Menu");
+            .setAlign(Blockly.inputs.Align.LEFT)
+            .appendField("Create Menu");
         this.appendDummyInput()
-        .appendField("ID")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("ID")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendDummyInput()
-        .appendField("Accept Reporters")
-        .appendField(new Blockly.FieldCheckbox("TRUE"), "REPORTERS");
+            .appendField("Accept Reporters")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "REPORTERS");
         this.appendValueInput("MENU")
-        .setCheck("Array")
-        .appendField("menu");
+            .setCheck("Array")
+            .appendField("menu");
         this.setStyle("scratch_blocks");
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 
-javascript.javascriptGenerator.forBlock["create_menu"] = function (
+javascript.javascriptGenerator.forBlock["create_menu"] = function(
     block,
     generator
 ) {
@@ -329,15 +329,15 @@ javascript.javascriptGenerator.forBlock["create_menu"] = function (
 };
 
 Blockly.Blocks['create_input_menu'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
-        .appendField("create Input from menu");
+            .appendField("create Input from menu");
         this.appendDummyInput()
-        .appendField("ID")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("ID")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendDummyInput()
-        .appendField("Menu ID")
-        .appendField(new Blockly.FieldTextInput("MenuID"), "MenuID");
+            .appendField("Menu ID")
+            .appendField(new Blockly.FieldTextInput("MenuID"), "MenuID");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle("scratch_blocks");
@@ -346,7 +346,7 @@ Blockly.Blocks['create_input_menu'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['create_input_menu'] = function (block) {
+javascript.javascriptGenerator.forBlock['create_input_menu'] = function(block) {
     const ID = block.getFieldValue('ID');
     const menuId = block.getFieldValue('MenuID');
     const code = `"${ID}": {
@@ -357,26 +357,26 @@ javascript.javascriptGenerator.forBlock['create_input_menu'] = function (block) 
 };
 
 Blockly.Blocks['create_dynamic_menu'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
-        .setAlign(Blockly.inputs.Align.LEFT)
-        .appendField("Create Dynamic Menu");
+            .setAlign(Blockly.inputs.Align.LEFT)
+            .appendField("Create Dynamic Menu");
         this.appendDummyInput()
-        .appendField("ID")
-        .appendField(new Blockly.FieldTextInput("ID"), "ID");
+            .appendField("ID")
+            .appendField(new Blockly.FieldTextInput("ID"), "ID");
         this.appendDummyInput()
-        .appendField("Accept Reporters")
-        .appendField(new Blockly.FieldCheckbox("TRUE"), "Accept");
+            .appendField("Accept Reporters")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "Accept");
         this.appendStatementInput("Function")
-        .setCheck(null)
-        .appendField("Function");
+            .setCheck(null)
+            .appendField("Function");
         this.setStyle("scratch_blocks");
         this.setTooltip("");
         this.setHelpUrl("");
     }
 };
 
-javascript.javascriptGenerator.forBlock['create_dynamic_menu'] = function (block, generator) {
+javascript.javascriptGenerator.forBlock['create_dynamic_menu'] = function(block, generator) {
     const ID = block.getFieldValue('ID');
     const reporters = block.getFieldValue('Accept') === 'TRUE';
     const func = generator.statementToCode(block, 'Function');
@@ -393,13 +393,13 @@ javascript.javascriptGenerator.forBlock['create_dynamic_menu'] = function (block
 };
 
 Blockly.Blocks["menu_item"] = {
-    init: function (this: Blockly.Block) {
+    init: function(this: Blockly.Block) {
         this.appendValueInput("TEXT")
-        .setCheck("String")
-        .appendField("menu item text:");
+            .setCheck("String")
+            .appendField("menu item text:");
         this.appendValueInput("VALUE")
-        .setCheck("String")
-        .appendField(" value:");
+            .setCheck("String")
+            .appendField(" value:");
         this.setInputsInline(true);
         this.setOutput(true, "Object");
         this.setStyle("scratch_blocks");
@@ -408,7 +408,7 @@ Blockly.Blocks["menu_item"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["menu_item"] = function (
+javascript.javascriptGenerator.forBlock["menu_item"] = function(
     block,
     generator
 ) {
@@ -421,8 +421,8 @@ javascript.javascriptGenerator.forBlock["menu_item"] = function (
 Blockly.Blocks['return_block'] = {
     init: function() {
         this.appendValueInput('value')
-        .setCheck(null)
-        .appendField('return');
+            .setCheck(null)
+            .appendField('return');
         this.setPreviousStatement(true, null);
         this.setStyle("scratch_blocks");
         this.setTooltip('');

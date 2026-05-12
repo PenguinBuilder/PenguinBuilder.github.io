@@ -77,32 +77,32 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
         kind: "text_input";
         ID: string;
         default: string;
-        on_change(this: Block, nv: string): void
+        on_change(this: Block, nv: string): void | boolean
     } | {
         kind: "number_input";
         ID: string;
         default: number;
-        on_change(this: Block, nv: number): void
+        on_change(this: Block, nv: number): void | boolean
     } | {
         kind: "angle_input";
         ID: string;
         default: number;
-        on_change(this: Block, nv: number): void
+        on_change(this: Block, nv: number): void | boolean
     } | {
         kind: "menu_input";
         ID: string;
         value: string[] | Record<string, any>;
-        on_change(this: Block, nv: any): void
+        on_change(this: Block, nv: any): void | boolean
     } | {
         kind: "checkbox_input";
         ID: string;
         default: boolean;
-        on_change(this: Block, nv: boolean): void
+        on_change(this: Block, nv: boolean): void | boolean
     } | {
         kind: "color_input";
         ID: string;
         default: string;
-        on_change(this: Block, nv: string): void
+        on_change(this: Block, nv: string): void | boolean
     };
 
     const Penguin = {
@@ -136,20 +136,23 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                             break;
                         case "number_input":
                             input.appendField(new Blockly.FieldNumber(field.default, null, null, null, (val: number | string) => {
-                                field.on_change.call(b, val as number)
+                                const res = field.on_change.call(b, val as number)
+                                if (res === false) return null
                                 return val;
                             }), field.ID);
                             break;
                         case "angle_input":
                             input.appendField(new FieldAngle(field.default, (val: number | string) => {
-                                field.on_change.call(b, val as number)
+                                const res = field.on_change.call(b, val as number)
+                                if (res === false) return null
                                 return val;
                             }), field.ID);
                             break;
                         case "menu_input":
                             input.appendField(
                                 new Blockly.FieldDropdown(this._getMenuItems(field.value), (val) => {
-                                    field.on_change.call(b, val)
+                                    const res = field.on_change.call(b, val)
+                                    if (res === false) return null
                                     return val;
                                 }),
                                 field.ID,
@@ -158,7 +161,8 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                         case "checkbox_input":
                             input.appendField(
                                 new Blockly.FieldCheckbox(field.default ? "TRUE" : "FALSE", (val) => {
-                                    field.on_change.call(b, val.valueOf() as boolean)
+                                    const res = field.on_change.call(b, val.valueOf() === "TRUE")
+                                    if (res === false) return null
                                     return val;
                                 }),
                                 field.ID,
@@ -166,7 +170,8 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                             break;
                         case "color_input":
                             input.appendField(new FieldColour(field.default, (val) => {
-                                field.on_change.call(b, val);
+                                const res = field.on_change.call(b, val);
+                                if (res === false) return null;
                                 return val;
                             }), field.ID);
                             break;
@@ -344,22 +349,22 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
             Text(value: string, ID?: string): fieldType {
                 return { kind: "text", value, ID } as fieldType;
             },
-            TextInput(ID: string, _default: string = "", on_change: (this: Block, val: string) => void = () => { }): fieldType {
+            TextInput(ID: string, _default: string = "", on_change: (this: Block, val: string) => void | boolean = () => { }): fieldType {
                 return { kind: "text_input", ID, default: _default, on_change } as fieldType;
             },
-            NumberInput(ID: string, _default: number = 0, on_change: (this: Block, val: number) => void = () => { }): fieldType {
+            NumberInput(ID: string, _default: number = 0, on_change: (this: Block, val: number) => void | boolean = () => { }): fieldType {
                 return { kind: "number_input", ID, default: _default, on_change } as fieldType;
             },
-            AngleInput(ID: string, _default: number = 0, on_change: (this: Block, val: number) => void = () => { }): fieldType {
+            AngleInput(ID: string, _default: number = 0, on_change: (this: Block, val: number) => void | boolean = () => { }): fieldType {
                 return { kind: "angle_input", ID, default: _default, on_change } as fieldType;
             },
-            MenuInput(ID: string, items: string[] | Record<string, any>, on_change: (this: Block, val: any) => void = () => { }): fieldType {
+            MenuInput(ID: string, items: string[] | Record<string, any>, on_change: (this: Block, val: any) => void | boolean = () => { }): fieldType {
                 return { kind: "menu_input", ID, value: items, on_change } as fieldType;
             },
-            CheckboxInput(ID: string, _default: boolean = true, on_change: (this: Block, val: boolean) => void = () => { }): fieldType {
+            CheckboxInput(ID: string, _default: boolean = true, on_change: (this: Block, val: boolean) => void | boolean = () => { }): fieldType {
                 return { kind: "checkbox_input", ID, default: _default, on_change } as fieldType;
             },
-            ColorInput(ID: string, _default: string = "#FFFFFF", on_change: (this: Block, val: string) => void = () => { }): fieldType {
+            ColorInput(ID: string, _default: string = "#FFFFFF", on_change: (this: Block, val: string) => void | boolean = () => { }): fieldType {
                 return { kind: "color_input", ID, default: _default, on_change } as fieldType;
             },
         },

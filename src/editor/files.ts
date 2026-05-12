@@ -1,5 +1,5 @@
-import {$} from "jsquery_node";
-import {compressToUTF16, decompressFromUTF16} from "lz-string";
+import { $ } from "jsquery_node";
+import { compressToUTF16, decompressFromUTF16 } from "lz-string";
 
 export interface Save {
     workspace: Record<string, any>
@@ -10,17 +10,17 @@ export interface Save {
     extensions?: Record<string, string>
 }
 
-export default function(serialize: ()=>[Save, string], deserialize: (v:Save)=>any) {
-    function encode(s: Save):string {
-        return compressToUTF16(JSON.stringify(s)); 
+export default function(serialize: () => [Save, string], deserialize: (v: Save) => any) {
+    function encode(s: Save): string {
+        return compressToUTF16(JSON.stringify(s));
     }
-    function decode(s: string):Save {
+    function decode(s: string): Save {
         return JSON.parse(decompressFromUTF16(s));
     }
     async function saveAs() {
         const [s, name] = serialize();
         const fileHandle = await window.showSaveFilePicker({
-            suggestedName: name+'.pb',
+            suggestedName: name + '.pb',
             types: [{
                 description: 'PenguinBuilder Save',
                 accept: { 'application/octet-stream': ['.pb'] }
@@ -32,9 +32,9 @@ export default function(serialize: ()=>[Save, string], deserialize: (v:Save)=>an
         await writable.write(encode(s));
         await writable.close();
     }
-    let filehandle: FileSystemFileHandle|undefined;
+    let filehandle: FileSystemFileHandle | undefined;
     async function save() {
-        if(filehandle === undefined) {
+        if (filehandle === undefined) {
             await saveAs();
             return;
         }
@@ -45,12 +45,12 @@ export default function(serialize: ()=>[Save, string], deserialize: (v:Save)=>an
     $("#save-as")!.click(saveAs);
     $("#save")!.click(save);
     $("html")!.on("keydown", async (e: KeyboardEvent) => {
-        if((e.ctrlKey || e.metaKey) && e.key == "s") {
+        if ((e.ctrlKey || e.metaKey) && e.key == "s") {
             await save();
             e.preventDefault();
         }
     });
-    $("#open")!.click( async () => {
+    $("#open")!.click(async () => {
         const [fileHandle] = await window.showOpenFilePicker({
             multiple: false,
             types: [{

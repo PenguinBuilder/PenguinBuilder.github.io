@@ -4,7 +4,7 @@ import * as En from 'blockly/msg/en';
 import "@/blocks/import.ts";
 import getSVG from "@/save_svg.ts";
 import "@/renderer/zues.ts"
-import {Hats} from "@/themes.ts"
+import { Hats } from "@/themes.ts"
 import styleSelector from '@/style-selector';
 import { $, JSQuery } from 'jsquery_node';
 
@@ -15,13 +15,13 @@ const workspace = Blockly.inject("block-editor", {
     theme: Hats,
 } as Blockly.BlocklyOptions);
 
-const listener:{
+const listener: {
     elt: JSQuery.Element,
     json: Record<string, any>,
     url: string,
 }[] = [];
-let done = () => {}
-export function onDone(fn: ()=>any) {
+let done = () => { }
+export function onDone(fn: () => any) {
     done = fn;
     styleSelector((style) => {
         const scroll = $("#content")!.elt.scrollTop / $("#content")!.elt.scrollHeight;
@@ -31,8 +31,8 @@ export function onDone(fn: ()=>any) {
             workspace.getTheme(),
             workspace.options.rendererOverrides ?? undefined,
         );
-        function call(i:number) {
-            if(i >= listener.length) {
+        function call(i: number) {
+            if (i >= listener.length) {
                 return;
             }
             const v = listener[i]
@@ -44,8 +44,8 @@ export function onDone(fn: ()=>any) {
             v.url = url;
             $("#content")!.elt.scrollTop = scroll * $("#content")!.elt.scrollHeight;
             done();
-            done = () => {};
-            requestAnimationFrame(call.bind(null, i+1))
+            done = () => { };
+            requestAnimationFrame(call.bind(null, i + 1))
         }
         requestAnimationFrame(call.bind(null, 0))
     });
@@ -58,12 +58,12 @@ export function registerElt(elt: JSQuery.Element, json: Record<string, any>) {
         src: url,
     });
     listener.push({
-        elt, json, url 
+        elt, json, url
     })
 }
 
 function getURL(ws: Record<string, any>) {
-    Blockly.serialization.workspaces.load(ws, workspace); 
+    Blockly.serialization.workspaces.load(ws, workspace);
     const svgString = getSVG(workspace);
     const blob = new Blob([svgString], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);

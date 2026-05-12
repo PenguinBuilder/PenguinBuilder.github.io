@@ -3,8 +3,8 @@ import FileHandle, { Save } from "./files.ts";
 
 import * as Terser from "terser";
 
-import {$} from "jsquery_node";
-import {Hats, HatsDark} from "@/themes.ts"
+import { $ } from "jsquery_node";
+import { Hats, HatsDark } from "@/themes.ts"
 import * as Blockly from 'blockly/core';
 import 'blockly/blocks';
 import * as En from 'blockly/msg/en';
@@ -16,13 +16,13 @@ import {
 } from '@blockly/continuous-toolbox';
 import toolbox from './toolbox.json';
 import '@blockly/toolbox-search';
-import {WorkspaceSearch} from '@blockly/plugin-workspace-search';
+import { WorkspaceSearch } from '@blockly/plugin-workspace-search';
 
 import themeSelector from "@/theme-selector.ts";
 import styleSelector from "@/style-selector.ts";
 import * as javascript from "blockly/javascript";
 import "@/blocks/import.ts";
-import {js_beautify} from "js-beautify";
+import { js_beautify } from "js-beautify";
 
 import run from "./extension.ts";
 import ExtensionGallery from "./extension_gallery.ts";
@@ -90,7 +90,7 @@ workspace.registerToolboxCategoryCallback(
     }
 );
 
-function notify(message: string, {variant = 'primary', icon = 'info-circle', duration = 3000, closable=true, header=""}: {
+function notify(message: string, { variant = 'primary', icon = 'info-circle', duration = 3000, closable = true, header = "" }: {
     variant?: "primary" | "success" | "neutral" | "warning" | "danger",
     icon?: string,
     duration?: number,
@@ -100,16 +100,16 @@ function notify(message: string, {variant = 'primary', icon = 'info-circle', dur
     const t = $.create("sl-alert").props({
         variant,
         duration,
-        closable: closable? "": null,
-        countdown:"rtl"
+        closable: closable ? "" : null,
+        countdown: "rtl"
     });
-    t.child($.create("sl-icon").props({name:icon}))
+    t.child($.create("sl-icon").props({ name: icon }))
     t.child([$.create("strong").text(header).css({
         "margin-left": "10px",
     }), $.create("br")])
     t.child($.from(document.createTextNode(message) as any) as any);
     $.body().child(t)
-    setTimeout(()=>(t.elt as any).toast(), 100);
+    setTimeout(() => (t.elt as any).toast(), 100);
 }
 
 FileHandle(() => {
@@ -119,29 +119,29 @@ FileHandle(() => {
         force_unsandboxed: DATA.Force_Unsandboxed,
         extensions: DATA.extensions,
     } as Save;
-    if(DATA.Extension_ID !== "") {
+    if (DATA.Extension_ID !== "") {
         save.extension_id = DATA.Extension_ID;
     }
-    if(DATA.Extension_Name !== "") {
+    if (DATA.Extension_Name !== "") {
         save.extension_name = DATA.Extension_Name;
     }
     return [save, DATA.Extension_ID_DEFAULT];
-}, (s)=>{
+}, (s) => {
     DATA.Force_Unsandboxed = s.force_unsandboxed;
     DATA.Extension_Color = s.extension_color;
     DATA.Extension_ID = s.extension_id || "";
     DATA.Extension_Name = s.extension_name || "";
-    for(const k of Object.keys(DATA.extensions)) {
-        const i = toolbox.contents.findIndex(v=>(v as any).id == k);
+    for (const k of Object.keys(DATA.extensions)) {
+        const i = toolbox.contents.findIndex(v => (v as any).id == k);
         toolbox.contents.splice(i);
     }
     workspace.updateToolbox(toolbox);
     workspace.refreshToolboxSelection();
     DATA.extensions = {};
     DATA.outputs = {};
-    Blockly.serialization.workspaces.load(s.workspace, workspace); 
+    Blockly.serialization.workspaces.load(s.workspace, workspace);
     const ext = s.extensions ?? {};
-    for(const [k, v] of Object.entries(ext)) {
+    for (const [k, v] of Object.entries(ext)) {
         DATA.extensions[k] = v;
         run(toolbox, workspace, rerenderToolbox, v, k);
     }
@@ -205,33 +205,33 @@ function getCode(minify = false): string {
             }
         }
         \n` +
-            javascript.javascriptGenerator.workspaceToCode(workspace) +
-            `\n
+        javascript.javascriptGenerator.workspaceToCode(workspace) +
+        `\n
         ${DATA.end}
         ${DATA.very_end}
         Scratch.extensions.register(new Extension());
     })(Scratch);
     `;
-    if(minify) {
+    if (minify) {
         return Terser.minify_sync(code).code!
     } else {
         return js_beautify(code, {
             indent_size: 4,
             max_preserve_newlines: 2,
-        }); 
+        });
     }
 }
 
 $("#test")!.click(() => {
     const code = getCode(true);
-    if(exists()) {
+    if (exists()) {
         const url = encodeURI("data:application/javascript;base64," + btoa(code));
         window.open("https://studio.penguinmod.com/editor.html?extension=" + url)
     }
 });
 
-function exists(filter=true) {
-    const top_blocks = filter?workspace.getTopBlocks().filter(b=>b.isEnabled()): workspace.getTopBlocks();
+function exists(filter = true) {
+    const top_blocks = filter ? workspace.getTopBlocks().filter(b => b.isEnabled()) : workspace.getTopBlocks();
     if (top_blocks.length === 0) {
         notify("You can't export when the workspace is empty", {
             header: "Failed Export",
@@ -240,7 +240,7 @@ function exists(filter=true) {
         });
         return false;
     }
-    if($("#ExtensionID")!.is(":invalid")) {
+    if ($("#ExtensionID")!.is(":invalid")) {
         notify("The ExtensionID is invalid", {
             header: "Failed Export",
             variant: "danger",
@@ -252,9 +252,9 @@ function exists(filter=true) {
 }
 
 $("#export")!.click(async () => {
-    if(!exists()) return;
+    if (!exists()) return;
     const fileHandle = await window.showSaveFilePicker({
-        suggestedName: (DATA.Extension_ID_DEFAULT)+'.js',
+        suggestedName: (DATA.Extension_ID_DEFAULT) + '.js',
         types: [{
             description: 'PenguinBuilder Save',
             accept: { 'application/javascript': ['.js'] }
@@ -277,12 +277,12 @@ workspace.registerButtonCallback("Load_Extension", () => {
     showDialog();
 });
 
-workspace.configureContextMenu = function (menuOptions) {
+workspace.configureContextMenu = function(menuOptions) {
     const item: ContextMenuOption = {
         text: 'Export Workspace to SVG',
         enabled: true,
-        callback: async function () {
-            if(!exists(false)) return;
+        callback: async function() {
+            if (!exists(false)) return;
             const fileHandle = await window.showSaveFilePicker({
                 suggestedName: "workspace.svg",
                 types: [{
@@ -303,8 +303,8 @@ workspace.configureContextMenu = function (menuOptions) {
         const item: ContextMenuOption = {
             text: 'Export Workspace to JSON',
             enabled: true,
-            callback: async function () {
-                if(!exists(false)) return;
+            callback: async function() {
+                if (!exists(false)) return;
                 const fileHandle = await window.showSaveFilePicker({
                     suggestedName: "workspace.json",
                     types: [{
@@ -324,7 +324,7 @@ workspace.configureContextMenu = function (menuOptions) {
 }
 
 $("#view")!.click(() => {
-    if(!exists()) return;
+    if (!exists()) return;
     const str = getCode();
     $("#copy")!.value(str.replaceAll('"', "&quot;"))
     $("#code-elt")!.html(hljs.highlight(str, {

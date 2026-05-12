@@ -4,8 +4,8 @@ import * as Blockly from 'blockly/core';
 Blockly.Blocks['controls_wait'] = {
     init: function() {
         this.appendValueInput("millis")
-        .setCheck("Number")
-        .appendField("wait");
+            .setCheck("Number")
+            .appendField("wait");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle("loop_blocks");
@@ -25,8 +25,8 @@ javascript.javascriptGenerator.forBlock['controls_wait'] = function(block, gener
 Blockly.Blocks['controls_try'] = {
     init: function() {
         this.appendStatementInput("stmt")
-        .setCheck(null)
-        .appendField("try");
+            .setCheck(null)
+            .appendField("try");
         this.setInputsInline(false);
         this.setOutput(true, "Boolean");
         this.setStyle("loop_blocks");
@@ -52,8 +52,8 @@ javascript.javascriptGenerator.forBlock['controls_try'] = function(block, genera
 Blockly.Blocks['controls_wait_until'] = {
     init: function() {
         this.appendValueInput("bool")
-        .setCheck("Boolean")
-        .appendField("wait until");
+            .setCheck("Boolean")
+            .appendField("wait until");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setStyle("loop_blocks")

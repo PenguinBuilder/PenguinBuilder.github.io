@@ -7,13 +7,14 @@ $bg-light: white;
 #top-bar {
   display: flex;
   position: absolute;
-  align-items: center; 
+  align-items: center;
   top: 0;
   left: 0;
   height: $top-bar-height;
   width: 100vw;
-  > a,
-  > sl-dropdown{
+
+  >a,
+  >sl-dropdown {
     margin-top: 5px;
   }
 }
@@ -22,7 +23,8 @@ $bg-light: white;
   margin-left: auto;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background: $base;
@@ -63,8 +65,13 @@ sl-icon {
   color: white;
 }
 
-[data-theme="dark"] .only-light { display: none; }
-[data-theme="light"] .only-dark { display: none; }
+[data-theme="dark"] .only-light {
+  display: none;
+}
+
+[data-theme="light"] .only-dark {
+  display: none;
+}
 
 sl-menu-item::part(base) {
   background: $base;
@@ -75,7 +82,7 @@ sl-menu-item::part(base):hover,
 sl-menu-item::part(base):focus-visible,
 sl-menu-item::part(base):focus-within,
 sl-menu-item::part(base):active,
-sl-menu-item::part(base):target{
+sl-menu-item::part(base):target {
   background: $light;
 }
 
@@ -106,4 +113,3 @@ textarea {
 #top-bar sl-divider {
   --color: white;
 }
-

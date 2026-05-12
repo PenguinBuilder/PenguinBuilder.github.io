@@ -3,7 +3,7 @@ import * as javascript from "blockly/javascript";
 import DATA from "@/DATA.ts";
 
 Blockly.Blocks['create_label'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("create label with text")
             .appendField(new Blockly.FieldTextInput("text"), "text");
@@ -15,7 +15,7 @@ Blockly.Blocks['create_label'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['create_label'] = function (block) {
+javascript.javascriptGenerator.forBlock['create_label'] = function(block) {
     const text = block.getFieldValue('text');
     const id = "label_" + crypto.randomUUID();
     DATA.end += `
@@ -30,7 +30,7 @@ javascript.javascriptGenerator.forBlock['create_label'] = function (block) {
 };
 
 Blockly.Blocks['create_button'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("create button");
         this.appendDummyInput()
@@ -47,7 +47,7 @@ Blockly.Blocks['create_button'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['create_button'] = function (block, generator) {
+javascript.javascriptGenerator.forBlock['create_button'] = function(block, generator) {
     const text = block.getFieldValue('text');
     const on_click = generator.statementToCode(block, 'on_click');
     const id = "button_" + crypto.randomUUID();
@@ -66,7 +66,7 @@ javascript.javascriptGenerator.forBlock['create_button'] = function (block, gene
 };
 
 Blockly.Blocks['order_category'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("Order Category");
         this.appendStatementInput("types")
@@ -77,7 +77,7 @@ Blockly.Blocks['order_category'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['order_category'] = function (block, generator) {
+javascript.javascriptGenerator.forBlock['order_category'] = function(block, generator) {
     const types = generator.statementToCode(block, 'types');
     DATA.very_end += `
     (() => {
@@ -103,7 +103,7 @@ javascript.javascriptGenerator.forBlock['order_category'] = function (block, gen
 };
 
 Blockly.Blocks['use_block'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("use block id:")
             .appendField(new Blockly.FieldTextInput("id"), "id");
@@ -115,14 +115,14 @@ Blockly.Blocks['use_block'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['use_block'] = function (block) {
+javascript.javascriptGenerator.forBlock['use_block'] = function(block) {
     const id = block.getFieldValue('id');
     const code = `"${DATA.Extension_ID_DEFAULT}_Block_${id}",`;
     return code;
 };
 
 Blockly.Blocks['use_hat'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("use hat id:")
             .appendField(new Blockly.FieldTextInput("id"), "id");
@@ -134,7 +134,7 @@ Blockly.Blocks['use_hat'] = {
     }
 };
 
-javascript.javascriptGenerator.forBlock['use_hat'] = function (block) {
+javascript.javascriptGenerator.forBlock['use_hat'] = function(block) {
     const id = block.getFieldValue('id');
     const code = `"${DATA.Extension_ID_DEFAULT}_Hat_${id}",`;
     return code;

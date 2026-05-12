@@ -1,5 +1,5 @@
 import * as Blockly from "blockly/core";
-import {$} from "jsquery_node"
+import { $ } from "jsquery_node"
 
 //TASK(20260212-185722-050-n6-525): fix disabled block rendering
 
@@ -20,12 +20,12 @@ function inlineImportantStyles(source: Element, target: Element, children: HTMLE
     let styleString = "";
     const b = source.matches(".blocklyHighlightedConnectionPath");
     for (const prop of importantProps) {
-        if(prop === "stroke" && b) continue;
+        if (prop === "stroke" && b) continue;
         const value = computed.getPropertyValue(prop);
         if (value) {
-            if(prop === "fill") {
-                if(value.startsWith("url(\"#")) {
-                    const [,id] = value.match(/url\("(.*)"\)/)!;
+            if (prop === "fill") {
+                if (value.startsWith("url(\"#")) {
+                    const [, id] = value.match(/url\("(.*)"\)/)!;
                     children.push($(id)!.elt)
                 }
             }
@@ -45,7 +45,7 @@ function inlineImportantStyles(source: Element, target: Element, children: HTMLE
     }
 }
 
-export default function (workspace: Blockly.WorkspaceSvg) {
+export default function(workspace: Blockly.WorkspaceSvg) {
     workspace.getAllBlocks(false).forEach(b => b.render());
 
     const canvas = workspace.getCanvas();
@@ -58,9 +58,9 @@ export default function (workspace: Blockly.WorkspaceSvg) {
     const bbox = canvas.getBBox();
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 
-        svg.setAttribute("width", bbox.width.toString());
+    svg.setAttribute("width", bbox.width.toString());
     svg.setAttribute("height", bbox.height.toString());
     svg.setAttribute("viewBox", `0 0 ${bbox.width} ${bbox.height}`);
 

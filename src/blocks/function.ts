@@ -2,7 +2,7 @@ import * as Blockly from "blockly/core";
 import * as javascript from "blockly/javascript";
 
 Blockly.Blocks["inline_function_a"] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput().appendField("inline function");
         this.appendStatementInput("statement").setCheck(null);
         this.setStyle("procedure_blocks")
@@ -11,7 +11,7 @@ Blockly.Blocks["inline_function_a"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["inline_function_a"] = function (
+javascript.javascriptGenerator.forBlock["inline_function_a"] = function(
     block,
     generator
 ) {
@@ -23,7 +23,7 @@ javascript.javascriptGenerator.forBlock["inline_function_a"] = function (
 };
 
 Blockly.Blocks["inline_function_b"] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput().appendField("inline function");
         this.appendStatementInput("statement").setCheck(null);
         this.setPreviousStatement(true, null);
@@ -34,7 +34,7 @@ Blockly.Blocks["inline_function_b"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["inline_function_b"] = function (
+javascript.javascriptGenerator.forBlock["inline_function_b"] = function(
     block,
     generator
 ) {
@@ -46,7 +46,7 @@ javascript.javascriptGenerator.forBlock["inline_function_b"] = function (
 };
 
 Blockly.Blocks["inline_function_c"] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput().appendField("inline function");
         this.appendStatementInput("statement").setCheck(null);
         this.setOutput(true, null);
@@ -56,7 +56,7 @@ Blockly.Blocks["inline_function_c"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["inline_function_c"] = function (
+javascript.javascriptGenerator.forBlock["inline_function_c"] = function(
     block,
     generator
 ) {
@@ -70,8 +70,8 @@ javascript.javascriptGenerator.forBlock["inline_function_c"] = function (
 Blockly.Blocks['return_block_function'] = {
     init: function() {
         this.appendValueInput('value')
-        .setCheck(null)
-        .appendField('return');
+            .setCheck(null)
+            .appendField('return');
         this.setPreviousStatement(true, null);
         this.setStyle("procedure_blocks")
         this.setTooltip('');
@@ -137,14 +137,14 @@ function procedures_defreturn(
         'async function ' +
         funcName +
         '(' +
-          args.join(', ') +
-          ') {\n' +
-              xfix1 +
-              loopTrap +
-              branch +
-              xfix2 +
-              returnValue +
-              '}';
+        args.join(', ') +
+        ') {\n' +
+        xfix1 +
+        loopTrap +
+        branch +
+        xfix2 +
+        returnValue +
+        '}';
     code = generator.scrub_(block, code);
     (generator as any).definitions_['%' + funcName] = code;
     return null;

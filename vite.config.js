@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
 
-import {plugin as Md} from "vite-plugin-markdown";
+import { plugin as Md } from "vite-plugin-markdown";
 import wrapper from "markdown-it-header-sections";
 import MarkdownIt from 'markdown-it';
 import hljs from "highlight.js";
@@ -11,7 +11,7 @@ import { full as emoji } from 'markdown-it-emoji'
 import icon from "./icon.js";
 
 const md = (new MarkdownIt({
-    highlight: function (str, lang) {
+    highlight: function(str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
                 return '<pre class="hljs"><code>' +
@@ -19,7 +19,7 @@ const md = (new MarkdownIt({
                     `</code><sl-copy-button value="${str.replaceAll('"', "&quot;")}" class="code-copy-button"></sl-copy-button>`
                     +
                     '</pre>';
-            } catch (__) {}
+            } catch (__) { }
         }
 
         return '';
@@ -29,13 +29,13 @@ const md = (new MarkdownIt({
 md.inline.ruler.after("emphasis", "shoelace-icon", icon.tokenize);
 
 md.renderer.rules.sl_icon = (tokens, idx) => {
-  const iconName = tokens[idx].meta.name;
-  return `<sl-icon name="${iconName}"></sl-icon>`;
+    const iconName = tokens[idx].meta.name;
+    return `<sl-icon name="${iconName}"></sl-icon>`;
 };
 
 export default defineConfig({
     root: 'src',
-    base: './', 
+    base: './',
     plugins: [
         handlebars({
             partialDirectory: resolve(__dirname, 'src/partials'),
@@ -43,7 +43,7 @@ export default defineConfig({
             context: vars
         }),
         Md({
-            mode: ["html"] ,
+            mode: ["html"],
             markdownIt: md,
         })
     ],

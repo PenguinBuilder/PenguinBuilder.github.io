@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {{> include-head }}
-        <link rel="icon" type="image/png" href="../favicon.ico" />
-        <title>PenguinBuilder-editor</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
-        <link rel="stylesheet" type="text/css" href="style.scss" />
-        <meta name="description" content="PenguinBuilder – a tool for building scratch extensions.">
-    </head>
-    <body>
-        <main>
-            <sl-dialog label="Extension Gallery" id="extensionGallery">
 
-            </sl-dialog>
-            <sl-dialog label="Extension Code" id="code">
-                <pre class="hljs"><code id="code-elt"></code>
+<head>
+    {{> include-head }}
+    <link rel="icon" type="image/png" href="../favicon.ico" />
+    <title>PenguinBuilder-editor</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+    <link rel="stylesheet" type="text/css" href="style.scss" />
+    <meta name="description" content="PenguinBuilder – a tool for building scratch extensions.">
+</head>
+
+<body>
+    <main>
+        <sl-dialog label="Extension Gallery" id="extensionGallery">
+
+        </sl-dialog>
+        <sl-dialog label="Extension Code" id="code">
+            <pre class="hljs"><code id="code-elt"></code>
                 <sl-copy-button id="copy" class="code-copy-button"></sl-copy-button>
-                </pre>
-            </sl-dialog>
-            {{#> top-bar }}
-            <sl-tooltip content="docs">
-                <a href="../Docs/" target="_blank">
-                    <sl-button>
-                        <sl-icon name="journal-code"></sl-icon>
-                    </sl-button>
-                </a> 
+            </pre>
+        </sl-dialog>
+        {{#> top-bar }}
+        <sl-tooltip content="docs">
+            <a href="../Docs/" target="_blank">
+                <sl-button>
+                    <sl-icon name="journal-code"></sl-icon>
+                </sl-button>
+            </a>
+        </sl-tooltip>
+        <sl-dropdown>
+            <sl-tooltip content="files" slot="trigger" style="display:inline-block;">
+                <sl-button variant="text">
+                    <sl-icon name="file-earmark"></sl-icon>
+                </sl-button>
             </sl-tooltip>
-            <sl-dropdown>
-                <sl-tooltip content="files" slot="trigger" style="display:inline-block;">
-                    <sl-button variant="text">
-                        <sl-icon name="file-earmark"></sl-icon>
-                    </sl-button>
-                </sl-tooltip>
-                <sl-menu role="menu">
-                    <sl-menu-item>
-                        Save
-                        <sl-menu slot="submenu">
-                            <sl-menu-item id="save">Save</sl-menu-item>
-                            <sl-menu-item id="save-as">Save As</sl-menu-item>
-                        </sl-menu>
-                    </sl-menu-item>
-                    <sl-menu-item id="open">Open</sl-menu-item>
-                    <sl-menu-item id="export">Export</sl-menu-item>
-                    <sl-menu-item id="test">Test</sl-menu-item>
-                    <sl-menu-item id="view">View Code</sl-menu-item>
-                </sl-menu>
-            </sl-dropdown>
-            <input id="ExtensionName" placeholder="ExtensionName" maxlength="20"/>
-            &nbsp;
-            <input id="ExtensionID" placeholder="ExtensionID" maxlength="20" pattern="[a-z0-9]*"/>
-            &nbsp;
-            <sl-tooltip content="extension color">
-                <sl-color-picker id="extcolor" size="small" label="Select a color" value="#0088ff"></sl-color-picker>
-            </sl-tooltip>
-            &nbsp;
-            <sl-checkbox id="unsandboxed">Force Unsandboxed</sl-checkbox>
-            {{/top-bar}}
-            <div id="block-editor"></div>
-        </main>
-        <script src="main.ts" type="module"></script>
-    </body>
+            <sl-menu role="menu">
+                <sl-menu-item>
+                    Save
+                    <sl-menu slot="submenu">
+                        <sl-menu-item id="save">Save</sl-menu-item>
+                        <sl-menu-item id="save-as">Save As</sl-menu-item>
+                    </sl-menu>
+                </sl-menu-item>
+                <sl-menu-item id="open">Open</sl-menu-item>
+                <sl-menu-item id="export">Export</sl-menu-item>
+                <sl-menu-item id="test">Test</sl-menu-item>
+                <sl-menu-item id="view">View Code</sl-menu-item>
+            </sl-menu>
+        </sl-dropdown>
+        <input id="ExtensionName" placeholder="ExtensionName" maxlength="20" />
+        &nbsp;
+        <input id="ExtensionID" placeholder="ExtensionID" maxlength="20" pattern="[a-z0-9]*" />
+        &nbsp;
+        <sl-tooltip content="extension color">
+            <sl-color-picker id="extcolor" size="small" label="Select a color" value="#0088ff"></sl-color-picker>
+        </sl-tooltip>
+        &nbsp;
+        <sl-checkbox id="unsandboxed">Force Unsandboxed</sl-checkbox>
+        {{/top-bar}}
+        <div id="block-editor"></div>
+    </main>
+    <script src="main.ts" type="module"></script>
+</body>
+
 </html>

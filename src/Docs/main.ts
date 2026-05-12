@@ -1,9 +1,9 @@
 import themeSelector from "@/theme-selector.ts";
 themeSelector();
 
-import {$} from "jsquery_node";
+import { $ } from "jsquery_node";
 
-import {html} from "./docs.md"
+import { html } from "./docs.md"
 
 const Render = await import("./render.ts");
 
@@ -19,7 +19,7 @@ Render.onDone(() => {
 });
 
 
-const url: Record<string, string> ={} 
+const url: Record<string, string> = {}
 await Promise.all(Object.entries(import.meta.glob("./images/*", {
     query: "url"
 })).map(async ([k, v]) => url[k] = ((await v() as any).default)));
@@ -34,7 +34,7 @@ docs.html(html);
 docs.all("img").forEach(async v => {
     const str = v.getProp("src")!;
     if (str.startsWith("./images/")) {
-        if(str.endsWith(".json")) {
+        if (str.endsWith(".json")) {
             Render.registerElt(v, await (await fetch(url[str])).json());
             return;
         }
@@ -66,7 +66,7 @@ function createCategory(color: string, text: string, id: string) {
         justifyContent: "center",
         gap: "5px",
         padding: "5px",
-    }).click(()=>{
+    }).click(() => {
         scrollId(id);
     }).props({
         for: id,
@@ -110,7 +110,7 @@ docs.on("scrollend", () => {
 
 let lastScroll = 0;
 docs.on("scroll", () => {
-    if(isScrolling) return;
+    if (isScrolling) return;
     const scrollTop = docs.elt.scrollTop;
     const children = docs.children;
 
@@ -121,7 +121,7 @@ docs.on("scroll", () => {
         const topVisible = rect.top >= 0 && rect.top < window.innerHeight;
         const bottomVisible = rect.bottom > 0 && rect.bottom <= window.innerHeight;
 
-        if (down ? topVisible: bottomVisible) {
+        if (down ? topVisible : bottomVisible) {
             toc.all("[selected]").props({
                 selected: null,
             });

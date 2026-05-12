@@ -1,4 +1,4 @@
-import {$} from "jsquery_node"
+import { $ } from "jsquery_node"
 
 function getBranchFromUrl(): string {
     const path = window.location.pathname;
@@ -8,7 +8,7 @@ function getBranchFromUrl(): string {
         return 'dev';
     }
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    if(isLocalhost) {
+    if (isLocalhost) {
         return "localhost"
     }
 
@@ -22,7 +22,7 @@ function toggleBranchUrl(): string {
 
     if (currentBranch === 'main') {
         pathSegments.unshift('dev');
-    } else if(currentBranch === "dev") {
+    } else if (currentBranch === "dev") {
         pathSegments.shift();
     } else {
         return window.location.href;
@@ -33,16 +33,16 @@ function toggleBranchUrl(): string {
 }
 
 const branch = getBranchFromUrl();
-$("#change-branch-tooltip")!.props({content: branch})
-$("#change-branch")!.props({href: toggleBranchUrl()});
+$("#change-branch-tooltip")!.props({ content: branch })
+$("#change-branch")!.props({ href: toggleBranchUrl() });
 
 $("#version")!.click(() => {
     ($("#whats-new")!.elt as any).show();
 })
 
-if($("#version")!.text() !== localStorage.getItem("shown-" + branch)) {
+if ($("#version")!.text() !== localStorage.getItem("shown-" + branch)) {
     (async () => {
-        await customElements.whenDefined('sl-button'); 
+        await customElements.whenDefined('sl-button');
         ($("#whats-new")!.elt as any).show();
     })()
     localStorage.setItem("shown-" + branch, $("#version")!.text());

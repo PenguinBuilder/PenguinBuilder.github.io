@@ -22,7 +22,7 @@ javascript.javascriptGenerator.forBlock["browser_console"] = function(block, gen
 }
 
 Blockly.Blocks["browser_alert"] = {
-    init: function () {
+    init: function() {
         this.appendValueInput("alert").setCheck("String").appendField("alert");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -32,14 +32,14 @@ Blockly.Blocks["browser_alert"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["browser_alert"] = function (block, generator) {
+javascript.javascriptGenerator.forBlock["browser_alert"] = function(block, generator) {
     const value = generator.valueToCode(block, "alert", javascript.Order.ATOMIC);
     const code = `alert(${value});\n`;
     return code;
 };
 
 Blockly.Blocks["browser_confirm"] = {
-    init: function () {
+    init: function() {
         this.appendValueInput("val").setCheck("String").appendField("confirm");
         this.setOutput(true, "Boolean");
         this.setStyle("browser_blocks")
@@ -48,7 +48,7 @@ Blockly.Blocks["browser_confirm"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["browser_confirm"] = function (
+javascript.javascriptGenerator.forBlock["browser_confirm"] = function(
     block,
     generator
 ) {
@@ -58,7 +58,7 @@ javascript.javascriptGenerator.forBlock["browser_confirm"] = function (
 };
 
 Blockly.Blocks["browser_prompt"] = {
-    init: function () {
+    init: function() {
         this.appendValueInput("val").setCheck("String").appendField("prompt");
         this.setOutput(true, "String");
         this.setStyle("browser_blocks")
@@ -67,7 +67,7 @@ Blockly.Blocks["browser_prompt"] = {
     },
 };
 
-javascript.javascriptGenerator.forBlock["browser_prompt"] = function (
+javascript.javascriptGenerator.forBlock["browser_prompt"] = function(
     block,
     generator
 ) {

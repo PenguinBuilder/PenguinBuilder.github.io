@@ -2,7 +2,7 @@ import * as Blockly from "blockly/core"
 import * as javascript from "blockly/javascript";
 
 Blockly.Blocks["json_new"] = {
-    init: function(this: Blockly.Block & {updateShape_: ()=>any, itemCount_:number}) {
+    init: function(this: Blockly.Block & { updateShape_: () => any, itemCount_: number }) {
         this.itemCount_ = 3;
         this.setOutput(true, 'Object');
         this.setTooltip('');
@@ -18,11 +18,11 @@ Blockly.Blocks["json_new"] = {
             'itemCount': this.itemCount_,
         };
     },
-    loadExtraState: function(state: {itemCount: number}) {
+    loadExtraState: function(state: { itemCount: number }) {
         this.itemCount_ = state['itemCount'] ?? 3;
         this.updateShape_();
     },
-    updateShape_: function(this: Blockly.Block & {itemCount_: number}) {
+    updateShape_: function(this: Blockly.Block & { itemCount_: number }) {
         let i = 0;
         while (this.getInput(`V${i}`)) {
             this.removeInput(`V${i}`);
@@ -31,9 +31,9 @@ Blockly.Blocks["json_new"] = {
             i++;
         }
         this.removeInput("Cont", true)
-        if(this.itemCount_ === 0) {
+        if (this.itemCount_ === 0) {
             this.appendDummyInput('Cont')
-            .appendField(new Blockly.FieldLabelSerializable('Empty JSON Object'), 'Block');
+                .appendField(new Blockly.FieldLabelSerializable('Empty JSON Object'), 'Block');
         }
 
         for (let i = 0; i < this.itemCount_; i++) {
@@ -41,8 +41,8 @@ Blockly.Blocks["json_new"] = {
             this.appendValueInput(`V${i}`).appendField(":");
             this.appendEndRowInput(`A${i}`);
         }
-        if(this.itemCount_ > 0) {
-            this.getInput("K0")?.appendField("JSON from") 
+        if (this.itemCount_ > 0) {
+            this.getInput("K0")?.appendField("JSON from")
         }
     },
     decompose: function(workspace: Blockly.WorkspaceSvg) {
@@ -66,7 +66,7 @@ Blockly.Blocks["json_new"] = {
 
         while (itemBlock) {
             connectionsV.push((itemBlock as any).valueConnection_ ?? null);
-            connectionsK.push((itemBlock as any).keyConnection_??null);
+            connectionsK.push((itemBlock as any).keyConnection_ ?? null);
             itemBlock = itemBlock.nextConnection?.targetBlock() ?? null;
         }
 
@@ -77,13 +77,13 @@ Blockly.Blocks["json_new"] = {
         for (let i = 0; i < connectionsV.length; i++) {
             if (connectionsV[i]) {
                 this.getInput(`V${i}`)!
-                .connection!
-                .connect(connectionsV[i]!);
+                    .connection!
+                    .connect(connectionsV[i]!);
             }
             if (connectionsK[i]) {
                 this.getInput(`K${i}`)!
-                .connection!
-                .connect(connectionsK[i]!);
+                    .connection!
+                    .connect(connectionsK[i]!);
             }
         }
     },
@@ -107,7 +107,7 @@ Blockly.Blocks["json_new"] = {
 Blockly.Blocks["json_new_container"] = {
     init: function(this: Blockly.Block) {
         this.appendDummyInput('NAME')
-        .appendField(new Blockly.FieldLabelSerializable('JSON'), 'Block');
+            .appendField(new Blockly.FieldLabelSerializable('JSON'), 'Block');
         this.appendStatementInput('STACK');
         this.setTooltip('');
         this.setHelpUrl('');
@@ -116,7 +116,7 @@ Blockly.Blocks["json_new_container"] = {
     }
 };
 
-Blockly.Blocks["json_kv_mutator"] =  {
+Blockly.Blocks["json_kv_mutator"] = {
     init: function(this: Blockly.Block) {
         this.appendDummyInput('NAME').appendField("Key")
         this.setPreviousStatement(true, null);
@@ -127,25 +127,25 @@ Blockly.Blocks["json_kv_mutator"] =  {
     }
 }
 
-javascript.javascriptGenerator.forBlock['json_new'] = function (block: Blockly.Block, generator) {
+javascript.javascriptGenerator.forBlock['json_new'] = function(block: Blockly.Block, generator) {
     let code = "({";
-                 for(let i = 0; i < (block as any).itemCount_; i++) {
-                     const K = generator.valueToCode(block, `K${i}`, javascript.Order.ATOMIC);
-                     const V = generator.valueToCode(block, `V${i}`, javascript.Order.ATOMIC);
-                     code+= `${K}: ${V},`;
-                 }
-                 code += "})"
-                 return [code, javascript.Order.ATOMIC]
+    for (let i = 0; i < (block as any).itemCount_; i++) {
+        const K = generator.valueToCode(block, `K${i}`, javascript.Order.ATOMIC);
+        const V = generator.valueToCode(block, `V${i}`, javascript.Order.ATOMIC);
+        code += `${K}: ${V},`;
+    }
+    code += "})"
+    return [code, javascript.Order.ATOMIC]
 }
 
 Blockly.Blocks["json_get"] = {
     init: function() {
         this.appendValueInput('JSON')
-        .setCheck('Object')
-        .appendField('In JSON');
+            .setCheck('Object')
+            .appendField('In JSON');
         this.appendValueInput('KEY')
-        .setCheck('String')
-        .appendField('get');
+            .setCheck('String')
+            .appendField('get');
         this.setInputsInline(true)
         this.setOutput(true, null);
         this.setTooltip('');
@@ -164,13 +164,13 @@ javascript.javascriptGenerator.forBlock["json_get"] = function(block, generator)
 Blockly.Blocks["json_set"] = {
     init: function(this: Blockly.Block) {
         this.appendValueInput('JSON')
-        .setCheck('Object')
-        .appendField('In JSON');
+            .setCheck('Object')
+            .appendField('In JSON');
         this.appendValueInput('KEY')
-        .setCheck('String')
-        .appendField('set');
+            .setCheck('String')
+            .appendField('set');
         this.appendValueInput('VALUE')
-        .appendField('to');
+            .appendField('to');
         this.setInputsInline(true)
         this.setPreviousStatement(true)
         this.setNextStatement(true)
@@ -193,8 +193,8 @@ Blockly.Blocks["json_encode"] = {
         this.appendDummyInput().appendField("JSON").appendField(new Blockly.FieldDropdown([
             ["parse", "parse"],
             ["stringify", "stringify"],
-        ], (n)=> {
-            if(n === "parse") {
+        ], (n) => {
+            if (n === "parse") {
                 this.setOutput(true, "Object")
                 this.getInput("JSON")?.setCheck("String")
             } else {

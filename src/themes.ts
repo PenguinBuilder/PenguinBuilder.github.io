@@ -9,7 +9,7 @@ export const Hats = Blockly.Theme.defineTheme('hats', {
             colour: '#d9534f',
         },
         extension_category: {
-            colour: '#6c757d', 
+            colour: '#6c757d',
         },
         advanced_category: {
             colour: '#ff00ff',

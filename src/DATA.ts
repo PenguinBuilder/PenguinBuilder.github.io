@@ -1,4 +1,4 @@
-import {$} from "jsquery_node";
+import { $ } from "jsquery_node";
 
 export default new (class {
     end = "";
@@ -7,7 +7,7 @@ export default new (class {
     extensions: Record<string, string> = {};
     outputs: Record<string, Record<string, number>> = {};
     get Extension_ID_DEFAULT() {
-        return this.Extension_ID||"extensionid"
+        return this.Extension_ID || "extensionid"
     }
     get Extension_ID() {
         return $("#ExtensionID")!.value();
@@ -16,7 +16,7 @@ export default new (class {
         $("#ExtensionID")!.value(v);
     }
     get Extension_Name_DEFAULT() {
-        return this.Extension_Name||"Extension Name"
+        return this.Extension_Name || "Extension Name"
     }
     get Extension_Name() {
         return $("#ExtensionName")!.value();

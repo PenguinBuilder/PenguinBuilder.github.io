@@ -18,8 +18,7 @@
   overflow: auto;
 }
 
-[data-theme="dark"]
-#box {
+[data-theme="dark"] #box {
   background: $bg-dark;
 }
 
@@ -33,7 +32,7 @@ pre.hljs {
 }
 
 .code-copy-button {
-  position:absolute;
+  position: absolute;
   top: 15px;
   right: 0;
   white-space: normal;
