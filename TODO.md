@@ -4,3 +4,4 @@
 - [ ] add mutator support to extension API: [TASK(20260214-222118-208-n6-305)](./.tasks/20260214-222118-208-n6-305.md)  
 - [X] add more output shapes : [TASK(20260215-185953-428-n6-088)](./.tasks/20260215-185953-428-n6-088.md)  
 - [X] add file preview: [TASK(20260215-190014-189-n6-284)](./.tasks/20260215-190014-189-n6-284.md)  
+- [ ] fix bugs in the renderer: [TASK(20260512-122420-281-n6-749)](./.tasks/20260512-122420-281-n6-749.md)  

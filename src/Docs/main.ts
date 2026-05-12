@@ -7,16 +7,6 @@ import { html } from "./docs.md"
 
 const Render = await import("./render.ts");
 
-Render.onDone(() => {
-    setTimeout(() => {
-        const hash = location.hash.slice(1);
-        if (hash) {
-            scrollId(hash);
-        } else if (toc.children.length > 0) {
-            scrollId(toc.children[0].getProp("for")!)
-        }
-    }, 500);
-});
 
 
 const url: Record<string, string> = {}
@@ -31,7 +21,7 @@ const docs = $("#content")!;
 docs.html(html);
 
 
-docs.all("img").forEach(async v => {
+Promise.all(docs.all("img").map(async v => {
     const str = v.getProp("src")!;
     if (str.startsWith("./images/")) {
         if (str.endsWith(".json")) {
@@ -42,7 +32,16 @@ docs.all("img").forEach(async v => {
             src: url[str],
         })
     }
-})
+})).then(() => {
+    Render.onDone(() => {
+        const hash = location.hash.slice(1);
+        if (hash) {
+            scrollId(hash);
+        } else if (toc.children.length > 0) {
+            scrollId(toc.children[0].getProp("for")!)
+        }
+    })
+});
 
 const toc = $("#toc")!;
 const headers = $.all('#content>section');
@@ -90,7 +89,7 @@ headers.forEach(h => {
 
 let isScrolling = false;
 function scrollId(id: string) {
-    history.pushState(null, "", "#" + id);
+    history.replaceState(null, "", "#" + id);
     const target = $("#" + id);
     if (target) {
         toc.all("[selected]").props({

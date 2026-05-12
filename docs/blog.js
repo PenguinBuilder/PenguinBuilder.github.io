@@ -1,4 +1,4 @@
-import{t as l}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const r=`<section>
+import{t as l}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const h=`<section>
 <h1>Version 4.2.0</h1>
 <ul>
 <li>added the ability to change the types of the block fields, and their output to the extension api</li>
@@ -6,6 +6,7 @@ import{t as l}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";
 <li>added field validation</li>
 <li>changed how the <code>whats-new</code> dialog looked slightly</li>
 <li>minor bug fixes</li>
+<li>fixed a bug with the scrolling on the docs page</li>
 </ul>
 <section>
 <h2>⚠️ Breaking Changes</h2>
@@ -75,4 +76,4 @@ import{t as l}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";
 </ul>
 </section>
 </section>
-`;l();a();const n={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>t(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>t(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>t(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>t(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,i])=>n[e]=(await i()).default));const s=o("#content");s.html(r);s.all("img").forEach(async e=>{const i=e.getProp("src");i.startsWith("./images/")&&e.props({src:n[i]})});
+`;l();a();const n={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>t(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>t(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>t(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>t(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,i])=>n[e]=(await i()).default));const s=o("#content");s.html(h);s.all("img").forEach(async e=>{const i=e.getProp("src");i.startsWith("./images/")&&e.props({src:n[i]})});

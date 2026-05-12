@@ -4,6 +4,7 @@
 - added field validation
 - changed how the `whats-new` dialog looked slightly
 - minor bug fixes
+- fixed a bug with the scrolling on the docs page
 ## :warning: Breaking Changes
 - None(so far) :thumbsup:
 # Version 4.1.1

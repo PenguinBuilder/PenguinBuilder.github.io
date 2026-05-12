@@ -33,6 +33,8 @@ export function onDone(fn: () => any) {
         );
         function call(i: number) {
             if (i >= listener.length) {
+                done();
+                done = () => { };
                 return;
             }
             const v = listener[i]
@@ -43,8 +45,6 @@ export function onDone(fn: () => any) {
             });
             v.url = url;
             $("#content")!.elt.scrollTop = scroll * $("#content")!.elt.scrollHeight;
-            done();
-            done = () => { };
             requestAnimationFrame(call.bind(null, i + 1))
         }
         requestAnimationFrame(call.bind(null, 0))

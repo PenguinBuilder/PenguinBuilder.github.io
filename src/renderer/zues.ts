@@ -1,4 +1,8 @@
 //TASK(20260215-185953-428-n6-088): add more output shapes, and the ability for extensions to use output shapes
+
+
+//TASK(20260512-122420-281-n6-749): fix bugs in the renderer
+
 import * as Blockly from 'blockly/core';
 import { Shape } from 'blockly/core/renderers/common/constants';
 const svgPaths = Blockly.utils.svgPaths;
