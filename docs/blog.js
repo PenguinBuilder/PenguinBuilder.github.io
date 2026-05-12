@@ -3,6 +3,7 @@ import{t as l}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";
 <ul>
 <li>added the ability to change the types of the block fields, and their output to the extension api</li>
 <li>added the ability to change the value of fields in the extension api</li>
+<li>added field validation</li>
 <li>changed how the <code>whats-new</code> dialog looked slightly</li>
 <li>minor bug fixes</li>
 </ul>

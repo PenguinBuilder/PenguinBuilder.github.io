@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css" />
-        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
-        <link rel="icon" type="image/png" href="../favicon.ico" />
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
-        <title>PenguinBuilder-Blog</title>
-        <meta charset="utf-8" />
-        <meta name="description" content="PenguinBuilder – a tool for building scratch extensions.">
-      <script type="module" crossorigin src="../blog.js"></script>
-      <link rel="modulepreload" crossorigin href="../jsquery.js">
-      <link rel="modulepreload" crossorigin href="../theme-selector.js">
-      <link rel="modulepreload" crossorigin href="../preload-helper.js">
-      <link rel="modulepreload" crossorigin href="../style-selector.js">
-      <link rel="stylesheet" crossorigin href="../blog.css">
-    </head>
-    <body>
-        <main>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css" />
+    <script type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+    <link rel="icon" type="image/png" href="../favicon.ico" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-mocha.css">
+    <title>PenguinBuilder-Blog</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="PenguinBuilder – a tool for building scratch extensions.">
+  <script type="module" crossorigin src="../blog.js"></script>
+  <link rel="modulepreload" crossorigin href="../jsquery.js">
+  <link rel="modulepreload" crossorigin href="../theme-selector.js">
+  <link rel="modulepreload" crossorigin href="../preload-helper.js">
+  <link rel="modulepreload" crossorigin href="../style-selector.js">
+  <link rel="stylesheet" crossorigin href="../blog.css">
+</head>
+
+<body>
+    <main>
 <div id="top-bar">
     <sl-dropdown id="theme-selector">
         <sl-tooltip slot="trigger" content="themes" style="display: inline-block;">
@@ -63,13 +66,13 @@
         </a>
     </sl-tooltip>
     <sl-divider vertical></sl-divider>
-                <sl-tooltip content="home">
-                    <a href="../">
-                        <sl-button>
-                            <sl-icon name="house"></sl-icon>
-                        </sl-button>
-                    </a>
-                </sl-tooltip>
+            <sl-tooltip content="home">
+                <a href="../">
+                    <sl-button>
+                        <sl-icon name="house"></sl-icon>
+                    </sl-button>
+                </a>
+            </sl-tooltip>
     <sl-tooltip content="whats new">
         <sl-button id="version">v4.2.0</sl-button>
     </sl-tooltip>
@@ -81,15 +84,16 @@
         </a>
     </sl-tooltip>
 
-<sl-dialog label="Whats New" id="whats-new">
-    small bug fixes and added to the expension API
-    <sl-divider></sl-divider>
-    for more info, go to the <a href="../blog/" target="_blank">blog</a>
-</sl-dialog>
+    <sl-dialog label="Whats New" id="whats-new">
+        small bug fixes and added to the expension API
+        <sl-divider></sl-divider>
+        for more info, go to the <a href="../blog/" target="_blank">blog</a>
+    </sl-dialog>
 </div>
-            <div id="box">
-                <div id="content"></div>
-            </div>
-        </main>
-    </body>
+        <div id="box">
+            <div id="content"></div>
+        </div>
+    </main>
+</body>
+
 </html>

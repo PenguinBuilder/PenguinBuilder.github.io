@@ -1,6 +1,7 @@
 # Version 4.2.0
 - added the ability to change the types of the block fields, and their output to the extension api
 - added the ability to change the value of fields in the extension api
+- added field validation
 - changed how the `whats-new` dialog looked slightly
 - minor bug fixes
 ## :warning: Breaking Changes
