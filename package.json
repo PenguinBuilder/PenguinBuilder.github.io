@@ -7,8 +7,9 @@
         "@blockly/field-multilineinput": "^6.0.8",
         "@blockly/plugin-workspace-search": "^10.1.7",
         "@blockly/toolbox-search": "^3.1.8",
-        "highlight.js": "^11.11.1",
         "blockly": "^12.3.1",
+        "file-system-access": "^1.0.4",
+        "highlight.js": "^11.11.1",
         "js-beautify": "^1.15.4",
         "jsquery_node": "^1.0.15",
         "lz-string": "^1.5.0",
@@ -18,7 +19,6 @@
     "devDependencies": {
         "@types/js-beautify": "^1.14.3",
         "@types/markdown-it": "^14.1.2",
-        "@types/wicg-file-system-access": "^2023.10.7",
         "highlight.js": "^11.11.1",
         "markdown-it": "^14.1.1",
         "markdown-it-emoji": "^3.0.0",

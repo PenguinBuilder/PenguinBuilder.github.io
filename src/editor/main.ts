@@ -17,6 +17,7 @@ import {
 import toolbox from './toolbox.json';
 import '@blockly/toolbox-search';
 import { WorkspaceSearch } from '@blockly/plugin-workspace-search';
+import { showSaveFilePicker } from "file-system-access";
 
 import themeSelector from "@/theme-selector.ts";
 import styleSelector from "@/style-selector.ts";
@@ -253,7 +254,7 @@ function exists(filter = true) {
 
 $("#export")!.click(async () => {
     if (!exists()) return;
-    const fileHandle = await window.showSaveFilePicker({
+    const fileHandle = await showSaveFilePicker({
         suggestedName: (DATA.Extension_ID_DEFAULT) + '.js',
         types: [{
             description: 'PenguinBuilder Save',
@@ -283,7 +284,7 @@ workspace.configureContextMenu = function(menuOptions) {
         enabled: true,
         callback: async function() {
             if (!exists(false)) return;
-            const fileHandle = await window.showSaveFilePicker({
+            const fileHandle = await showSaveFilePicker({
                 suggestedName: "workspace.svg",
                 types: [{
                     accept: { 'image/svg+xml': ['.svg'] }
@@ -305,7 +306,7 @@ workspace.configureContextMenu = function(menuOptions) {
             enabled: true,
             callback: async function() {
                 if (!exists(false)) return;
-                const fileHandle = await window.showSaveFilePicker({
+                const fileHandle = await showSaveFilePicker({
                     suggestedName: "workspace.json",
                     types: [{
                         accept: { 'application/json': ['.json'] }

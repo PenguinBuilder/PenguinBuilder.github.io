@@ -1,12 +1,12 @@
-import{t as l}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const h=`<section>
+import{t as l,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const h=`<section>
 <h1>Version 4.2.0</h1>
 <ul>
 <li>added the ability to change the types of the block fields, and their output to the extension api</li>
 <li>added the ability to change the value of fields in the extension api</li>
 <li>added field validation</li>
 <li>changed how the <code>whats-new</code> dialog looked slightly</li>
-<li>minor bug fixes</li>
 <li>fixed a bug with the scrolling on the docs page</li>
+<li>made it work on firefox</li>
 </ul>
 <section>
 <h2>⚠️ Breaking Changes</h2>

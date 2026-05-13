@@ -3,8 +3,8 @@
 - added the ability to change the value of fields in the extension api
 - added field validation
 - changed how the `whats-new` dialog looked slightly
-- minor bug fixes
 - fixed a bug with the scrolling on the docs page
+- made it work on firefox 
 ## :warning: Breaking Changes
 - None(so far) :thumbsup:
 # Version 4.1.1

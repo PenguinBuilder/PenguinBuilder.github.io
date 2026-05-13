@@ -1,5 +1,6 @@
 import { $ } from "jsquery_node";
 import { compressToUTF16, decompressFromUTF16 } from "lz-string";
+import { showSaveFilePicker, showOpenFilePicker } from "file-system-access";
 
 export interface Save {
     workspace: Record<string, any>
@@ -19,7 +20,7 @@ export default function(serialize: () => [Save, string], deserialize: (v: Save) 
     }
     async function saveAs() {
         const [s, name] = serialize();
-        const fileHandle = await window.showSaveFilePicker({
+        const fileHandle = await showSaveFilePicker({
             suggestedName: name + '.pb',
             types: [{
                 description: 'PenguinBuilder Save',
@@ -44,14 +45,14 @@ export default function(serialize: () => [Save, string], deserialize: (v: Save) 
     }
     $("#save-as")!.click(saveAs);
     $("#save")!.click(save);
-    $("html")!.on("keydown", async (e: KeyboardEvent) => {
+    $("html")!.on("keydown", (e: KeyboardEvent) => {
         if ((e.ctrlKey || e.metaKey) && e.key == "s") {
-            await save();
+            save();
             e.preventDefault();
         }
     });
     $("#open")!.click(async () => {
-        const [fileHandle] = await window.showOpenFilePicker({
+        const [fileHandle] = await showOpenFilePicker({
             multiple: false,
             types: [{
                 description: 'PenguinBuilder Save',
