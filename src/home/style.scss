@@ -1,0 +1,30 @@
+@use "../style.scss" as *;
+
+#main {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#main>h1 {
+  font-size: 5em;
+  transform: translateY(-150px);
+}
+
+#main>#buttons {
+  transform: translateY(-150px);
+}
+
+#box {
+  position: absolute;
+  width: 100vw;
+  height: calc(calc(100vh - $top-bar-height) - 1px);
+  top: $top-bar-height;
+  display: flex;
+  gap: 16px;
+  background: $base;
+  border-top: 1px solid white;
+}

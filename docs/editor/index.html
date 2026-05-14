@@ -16,6 +16,7 @@
   <script type="module" crossorigin src="../editor.js"></script>
   <link rel="modulepreload" crossorigin href="../jsquery.js">
   <link rel="modulepreload" crossorigin href="../theme-selector.js">
+  <link rel="modulepreload" crossorigin href="../preload-helper.js">
   <link rel="modulepreload" crossorigin href="../save_svg.js">
   <link rel="modulepreload" crossorigin href="../style-selector.js">
   <link rel="stylesheet" crossorigin href="../editor.css">
@@ -74,7 +75,14 @@
         </a>
     </sl-tooltip>
     <sl-divider vertical></sl-divider>
-            <sl-tooltip content="docs">
+            <sl-tooltip content="Home">
+                <a href="../">
+                    <sl-button>
+                        <sl-icon name="house"></sl-icon>
+                    </sl-button>
+                </a>
+            </sl-tooltip>
+            <sl-tooltip content="Docs">
                 <a href="../Docs/" target="_blank">
                     <sl-button>
                         <sl-icon name="journal-code"></sl-icon>

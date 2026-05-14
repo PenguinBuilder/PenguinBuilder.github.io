@@ -1,5 +1,5 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./render.js","./save_svg.js","./jsquery.js","./style-selector.js"])))=>i.map(i=>d[i]);
-import{t as f,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";const b=`<section>
+import{t as f}from"./theme-selector.js";import{_ as t}from"./preload-helper.js";import{$ as o}from"./jsquery.js";const b=`<section>
 <h1>[#6C9ACE] Block</h1>
 <hr>
 <section>

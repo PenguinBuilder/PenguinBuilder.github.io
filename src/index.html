@@ -2,15 +2,36 @@
 <html>
 
 <head>
+    {{> include-head }}
     <link rel="icon" type="image/png" href="./favicon.ico">
     <title>PenguinBuilder</title>
-    <meta http-equiv="refresh" content="0;url=./editor/">
-    <link rel="stylesheet" type="text/css" href="style.scss" />
+    <link rel="stylesheet" type="text/css" href="home/style.scss" />
     <meta name="description" content="PenguinBuilder – a tool for building scratch extensions.">
 </head>
 
 <body>
-    <div>redirecting</div>
+    {{#> top-bar}}
+    {{> docs-button}}
+    {{/top-bar}}
+    <div id="box">
+        <div id="main">
+            <img src="./favicon.ico" style="width:500px">
+            <h1 style="color:white">PenguinBuilder</h1>
+            <div id="buttons">
+                <sl-tooltip content="Editor">
+                    <a href="editor/">
+                        <sl-button size="large">Editor</sl-button>
+                    </a>
+                </sl-tooltip>
+                <sl-tooltip content="Docs">
+                    <a href="Docs/">
+                        <sl-button size="large">Docs</sl-button>
+                    </a>
+                </sl-tooltip>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="home/main.ts" type="module"></script>
 
 </html>

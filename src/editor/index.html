@@ -22,13 +22,8 @@
             </pre>
         </sl-dialog>
         {{#> top-bar }}
-        <sl-tooltip content="docs">
-            <a href="../Docs/" target="_blank">
-                <sl-button>
-                    <sl-icon name="journal-code"></sl-icon>
-                </sl-button>
-            </a>
-        </sl-tooltip>
+        {{> home-button}}
+        {{> docs-button path="../"}}
         <sl-dropdown>
             <sl-tooltip content="files" slot="trigger" style="display:inline-block;">
                 <sl-button variant="text">

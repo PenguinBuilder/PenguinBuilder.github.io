@@ -2,15 +2,108 @@
 <html>
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css" />
+    <script type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
     <link rel="icon" type="image/png" href="./favicon.ico">
-    <title>PenguinBuilder</title>
-    <meta http-equiv="refresh" content="0;url=./editor/">
+    <title>PenguinBuilder</title>
     <meta name="description" content="PenguinBuilder – a tool for building scratch extensions.">
+  <script type="module" crossorigin src="./root.js"></script>
+  <link rel="modulepreload" crossorigin href="./jsquery.js">
+  <link rel="modulepreload" crossorigin href="./theme-selector.js">
+  <link rel="modulepreload" crossorigin href="./style-selector.js">
   <link rel="stylesheet" crossorigin href="./root.css">
 </head>
 
 <body>
-    <div>redirecting</div>
-</body>
+<div id="top-bar">
+    <sl-dropdown id="theme-selector">
+        <sl-tooltip slot="trigger" content="themes" style="display: inline-block;">
+            <sl-button variant="text">
+                <sl-icon class="only-light" name="sun-fill"></sl-icon>
+                <sl-icon class="only-dark" name="moon-fill"></sl-icon>
+            </sl-button>
+        </sl-tooltip>
+        <sl-menu role="menu">
+            <sl-menu-item type="checkbox" value="light">Light</sl-menu-item>
+            <sl-menu-item type="checkbox" value="dark">Dark</sl-menu-item>
+            <sl-divider></sl-divider>
+            <sl-menu-item type="checkbox" value="auto" checked>System</sl-menu-item>
+        </sl-menu>
+    </sl-dropdown>
+    <sl-dropdown id="style-selector">
+        <sl-tooltip slot="trigger" content="styles" style="display: inline-block;">
+            <sl-button variant="text">
+                <sl-icon name="gear-fill"></sl-icon>
+            </sl-button>
+        </sl-tooltip>
+        <sl-menu role="menu">
+            <sl-menu-item type="checkbox" value="thrasos">Thrasos</sl-menu-item>
+            <sl-menu-item type="checkbox" value="zelos">Zelos</sl-menu-item>
+            <sl-menu-item type="checkbox" value="zues" checked>Zues (Default)</sl-menu-item>
+        </sl-menu>
+    </sl-dropdown>
+    <sl-tooltip content="discord">
+        <a href="https://discord.gg/ytGGpJ8RPB" target="_blank">
+            <sl-button>
+                <sl-icon name="discord"></sl-icon>
+            </sl-button>
+        </a>
+    </sl-tooltip>
+
+    <sl-tooltip content="github">
+        <a href="https://github.com/PenguinBuilder/PenguinBuilder.github.io" target="_blank">
+            <sl-button>
+                <sl-icon name="github"></sl-icon>
+            </sl-button>
+        </a>
+    </sl-tooltip>
+    <sl-divider vertical></sl-divider>
+        <sl-tooltip content="Docs">
+            <a href="Docs/" target="_blank">
+                <sl-button>
+                    <sl-icon name="journal-code"></sl-icon>
+                </sl-button>
+            </a>
+        </sl-tooltip>
+    <sl-tooltip content="whats new">
+        <sl-button id="version">v4.2.0</sl-button>
+    </sl-tooltip>
+    <sl-tooltip id="change-branch-tooltip">
+        <a id="change-branch">
+            <sl-button>
+                <sl-icon name="git"></sl-icon>
+            </sl-button>
+        </a>
+    </sl-tooltip>
+
+    <sl-dialog label="Whats New" id="whats-new">
+        small bug fixes and added to the expension API
+        <sl-divider></sl-divider>
+        for more info, go to the <a href="../blog/" target="_blank">blog</a>
+    </sl-dialog>
+</div>
+    <div id="box">
+        <div id="main">
+            <img src="./favicon.ico" style="width:500px">
+            <h1 style="color:white">PenguinBuilder</h1>
+            <div id="buttons">
+                <sl-tooltip content="Editor">
+                    <a href="editor/">
+                        <sl-button size="large">Editor</sl-button>
+                    </a>
+                </sl-tooltip>
+                <sl-tooltip content="Docs">
+                    <a href="Docs/">
+                        <sl-button size="large">Docs</sl-button>
+                    </a>
+                </sl-tooltip>
+            </div>
+        </div>
+    </div>
+</body>
 
 </html>
