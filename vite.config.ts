@@ -6,7 +6,7 @@ import { plugin as Md } from "vite-plugin-markdown";
 import wrapper from "markdown-it-header-sections";
 import MarkdownIt from 'markdown-it';
 import hljs from "highlight.js";
-import vars from "./vars.ts";
+import { vars, helpers } from "./context.ts";
 import { full as emoji } from 'markdown-it-emoji'
 import icon from "./icon.js";
 
@@ -40,7 +40,8 @@ export default defineConfig({
         handlebars({
             partialDirectory: resolve(__dirname, 'src/partials'),
             reloadOnPartialChange: true,
-            context: vars
+            context: vars,
+            helpers: helpers,
         }),
         Md({
             mode: ["html"],
