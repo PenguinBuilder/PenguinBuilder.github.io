@@ -5,6 +5,7 @@
 - changed how the `whats-new` dialog looked slightly
 - fixed a bug with the scrolling on the docs page
 - made it work on firefox 
+- added a homepage
 ## :warning: Breaking Changes
 - None(so far) :thumbsup:
 # Version 4.1.1
