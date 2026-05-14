@@ -9,5 +9,5 @@ export const vars = {
 export const helpers = {
     or(a: any, b: any) {
         return a ?? b;
-    }
+    },
 }

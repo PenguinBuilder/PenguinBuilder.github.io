@@ -2,17 +2,12 @@
 <html>
 
 <head>
-    {{> include-head }}
-    <link rel="icon" type="image/png" href="./favicon.ico">
-    <title>PenguinBuilder</title>
+    {{> include-head path=""}}
     <link rel="stylesheet" type="text/css" href="home/style.scss" />
-    <meta name="description" content="PenguinBuilder – a tool for building scratch extensions.">
 </head>
 
 <body>
-    {{#> top-bar path=""}}
-    {{> docs-button}}
-    {{/top-bar}}
+    {{> top-bar path=""}}
     <div id="box">
         <div id="main">
             <img src="./favicon.ico" style="width:500px">
