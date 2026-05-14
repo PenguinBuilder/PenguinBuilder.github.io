@@ -365,7 +365,7 @@ javascript.javascriptGenerator.forBlock["logic_switch_expr"] = function(block, g
                      `
     }
     code += "}})())";
-    return code;
+    return [code, javascript.Order.ATOMIC];
 }
 
 Blockly.Blocks["logic_switch_break"] = {
@@ -394,7 +394,7 @@ Blockly.Blocks["logic_boolean"] = {
         this.setHelpUrl(Blockly.Msg.LOGIC_BOOLEAN_HELPURL)
     },
 }
-javascript.javascriptGenerator.forBlock["logic_boolean"] = function(block, generator) {
+javascript.javascriptGenerator.forBlock["logic_boolean"] = function(block, _) {
     const b = block.getFieldValue('BOOL');
     if (b === "RANDOM") {
         return ['(Math.round(Math.random()) === 1)', javascript.Order.ATOMIC]

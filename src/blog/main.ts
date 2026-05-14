@@ -12,8 +12,6 @@ await Promise.all(Object.entries(import.meta.glob("./images/*", {
 
 import { html } from "./blog.md"
 
-
-
 const docs = $("#content")!;
 
 docs.html(html);

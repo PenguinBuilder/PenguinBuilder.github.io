@@ -140,12 +140,12 @@ FileHandle(() => {
     workspace.refreshToolboxSelection();
     DATA.extensions = {};
     DATA.outputs = {};
-    Blockly.serialization.workspaces.load(s.workspace, workspace);
     const ext = s.extensions ?? {};
     for (const [k, v] of Object.entries(ext)) {
         DATA.extensions[k] = v;
         run(toolbox, workspace, rerenderToolbox, v, k);
     }
+    Blockly.serialization.workspaces.load(s.workspace, workspace);
     rerenderToolbox();
 });
 

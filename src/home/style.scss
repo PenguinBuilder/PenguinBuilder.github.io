@@ -9,13 +9,23 @@
   align-items: center;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 #main>h1 {
   font-size: 5em;
   transform: translateY(-150px);
 }
 
-#main>#buttons {
+#buttons {
   transform: translateY(-150px);
+}
+
+#tag {
+  transform: translateY(-200px);
+  font-size: 2em;
+  color: white;
 }
 
 #box {
@@ -27,4 +37,19 @@
   gap: 16px;
   background: $base;
   border-top: 1px solid white;
+  overflow-y: scroll;
+}
+
+
+.bg {
+  background: $bg-light;
+  padding: 20px;
+}
+
+[data-theme="dark"] .bg {
+  background: $bg-dark;
+}
+
+#block-editor {
+  z-index: -9999;
 }

@@ -5,21 +5,16 @@ import { $ } from "jsquery_node";
 
 import { html } from "./docs.md"
 
-const Render = await import("./render.ts");
-
-
+const Render = await import("@/render.ts");
 
 const url: Record<string, string> = {}
 await Promise.all(Object.entries(import.meta.glob("./images/*", {
     query: "url"
 })).map(async ([k, v]) => url[k] = ((await v() as any).default)));
 
-
-
 const docs = $("#content")!;
 
 docs.html(html);
-
 
 Promise.all(docs.all("img").map(async v => {
     const str = v.getProp("src")!;
@@ -33,7 +28,7 @@ Promise.all(docs.all("img").map(async v => {
         })
     }
 })).then(() => {
-    Render.onDone(() => {
+    Render.onDone("#content", () => {
         const hash = location.hash.slice(1);
         if (hash) {
             scrollId(hash);

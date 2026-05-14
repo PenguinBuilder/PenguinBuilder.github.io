@@ -6,6 +6,7 @@
 - fixed a bug with the scrolling on the docs page
 - made it work on firefox 
 - added a homepage
+- fixed a bug with project loading
 ## :warning: Breaking Changes
 - None(so far) :thumbsup:
 # Version 4.1.1

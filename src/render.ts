@@ -1,3 +1,5 @@
+//TASK(20260514-121847-230-n6-065): make this work with projects using extensions 
+
 import * as Blockly from 'blockly/core';
 import 'blockly/blocks';
 import * as En from 'blockly/msg/en';
@@ -21,10 +23,12 @@ const listener: {
     url: string,
 }[] = [];
 let done = () => { }
-export function onDone(fn: () => any) {
+export function onDone(id?: string, fn: () => any = () => { }) {
     done = fn;
     styleSelector((style) => {
-        const scroll = $("#content")!.elt.scrollTop / $("#content")!.elt.scrollHeight;
+        let scroll = 0;
+        if (id)
+            scroll = $(id)!.elt.scrollTop / $(id)!.elt.scrollHeight;
         (workspace as any).options.renderer = style;
         (workspace as any).renderer = Blockly.blockRendering.init(
             workspace.options.renderer || '',
@@ -44,7 +48,9 @@ export function onDone(fn: () => any) {
                 src: url,
             });
             v.url = url;
-            $("#content")!.elt.scrollTop = scroll * $("#content")!.elt.scrollHeight;
+
+            if (id)
+                $(id)!.elt.scrollTop = scroll * $(id)!.elt.scrollHeight;
             requestAnimationFrame(call.bind(null, i + 1))
         }
         requestAnimationFrame(call.bind(null, 0))

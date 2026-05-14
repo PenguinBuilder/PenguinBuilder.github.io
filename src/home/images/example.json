@@ -1,0 +1,69 @@
+{
+    "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+            {
+                "type": "create_block",
+                "id": "I+ntJM1roRb.zjch1:oQ",
+                "x": 291,
+                "y": 311,
+                "fields": {
+                    "ID": "Fetch",
+                    "Text": "test [msg]",
+                    "Show": false,
+                    "type": "Reporter"
+                },
+                "inputs": {
+                    "Inputs": {
+                        "block": {
+                            "type": "create_input",
+                            "id": "|ehmHm)$iR=UV$2[rK%W",
+                            "fields": {
+                                "ID": "msg",
+                                "Type": "String",
+                                "_default": ""
+                            }
+                        }
+                    },
+                    "Function": {
+                        "block": {
+                            "type": "return_block",
+                            "id": "dS{][s:}KZ;Eav[1h-gy",
+                            "inputs": {
+                                "value": {
+                                    "block": {
+                                        "type": "text_join",
+                                        "id": "f0=NIicVF@[y+$U6`7C/",
+                                        "extraState": {
+                                            "itemCount": 2
+                                        },
+                                        "inputs": {
+                                            "ADD0": {
+                                                "block": {
+                                                    "type": "text",
+                                                    "id": "Y;%wG`c~%C!;55X_+##~",
+                                                    "fields": {
+                                                        "TEXT": "text "
+                                                    }
+                                                }
+                                            },
+                                            "ADD1": {
+                                                "block": {
+                                                    "type": "get_input",
+                                                    "id": "]Y{V_NNUhopGSf7-h5iQ",
+                                                    "fields": {
+                                                        "ID": "msg"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
