@@ -32,18 +32,32 @@
 }
 
 pre.hljs {
+  display: inline-block;
   position: relative;
   background: #232331;
   padding-left: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
   color: white;
+  width: calc(100% - 20px);
+  max-height: 60vh;
+}
+
+pre.hljs code {
+  display: block;
+  max-height: 60vh;
+  overflow: hidden;
+  white-space: pre;
+}
+
+pre.hljs:hover code {
+  overflow: auto;
 }
 
 .code-copy-button {
   position: absolute;
   top: 15px;
-  right: 0;
+  right: 20px;
   white-space: normal;
   color: white;
   transition: 150ms opacity, 150ms scale;

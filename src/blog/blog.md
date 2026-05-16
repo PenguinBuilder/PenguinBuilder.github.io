@@ -7,6 +7,7 @@
 - made it work on firefox 
 - added a homepage
 - fixed a bug with project loading
+- made scrolling for the code preview cleaner
 ## :warning: Breaking Changes
 - None(so far) :thumbsup:
 # Version 4.1.1

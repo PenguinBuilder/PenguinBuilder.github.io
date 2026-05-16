@@ -1,4 +1,4 @@
-import{t as l,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const d=`<section>
+import{t as s,_ as n}from"./theme-selector.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const d=`<section>
 <h1>Version 4.2.0</h1>
 <ul>
 <li>added the ability to change the types of the block fields, and their output to the extension api</li>
@@ -9,6 +9,7 @@ import{t as l,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 <li>made it work on firefox</li>
 <li>added a homepage</li>
 <li>fixed a bug with project loading</li>
+<li>made scrolling for the code preview cleaner</li>
 </ul>
 <section>
 <h2>⚠️ Breaking Changes</h2>
@@ -78,4 +79,4 @@ import{t as l,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 </ul>
 </section>
 </section>
-`;l();a();const n={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>t(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>t(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>t(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>t(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,i])=>n[e]=(await i()).default));const s=o("#content");s.html(d);s.all("img").forEach(async e=>{const i=e.getProp("src");i.startsWith("./images/")&&e.props({src:n[i]})});
+`;s();a();const t={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>n(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>n(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>n(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>n(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,i])=>t[e]=(await i()).default));const l=o("#content");l.html(d);l.all("img").forEach(async e=>{const i=e.getProp("src");i.startsWith("./images/")&&e.props({src:t[i]})});
