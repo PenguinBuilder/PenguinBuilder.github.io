@@ -1,4 +1,16 @@
-import{t as s,_ as n}from"./theme-selector.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const d=`<section>
+import{t as s,_ as n}from"./theme-selector.js";import{$ as o}from"./jsquery.js";import{s as a}from"./style-selector.js";const h=`<section>
+<h1>Version 4.2.1</h1>
+<ul>
+<li>made the zues renderer have some bug fixes</li>
+</ul>
+<section>
+<h2>⚠️ Breaking Changes</h2>
+<ul>
+<li>None(so far) 👍</li>
+</ul>
+</section>
+</section>
+<section>
 <h1>Version 4.2.0</h1>
 <ul>
 <li>added the ability to change the types of the block fields, and their output to the extension api</li>
@@ -14,7 +26,7 @@ import{t as s,_ as n}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 <section>
 <h2>⚠️ Breaking Changes</h2>
 <ul>
-<li>None(so far) 👍</li>
+<li>None 👍</li>
 </ul>
 </section>
 </section>
@@ -79,4 +91,4 @@ import{t as s,_ as n}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 </ul>
 </section>
 </section>
-`;s();a();const t={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>n(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>n(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>n(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>n(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,i])=>t[e]=(await i()).default));const l=o("#content");l.html(d);l.all("img").forEach(async e=>{const i=e.getProp("src");i.startsWith("./images/")&&e.props({src:t[i]})});
+`;s();a();const t={};await Promise.all(Object.entries(Object.assign({"./images/fixed_svg_example.svg":()=>n(()=>import("./fixed_svg_example.js"),[],import.meta.url),"./images/thrasos_example.svg":()=>n(()=>import("./thrasos_example.js"),[],import.meta.url),"./images/zelos_example.svg":()=>n(()=>import("./zelos_example.js"),[],import.meta.url),"./images/zeus_example.svg":()=>n(()=>import("./zeus_example.js"),[],import.meta.url)})).map(async([e,i])=>t[e]=(await i()).default));const l=o("#content");l.html(h);l.all("img").forEach(async e=>{const i=e.getProp("src");i.startsWith("./images/")&&e.props({src:t[i]})});
