@@ -188,6 +188,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
         },
         LoadExtension(Extension: new () => PenguinExtension) {
             const ext = new Extension();
+            DATA.outputs[catid] = {}
             if (ext.Types) {
                 for (const [k, v] of Object.entries(ext.Types)) {
                     DATA.outputs[catid][k] = v;

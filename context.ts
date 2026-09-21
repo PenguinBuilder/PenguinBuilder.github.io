@@ -1,7 +1,7 @@
 export const vars = {
-    version: "v4.2.0",
+    version: "v4.2.1",
     "whats-new": `
-    small bug fixes and added to the expension API
+    fixed some bugs in the zeus renderer
     `.trim(),
 }
 

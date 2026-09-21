@@ -114,7 +114,6 @@ export default async function(run: (rerenderToolbox: () => void, code: string, i
                     workspace.refreshToolboxSelection();
                 }
                 DATA.extensions[id] = code; //save file purposes
-                DATA.outputs[id] = {};
                 run(rerenderToolbox, code, id);
                 (dialog.elt as any).hide();
                 rerenderToolbox();

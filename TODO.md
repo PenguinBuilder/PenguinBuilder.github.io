@@ -4,5 +4,6 @@
 - [ ] add mutator support to extension API: [TASK(20260214-222118-208-n6-305)](./.tasks/20260214-222118-208-n6-305.md)  
 - [X] add more output shapes : [TASK(20260215-185953-428-n6-088)](./.tasks/20260215-185953-428-n6-088.md)  
 - [X] add file preview: [TASK(20260215-190014-189-n6-284)](./.tasks/20260215-190014-189-n6-284.md)  
-- [ ] fix bugs in the renderer: [TASK(20260512-122420-281-n6-749)](./.tasks/20260512-122420-281-n6-749.md)  
+- [X] fix bugs in the renderer: [TASK(20260512-122420-281-n6-749)](./.tasks/20260512-122420-281-n6-749.md)  
 - [ ] make this work with projects using extensions : [TASK(20260514-121847-230-n6-065)](./.tasks/20260514-121847-230-n6-065.md)  
+- [ ] make leaf less buggy: [TASK(20260921-162353-227-n6-126)](./.tasks/20260921-162353-227-n6-126.md)  
