@@ -209,7 +209,7 @@ export default function(toolbox: ToolboxInfo, workspace: Blockly.WorkspaceSvg, r
                 const i = toolbox.contents.findIndex(v => (v as any).id == catid);
                 delete DATA.extensions[catid];
                 delete DATA.outputs[catid];
-                toolbox.contents.splice(i);
+                toolbox.contents.splice(i, 1);
                 workspace.updateToolbox(toolbox);
                 workspace.refreshToolboxSelection();
             });

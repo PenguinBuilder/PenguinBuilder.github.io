@@ -1,5 +1,6 @@
 # Version 4.2.1
 - made the zues renderer have some bug fixes
+- fixed a bug where when you removed an extension it would remove all extensions after it
 ## :warning: Breaking Changes
 - None(so far) :thumbsup:
 # Version 4.2.0
