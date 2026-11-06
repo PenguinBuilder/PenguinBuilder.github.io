@@ -6,7 +6,7 @@ creates a block in your extension
 ### Arguments
 - ID: the ID that the block goes by, **make sure the id is unique to other blocks**
 - Text: the display name of the block, put any inputs in brackets image of block
-- Show monitor: a boolean value representing weather to show the scratch monitor(wont work unless block is a reporter)
+- Show monitor: a boolean value representing whether to show the scratch monitor(wont work unless block is a reporter)
 - type: the type of block you want to make
     - block: a block that doesn't
     - reporter: a block that returns a value
@@ -39,7 +39,7 @@ Creates a Menu
 ![create input menu](./images/create_input_menu.json)
 ### Arguments
 - ID: the ID of the input(make sure the id is **unique** to other inputs)
-- Accept Reporters: a boolean on weather the input allows Reporters
+- Accept Reporters: a boolean on whether the input allows Reporters
 - Menu: An Array that represents the menu(Accepts a string or a menu item) 
 ___
 ## Create Menu
@@ -47,7 +47,7 @@ like "Create Input Menu", this block will create a menu, but it can be used more
 ![create menu](./images/create_menu.json) 
 ### Arguments
 - ID: the ID of the menu(make sure the id is **unique** to other menus)
-- Accept Reporters: a boolean on weather the input allows Reporters
+- Accept Reporters: a boolean on whether the input allows Reporters
 - Menu: An Array that represents the menu(Accepts a string or a menu item) image of block
 ___
 ## Create Dynamic Menu
@@ -55,11 +55,11 @@ create a menu similar to "Create Menu" but its dynamic
 ![create dynamic menu](./images/create_dynamic_menu.json)
 ### Arguments
 - ID: the ID of the menu(make sure the id is **unique** to other menus)
-- Accept Reporters: a boolean on weather the input allows Reporters
+- Accept Reporters: a boolean on whether the input allows Reporters
 - Function: a statement for the menu(make sure it **returns** an array) image of block
 ___
 ## Create Input From Menu
-creates an input from a menu created will "Create Menu"  
+creates an input from a menu created with "Create Menu"  
 ![create input from menu](./images/create_input_from_menu.json)
 ### Arguments
 - ID: the ID of the input(make sure the id is **unique** to other inputs)
@@ -114,7 +114,7 @@ creates a button in the position you want
 
 ### Arguments
 text: the text you want on the button
-onlick: the function the button runs when you click it
+onclick: the function the button runs when you click it
 ___
 ## Use Block
 puts a block in a location you want
@@ -166,7 +166,7 @@ gets the key, value, or entries of an Object, **returns Array**
 - type: a menu for what it fetches
     - Keys: **returns the keys of the Object**
     - Values: **returns the values of the Object**
-    - Keys: **returns the entries of the Object** as an Array of an Array with the key and value
+    - Entries : **returns the entries of the Object** as an Array of an Array with the key and value
 - Object: the object it gets it from
 ___
 ## Does Key exist in
@@ -322,8 +322,8 @@ Options for the file
 
 ##### Arguments
 * creator: your GitHub name(I will set this for you when reviewing your pull request)
-* potential-danger: a boolean on weather the extension is potentially dangerous, if your extension is a loader then it will have this automatically set to true (I will set this for you when reviewing your pull request)
+* potential-danger: a boolean on whether the extension is potentially dangerous, if your extension is a loader then it will have this automatically set to true (I will set this for you when reviewing your pull request)
 * display-name: the name that the extension shows
 * description: the description of the extension
-* loader: an optional boolean showing weather the extension is a loader
+* loader: an optional boolean showing whether the extension is a loader
 * WIP: optional boolean, if set to true, your extension will be hidden in the extension menu, unless they add "?WIP" to the end of the URL
