@@ -2,11 +2,14 @@ import{t as s,_ as n}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 <h1>Version 4.2.1</h1>
 <ul>
 <li>made the zues renderer have some bug fixes</li>
+<li>fixed a bug where when you removed an extension it would remove all extensions after it</li>
+<li>fixed some typos in docs</li>
+<li>fixed a bug where the trash can wouldn't show up</li>
 </ul>
 <section>
 <h2>⚠️ Breaking Changes</h2>
 <ul>
-<li>None(so far) 👍</li>
+<li>None 👍</li>
 </ul>
 </section>
 </section>

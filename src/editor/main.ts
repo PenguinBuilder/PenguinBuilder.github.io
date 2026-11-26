@@ -54,6 +54,7 @@ const workspace = Blockly.inject("block-editor", {
     renderer: "zues",
     toolbox,
     theme: Hats,
+    media: "https://cdnjs.cloudflare.com/ajax/libs/blockly/11.1.1/media/",
 } as Blockly.BlocklyOptions);
 
 workspace.registerToolboxCategoryCallback(

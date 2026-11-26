@@ -2,8 +2,9 @@
 - made the zues renderer have some bug fixes
 - fixed a bug where when you removed an extension it would remove all extensions after it
 - fixed some typos in docs
+- fixed a bug where the trash can wouldn't show up
 ## :warning: Breaking Changes
-- None(so far) :thumbsup:
+- None :thumbsup:
 # Version 4.2.0
 - added the ability to change the types of the block fields, and their output to the extension api
 - added the ability to change the value of fields in the extension api

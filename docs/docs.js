@@ -1,5 +1,5 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./render.js","./themes.js","./jsquery.js","./style-selector.js"])))=>i.map(i=>d[i]);
-import{t as f,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";const b=`<section>
+import{t as f,_ as e}from"./theme-selector.js";import{$ as o}from"./jsquery.js";const b=`<section>
 <h1>[#6C9ACE] Block</h1>
 <hr>
 <section>
@@ -11,7 +11,7 @@ import{t as f,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 <ul>
 <li>ID: the ID that the block goes by, <strong>make sure the id is unique to other blocks</strong></li>
 <li>Text: the display name of the block, put any inputs in brackets image of block</li>
-<li>Show monitor: a boolean value representing weather to show the scratch monitor(wont work unless block is a reporter)</li>
+<li>Show monitor: a boolean value representing whether to show the scratch monitor(wont work unless block is a reporter)</li>
 <li>type: the type of block you want to make
 <ul>
 <li>block: a block that doesn't</li>
@@ -65,7 +65,7 @@ import{t as f,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 <h3>Arguments</h3>
 <ul>
 <li>ID: the ID of the input(make sure the id is <strong>unique</strong> to other inputs)</li>
-<li>Accept Reporters: a boolean on weather the input allows Reporters</li>
+<li>Accept Reporters: a boolean on whether the input allows Reporters</li>
 <li>Menu: An Array that represents the menu(Accepts a string or a menu item)</li>
 </ul>
 <hr>
@@ -79,7 +79,7 @@ import{t as f,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 <h3>Arguments</h3>
 <ul>
 <li>ID: the ID of the menu(make sure the id is <strong>unique</strong> to other menus)</li>
-<li>Accept Reporters: a boolean on weather the input allows Reporters</li>
+<li>Accept Reporters: a boolean on whether the input allows Reporters</li>
 <li>Menu: An Array that represents the menu(Accepts a string or a menu item) image of block</li>
 </ul>
 <hr>
@@ -93,7 +93,7 @@ import{t as f,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 <h3>Arguments</h3>
 <ul>
 <li>ID: the ID of the menu(make sure the id is <strong>unique</strong> to other menus)</li>
-<li>Accept Reporters: a boolean on weather the input allows Reporters</li>
+<li>Accept Reporters: a boolean on whether the input allows Reporters</li>
 <li>Function: a statement for the menu(make sure it <strong>returns</strong> an array) image of block</li>
 </ul>
 <hr>
@@ -101,7 +101,7 @@ import{t as f,_ as t}from"./theme-selector.js";import{$ as o}from"./jsquery.js";
 </section>
 <section>
 <h2>Create Input From Menu</h2>
-<p>creates an input from a menu created will &quot;Create Menu&quot;<br>
+<p>creates an input from a menu created with &quot;Create Menu&quot;<br>
 <img src="./images/create_input_from_menu.json" alt="create input from menu"></p>
 <section>
 <h3>Arguments</h3>
@@ -187,7 +187,7 @@ __</p>
 <section>
 <h3>Arguments</h3>
 <p>text: the text you want on the button
-onlick: the function the button runs when you click it</p>
+onclick: the function the button runs when you click it</p>
 <hr>
 </section>
 </section>
@@ -276,7 +276,7 @@ takes a JSON Object and turns it into a string</li>
 <ul>
 <li>Keys: <strong>returns the keys of the Object</strong></li>
 <li>Values: <strong>returns the values of the Object</strong></li>
-<li>Keys: <strong>returns the entries of the Object</strong> as an Array of an Array with the key and value</li>
+<li>Entries : <strong>returns the entries of the Object</strong> as an Array of an Array with the key and value</li>
 </ul>
 </li>
 <li>Object: the object it gets it from</li>
@@ -543,14 +543,14 @@ to prevent fall-through, make sure to add break after each case<br>
 <h5>Arguments</h5>
 <ul>
 <li>creator: your GitHub name(I will set this for you when reviewing your pull request)</li>
-<li>potential-danger: a boolean on weather the extension is potentially dangerous, if your extension is a loader then it will have this automatically set to true (I will set this for you when reviewing your pull request)</li>
+<li>potential-danger: a boolean on whether the extension is potentially dangerous, if your extension is a loader then it will have this automatically set to true (I will set this for you when reviewing your pull request)</li>
 <li>display-name: the name that the extension shows</li>
 <li>description: the description of the extension</li>
-<li>loader: an optional boolean showing weather the extension is a loader</li>
+<li>loader: an optional boolean showing whether the extension is a loader</li>
 <li>WIP: optional boolean, if set to true, your extension will be hidden in the extension menu, unless they add &quot;?WIP&quot; to the end of the URL</li>
 </ul>
 </section>
 </section>
 </section>
 </section>
-`;f();const p=await t(()=>import("./render.js"),__vite__mapDeps([0,1,2,3]),import.meta.url),h={};await Promise.all(Object.entries(Object.assign({"./images/JSON_from.json":()=>t(()=>import("./JSON_from.js"),[],import.meta.url),"./images/call_hat.json":()=>t(()=>import("./call_hat.js"),[],import.meta.url),"./images/create_block.json":()=>t(()=>import("./create_block.js"),[],import.meta.url),"./images/create_dynamic_menu.json":()=>t(()=>import("./create_dynamic_menu.js"),[],import.meta.url),"./images/create_hat.json":()=>t(()=>import("./create_hat.js"),[],import.meta.url),"./images/create_input_from_menu.json":()=>t(()=>import("./create_input_from_menu.js"),[],import.meta.url),"./images/create_input_menu.json":()=>t(()=>import("./create_input_menu.js"),[],import.meta.url),"./images/create_menu.json":()=>t(()=>import("./create_menu.js"),[],import.meta.url),"./images/order_category.json":()=>t(()=>import("./order_category.js"),[],import.meta.url),"./images/switch.json":()=>t(()=>import("./switch.js"),[],import.meta.url)})).map(async([n,e])=>h[n]=(await e()).default));const l=o("#content");l.html(b);Promise.all(l.all("img").map(async n=>{const e=n.getProp("src");if(e.startsWith("./images/")){if(e.endsWith(".json")){p.registerElt(n,await(await fetch(h[e])).json());return}n.props({src:h[e]})}})).then(()=>{p.onDone("#content",()=>{const n=location.hash.slice(1);n?c(n):i.children.length>0&&c(i.children[0].getProp("for"))})});const i=o("#toc"),y=o.all("#content>section");function j(n,e,a){return o.create("div").child([o.create("div").css({"border-radius":"100%",background:n,width:"20px",height:"20px"}).class("circ"),o.create("div").css({fontSize:"16px",background:"#00000000"}).text(e)]).css({display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"5px",padding:"5px"}).click(()=>{c(a)}).props({for:a})}y.forEach(n=>{const e=n.$("h1").text().match(/^\[(#[0-9a-fA-F]{6})\]\s*(.+)/);if(!e)return;const a=e[1],s=e[2];n.id(s.toLowerCase().trim().replaceAll(/[^a-z0-9]/g,"-")),n.$("h1").text(s);const r=j(a,s,n.id());i.child(r)});let u=!1;function c(n){history.replaceState(null,"","#"+n);const e=o("#"+n);e&&(i.all("[selected]").props({selected:null}),i.$(`[for=${n}]`).props({selected:""}),u=!0,e.elt.scrollIntoView({behavior:"smooth"}))}l.on("scrollend",()=>{u=!1});let m=0;l.on("scroll",()=>{if(u)return;const n=l.elt.scrollTop,e=l.children,a=n>m;for(const s of e){const r=s.rect(),g=r.top>=0&&r.top<window.innerHeight,d=r.bottom>0&&r.bottom<=window.innerHeight;if(a?g:d){i.all("[selected]").props({selected:null}),i.$(`[for=${s.id()}]`).props({selected:""}),history.pushState(null,"","#"+s.id());break}m=n}});
+`;f();const p=await e(()=>import("./render.js"),__vite__mapDeps([0,1,2,3]),import.meta.url),h={};await Promise.all(Object.entries(Object.assign({"./images/JSON_from.json":()=>e(()=>import("./JSON_from.js"),[],import.meta.url),"./images/call_hat.json":()=>e(()=>import("./call_hat.js"),[],import.meta.url),"./images/create_block.json":()=>e(()=>import("./create_block.js"),[],import.meta.url),"./images/create_dynamic_menu.json":()=>e(()=>import("./create_dynamic_menu.js"),[],import.meta.url),"./images/create_hat.json":()=>e(()=>import("./create_hat.js"),[],import.meta.url),"./images/create_input_from_menu.json":()=>e(()=>import("./create_input_from_menu.js"),[],import.meta.url),"./images/create_input_menu.json":()=>e(()=>import("./create_input_menu.js"),[],import.meta.url),"./images/create_menu.json":()=>e(()=>import("./create_menu.js"),[],import.meta.url),"./images/order_category.json":()=>e(()=>import("./order_category.js"),[],import.meta.url),"./images/switch.json":()=>e(()=>import("./switch.js"),[],import.meta.url)})).map(async([n,t])=>h[n]=(await t()).default));const l=o("#content");l.html(b);Promise.all(l.all("img").map(async n=>{const t=n.getProp("src");if(t.startsWith("./images/")){if(t.endsWith(".json")){p.registerElt(n,await(await fetch(h[t])).json());return}n.props({src:h[t]})}})).then(()=>{p.onDone("#content",()=>{const n=location.hash.slice(1);n?c(n):i.children.length>0&&c(i.children[0].getProp("for"))})});const i=o("#toc"),y=o.all("#content>section");function j(n,t,a){return o.create("div").child([o.create("div").css({"border-radius":"100%",background:n,width:"20px",height:"20px"}).class("circ"),o.create("div").css({fontSize:"16px",background:"#00000000"}).text(t)]).css({display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"5px",padding:"5px"}).click(()=>{c(a)}).props({for:a})}y.forEach(n=>{const t=n.$("h1").text().match(/^\[(#[0-9a-fA-F]{6})\]\s*(.+)/);if(!t)return;const a=t[1],s=t[2];n.id(s.toLowerCase().trim().replaceAll(/[^a-z0-9]/g,"-")),n.$("h1").text(s);const r=j(a,s,n.id());i.child(r)});let u=!1;function c(n){history.replaceState(null,"","#"+n);const t=o("#"+n);t&&(i.all("[selected]").props({selected:null}),i.$(`[for=${n}]`).props({selected:""}),u=!0,t.elt.scrollIntoView({behavior:"smooth"}))}l.on("scrollend",()=>{u=!1});let m=0;l.on("scroll",()=>{if(u)return;const n=l.elt.scrollTop,t=l.children,a=n>m;for(const s of t){const r=s.rect(),g=r.top>=0&&r.top<window.innerHeight,d=r.bottom>0&&r.bottom<=window.innerHeight;if(a?g:d){i.all("[selected]").props({selected:null}),i.$(`[for=${s.id()}]`).props({selected:""}),history.pushState(null,"","#"+s.id());break}m=n}});
